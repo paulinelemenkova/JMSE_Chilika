@@ -93,21 +93,15 @@ Topographically isolated and hydrologically distinct from the surrounding landsc
 
 The transitional nature of coastal lagoons makes them vulnerable to the cumulative effects from the climate fluctuations, specifically rising sea levels \cite{CARRASCO2016356}, flooding \cite{INACIO2023100491}, hydrological disturbances, nutrients availability \cite{LUNARDINI2000135} and human impacts \cite{Luglie}. Richness in natural resources of coastal lagoons attract local population and urges them to actively use resources of the aquatic environment. Hence, coastal lagoon serve as valuable source of food and support the economic development and sustainability for local population which, in turn, leads to the overexploitation of these unique areas and increases anthropogenic pressure \cite{PAULY1994377}. High level of the stress results in the environmental threat to these treasured ecosystems \cite{Davis}. Among recent environmental problems of coastal lagoons are biodiversity and habitat loss \cite{Kumari2022},  changes in surface, organic, chemical and biological pollution including microplastic \cite{GARCESORDONEZ2022120366,BRUSCHI2023110596} and heavy metals \cite{Tripathi2022}, and disrupted hydrological patterns due to climate effects. 
 
+\subsection{Motivation}
+Monitoring coastal landscapes and variations in land cover types is essential for the management and conservation activities of the Chilika Lake. Such activities are carried out and reported in previous studies based on traditional mapping. Nevertheless, monitoring the land cover types in a lake of such importance using traditional methods is often time-consuming, labour-intensive and includes considerable manual work prone to errors. In contrast, application of Machine Learning (ML) methods based on Artificial Neural Networks (ANN) applies to Remote Sensing (RS) data processing considerably increases the effectiveness of mapping \cite{rs15041148}. Advanced ML methods enable to automatically reveal spatial and temporal trends landscape dynamics through computer-based algorithms of pattern recognition and data analysis as reported in existing studies \cite{AMANI2023108324,LI2023104653,Lemenkova202021,TSELKA2023131,LATIF202316}. 
+
 \subsection{Theoretical framework}
-There is little systematic research analysing and contrasting coastal lagoons worldwide. Only a few studies exist to draw generalisations regarding the deep links between the ecosystems of coastal lagoons and the adjacent habitat communities (XXX). They are however biodiversity hotspots for both terrestrial (birds) and marine populations (fish species) (XXX). 
-
-To set up the practical background for environmental analysis, this study presents the approach of Machine Learning (ML) for remote sensing data processing. This is achieved using the Artificial Neural Networks (ANN) methods embedded in the GRASS GIS modules of ML designed for satellite image processing. Such approach creates a plausible paradigm to map the environmental variability of the coastal landscapes surrounding the lagoon of the Chilika Lake.
+There is little multidisciplinary research analysing and contrasting landscapes around the coastal lagoon of Chilika Lake using ML methods. Only a few studies exist to draw generalisations regarding the deep links between the ecosystems of coastal lagoons and the adjacent habitat communities using traditional mapping methods (XXX). They are however based using the conventional tools of cartographic software. To set up the advanced practical background for environmental analysis of Chilika Lake, this study presents the approach of ML for automation of Earth Observation (EO) data processing. This is achieved using the Artificial Neural Networks (ANN) methods by Python's library Scikit-Learn \cite{scikitlearn} embedded in the GRASS GIS \cite{GRASS_GIS_software} modules of ML designed for satellite image processing. Such approach creates a plausible paradigm to map the environmental variability of the coastal landscapes surrounding the lagoon of the Chilika Lake.
 
 %----------- section ----------->
 \section{Study Area}
-The coastal lagoon formed by the Chilika Lake lies within the Odisha state of India, at the estuary of the Daya River, entering the Bay of Bengal on the east coast of India (Figure \ref{fig01}). The largest brackish water lagoon in Asia \cite{BEHERA2020101328}, Chilika Lake covers a total area of over $1100 km^2$. The Chilika Lake is located at the junction of two different water masses -- riverine freshwater and oceanic salt waters from the tidal influx of the Bay of Bengal. These different water fronts interact with the bathymetry of the lagoon and generate local hydrographic setting which vary in salinity, current turbulence and circular flow patterns of waves \cite{Nazneen}. A recent geological study has shown that the shallow limnological system of Chilika Lake was a part of the Bay of Bengal during the later stages of the Pleistocene period \cite{BOROLE1993761}, and undergone marked geomorphic evolution during the late Holocene \cite{MISHRA2022457}. This included denudation and weathering of the surrounding coasts which is largely caused by climate variability and monsoon effects that influenced the distribution of vegetation types, such as mangroves, within the estuarine environment \cite{DASH2023106754}.
-
-There is archaeological evidence for human settlements existing in the Chilika Lake area which served as marine harbour and port since at least Neolithic period \cite{DASH2022105190}. The occupation of the Chilika Lake is explained by the favourable climate setting and its beneficial location which gave access to the Indian Ocean and ensured maritime trade and international commercial connections in ancient India. The importance of the Chilika Lake in both ecological aspect and for historical value for the development of Indian civilisation resulted in its officially designation a as UNESCO World Heritage site \cite{SETHY2023497} and a Ramsar site \cite{BHUVANAGIRI2018343}.
-
-Dynamics of surface area in coastal lagoon of Chilika Lake as a response to the cumulative effects from tidal morphodynamics, winds and morphometry resulted in fluctuating surface and area which in turn affect the ecosystem of surrounding wetlands.
-
-%----------- section ----------->
-\section{Study Area}
+The coastal lagoon formed by the Chilika Lake lies within the Odisha state of India, at the estuary of the Daya River, entering the Bay of Bengal on the east coast of India (Figure \ref{fig01}). The largest brackish water lagoon in Asia \cite{BEHERA2020101328}, Chilika Lake covers a total area of over $1100 km^2$. The Chilika Lake is located at the junction of two different water masses -- riverine freshwater and oceanic salt waters from the tidal influx of the Bay of Bengal. These different water fronts interact with the bathymetry of the lagoon and generate local hydrographic setting which vary in salinity, current turbulence and circular flow patterns of waves \cite{Nazneen}. 
 
 \begin{figure}[H]
     \begin{center}
@@ -117,6 +111,10 @@ Dynamics of surface area in coastal lagoon of Chilika Lake as a response to the 
     \caption{Topographic map of China with indicated study area (yellow rotated square indicating location of the Landsat satellite images): Chengdu and Deyang districts of the Sichuan Province, China. Software: GMT. Map source: author.}
     \label{fig01}
 \end{figure}
+
+A recent geological study has shown that the shallow limnological system of Chilika Lake was a part of the Bay of Bengal during the later stages of the Pleistocene period \cite{BOROLE1993761}, and undergone marked geomorphic evolution during the late Holocene \cite{MISHRA2022457}. This included denudation and weathering of the surrounding coasts which is largely caused by climate variability and monsoon effects that influenced the distribution of vegetation types, such as mangroves, within the estuarine environment \cite{DASH2023106754}. Currently, the dynamics of surface area in coastal lagoon of Chilika Lake presents a response to the cumulative effects from tidal morphodynamics, winds and morphometry resulted in fluctuating surface and area which in turn affect the ecosystem of surrounding wetlands.
+
+Coastal lagoon of the Chilika Lake has important conservation features including rare aquatic and sub-aquatic plants, including endemic species, mangrove associations and plants of horticultural importance. Over 300 fish species \cite{MOHAPATRA2015195} and 726 of flowering plants \cite{Sarkar2012} points at its significant biodiversity and ecosystem value. Moreover, Chilika Lake is the largest habitat for migratory waterbirds across India and a home to multiple threatened and rare species of plants and animals \cite{Balachandran2020}. Rich natural resources and unique environment of the Chilika Lake attracted humans to this area since ancient period. Thus, there is archaeological evidence for human settlements existing in the Chilika Lake area which served as marine harbour and port since at least Neolithic period \cite{DASH2022105190}. The occupation of the Chilika Lake is explained by the favourable climate setting and its beneficial location which gave access to the Indian Ocean and ensured maritime trade and international commercial connections in ancient India. The importance of the Chilika Lake in both ecological aspect and for historical value for the development of Indian civilisation resulted in its officially designation a as UNESCO World Heritage site \cite{SETHY2023497} and a Ramsar site \cite{BHUVANAGIRI2018343}.
 
 %----------- section ----------->
 \section{Materials and Methods}
@@ -191,12 +189,14 @@ The following abbreviations are used in this manuscript:\\
 \begin{tabular}{@{}ll}
 ANN & Artificial Neural Networks \\
 DL & Deep Learning \\
+EO & Earth Observation \\
 GEBCO & General Bathymetric Chart of the Oceans \\
 GMT & Generic Mapping Tools \\
 GRASS & Geographic Resources Analysis Support System \\
 GIS & Geographic Information System \\
 Landsat OLI/TIRS & Landsat Operational Land Imager and Thermal Infrared Sensor \\
 ML & Machine Learning \\
+RS & Remote Sensing \\
 USGS & United States Geological Survey \\
 UTM & Universal Transverse Mercator \\
 \end{tabular}
