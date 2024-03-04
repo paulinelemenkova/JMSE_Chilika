@@ -37,6 +37,36 @@
 \usepackage{gensymb} % for \textdegree
 \usepackage{tabularx}
 
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepmagenta}{RGB}{195,12,214}
+\definecolor{deepgreen}{RGB}{29,122,30}
+\definecolor{mintgreen}{RGB}{192,249,192}
+\definecolor{codepurple}{RGB}{204, 0, 153}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{GainsboroPurple}{RGB}{247,176,247}
+\definecolor{LightSlateGrey}{RGB}{124,118,118}
+%    
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{LightSlateGrey},
+    keywordstyle=\color{deepgreen}\bfseries,
+    emphstyle=\color{deepred},
+    numberstyle=\tiny\color{deepmagenta},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\scriptsize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
 %=================================================================
 % Full title of the paper (Capitalized)
 \Title{Artificial Neural Networks for Mapping Coastal Lagoon of Chilika Lake, India, Using Earth Observation Data}
@@ -142,7 +172,7 @@ Coastal lagoon of the Chilika Lake has important conservation features including
 
 Mapping lacustrine landscapes for analysis of water quality and, specifically, detecting eutrophication and changes in nearby landscapes is crucial for environmental monitoring of coastal lagoons. Time series of satellite images collected at regular time interval and covering study area is a key instrument for environmental analysis \cite{Lemenkova202324}. To this end, we used six satellite images collected during spring period (February-March) and covering time interval of 2019 to 2024. The images were collected on the following dates: 13 February 2019, 3 March 2020, 2 February 2021, 13 February 2022, 4 March 2023 and 11 February 2024. Spring period enables to detect algae blooms in the coastal lagoon which usually occur in Indian waters during February to May (subject to climate fluctuations). Algae bloom in the coastal lagoon of Chilika is caused by several factors such as monsoonal effects, riverine discharge and seasonal upwelling. Hence, the images were for spring period and had low cloudiness (below 10\%) to increase quality of image analysis.
 
-The satellite data were obtained from the of Landsat 8-9 OLI/TIRS mission and downloaded from the NASA EarthExplorer website (\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}). The original images are shown in Figure \ref{fig03}. The images were processed using the GRASS GIS (v. 8.3) image processing software by methods explained in the following sections. Other data include the cartographic geospatial data: raster topographic grid of GEBCO and vector layers of administrative division of India which were used to visualise the location of the study area on the country and state levels, as well as the the relief of the country. These maps were processed using Generic Mapping Tools (GMT) cartographic scripting toolset version 6.4.0 \cite{Wessel} and QGIS version 3.34. The methodology used for processing maps was derived from the existing works \cite{Lemenkova202217,Lemenkova202212,Lemenkova202203}.
+The satellite data were obtained from the of Landsat 8-9 OLI/TIRS mission and downloaded from the NASA EarthExplorer website (\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}). The original images are shown in Figure \ref{fig03}. Other data include the cartographic geospatial data: raster topographic grid of GEBCO and vector layers of administrative division of India which were used to visualise the location of the study area on the country and state levels, as well as the the relief of the country. These maps were processed using Generic Mapping Tools (GMT) cartographic scripting toolset version 6.4.0 \cite{Wessel} and QGIS version 3.34. The methodology used for processing maps was derived from the existing works \cite{Lemenkova202217,Lemenkova202212,Lemenkova202203}.
 
 \begin{figure}[H]
   \centering
@@ -188,7 +218,35 @@ The workflow of this study included several processes and approaches to image an
 
 %----------- subsection ----------->
 \subsection{Image Processing}
+The images were processed using the GRASS GIS (v. 8.3) image processing software by methods explained in the following subsections. First, the images were imported and preprocessed. Then, the images were classified using unsupervised clustering of maximum-likelihood discriminant analysis classifier (MaxLik). During clustering steps, the signature file was generated and reported using k-means algorithm. The aim of this step is to performed cluster maps and to obtain a training dataset. Classification was performed by the 'i.maxlik' module of GRASS GIS. The code for these steps in presented in Listing \ref{lst01} using GRASS GIS syntax:
 
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for clustering method using k-means algorithm,style=mystyle,label={lst01}]
+g.region raster=L_2019_01 -p
+i.group group=L_2019 subgroup=res_30m \
+  input=L_2019_01,L_2019_02,L_2019_03,L_2019_04,L_2019_05,L_2019_06,L_2019_07 --overwrite
+i.cluster group=L_2019 subgroup=res_30m \
+  signaturefile=cluster_L_2019 \
+  classes=10 reportfile=rep_clust_L_2019.txt --overwrite
+i.maxlik group=L_2019 subgroup=res_30m \
+  signaturefile=cluster_L_2019 \
+  output=L_2019_clusters reject=L_2019_cluster_reject --overwrite
+\end{lstlisting}
+
+The visualization of the maps was performed using cartographic tools of GRASS GIS as follows in Listing \ref{lst02}: 
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for mapping and cartographic display,style=mystyle,label={lst02}]
+g.region raster=L_2019_01 -p
+d.mon wx0
+d.rast shaded_relief1
+d.vect isolines color='100:93:134' width=0
+d.rast L_2019_clusters
+d.grid -g size=00:30:00 color=white width=0.1 fontsize=16 text_color=white
+d.legend raster=L_2019_clusters title="Clusters 2019" title_fontsize=19 font="Helvetica" fontsize=17 bgcolor=white border_color=white
+d.legend raster=shaded_relief1 title="Relief, m" title_fontsize=19 font="Helvetica" fontsize=17 bgcolor=white border_color=white -f
+d.out.file output=Chilika_2019 format=jpg --overwrite
+\end{lstlisting}
+
+Next steps included Machine Learnign (ML) algorithms for image processing and analysis by GRASS GIS.
 %----------- subsection ----------->
 \subsection{Machine Learning}
 
@@ -202,7 +260,31 @@ The $m$ variables are selected randomly using the data obtained in 'r.random' mo
 \hat{C^B_{rf}} = majority \:  vote \:  {\hat{C_b}(x)}_1^B
 \end{equation}
 
-Hence, RF classification obtains a class vote from each tree, and then classifies it using majority vote and analysis of each pixel within the raster image. 
+Hence, RF classification obtains a class vote from each tree, and then classifies it using majority vote and analysis of each pixel within the raster image. In GRASS GIS, the RF-based image classification is done using the following code presented in Listing \ref{lst01}. Here, the  training pixels were first generated to train the from an earlier land cover classification. Then, they were used as training dataset to perform a classification on recent Landsat image (in the example of code below, for image of 2023). Afterwards, the model was trained using  'RandomForestClassifier' embedded algorithm using 'r.learn.train' module. The prediction of model performance is done using 'r.learn.predict' module. The shaded relief was added as a background to the image, and the isolines were derived using 'r.contour' module. The code is presented in Listing \ref{lst03}.
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for RF method for supervised image classification,style=mystyle,label={lst03}]
+r.random input=L_2019_clusters seed=100 npoints=1000 raster=training_pixels --overwrite
+r.learn.train group=L_2023 training_map=training_pixels \
+    model_name=RandomForestClassifier n_estimators=500 save_model=rf_model.gz --overwrite
+r.learn.predict group=L_2023 load_model=rf_model.gz output=rf_classification --overwrite
+r.category rf_classification
+r.import input=/path/Chilika/gebco2023.tif output=shaded\_relief1 extent=region --overwrite
+r.contour shaded\_relief1 out=isolines step=200 --overwrite
+\end{lstlisting}
+
+%----------- subsection ----------->
+\subsubsection{MultiLayer Perceptron}
+
+The MultiLayer Perceptron (MLP) algorithms is a class of Artificial Neural Network (ANN) methods. The general methodological scheme for the ANN is presented in Figure \ref{fig05}. 
+
+\begin{figure}[H]
+    \begin{center}
+%    \setlength{\unitlength}{0.5cm}
+	\hspace{-35pt}\includegraphics[width=12.0cm]{Fig_05.jpg}
+    \end{center}
+    \caption{General methodological scheme for the Artificial Neural Network (ANN). Software: R, library 'grViz'. Diagram source: author.}
+    \label{fig05}
+\end{figure}
 
 %----------- subsection ----------->
 \subsubsection{Support Vector Machine}
@@ -215,28 +297,24 @@ $x_{i} \in R^p$ where $ i=1 \dots n$ as two classes and a vector $y \in \{1, - 1
 \label{eq4}
 \end{equation}
 
-which depends on the definitions of $y_{i}(\omega^{T}\varphi (x_i) + b)\geq 1-\zeta_{i}$ which should be greater than one for the optimal prediction of the correctly classified pixels on a raster scene, and $\zeta_{i}\geq 0, i = 1,\dots,n$. The SVC analyses the Digital Numbers (DN) of pixels on the raster image to maximise the margins of the classes using iterative analysis. The estimated decision function in a classified matrix of the satellite image consists of cells for a sample of $x$ pixels, as in Equation \ref{eq5}:
+which depends on the definitions of $y_{i}(\omega^{T}\varphi (x_i) + b)\geq 1-\zeta_{i}$ which should be greater than one for the optimal prediction of the correctly classified pixels on a raster scene, and $\zeta_{i}\geq 0, i = 1,\dots,n$. The SVC analyses digital numbers of pixels on the image to maximise the margins of the classes using iterative analysis. The estimated decision function in a classified matrix of the image consists of cells for a sample of $x$ pixels, Equation \ref{eq5}:
 
 \begin{equation}
 \sum_{i\in SV}y_{i}\alpha_{i}K(x_{i},x) + b
 \label{eq5}
 \end{equation}
 
-The result of the classification assigns the predicted classes and the support vectors which are summarised using attributes of the classification. The effectiveness of SVM method is that it is memory-efficient approach optimises the use of computational capacities of the machine. The flexibility of this algorithms is ensured by different Kernel functions defined which include both common and custom kernels. 
+The result of the classification assigns the predicted classes and the support vectors which are summarised using attributes of the classification. The effectiveness of SVM method is that it is memory-efficient approach optimises the use of computational capacities of the machine. The flexibility of this algorithms is ensured by different Kernel functions defined which include both common and custom kernels. Practical implementation of this approach in GRASS GIS is presented in Listing \ref{lst04} as follows. First, the SVC model is trained using 'r.learn.train' module. Then, the prediction of pixel assignments is done using 'r.learn.predict' module. Afterwards, the raster categories which are automatically applied to the classification output are checked using 'r.category' module. The visualisation is performed using modules 'r.colors', 'd.rast' and 'd.legend'. The example of the code used for classification of the image for 2019 is presented below. 
 
-%----------- subsection ----------->
-\subsubsection{MultiLayer Perceptron (MLP)}
-
-The MultiLayer Perceptron (MLP) algorithms is a class of Artificial Neural Network (ANN) methods. The general methodological scheme for the ANN is presented in Figure \ref{fig05}. 
-
-\begin{figure}[H]
-    \begin{center}
-%    \setlength{\unitlength}{0.5cm}
-	\hspace{-35pt}\includegraphics[width=12.0cm]{Fig_05.jpg}
-    \end{center}
-    \caption{General methodological scheme for the Artificial Neural Network (ANN). Software: R, library 'grViz'. Diagram source: author.}
-    \label{fig05}
-\end{figure}
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for SVC method for supervised image classification,style=mystyle,label={lst04}]
+r.learn.train group=L_2019 training_map=training_pixels \
+    model_name=SVC n_estimators=500 save_model=svc_model.gz --overwrite
+r.learn.predict group=L_2019 load_model=svc_model.gz output=svc_classification --overwrite
+r.category svc_classification
+r.colors svc_classification color=bcyr -e
+d.rast svc_classification
+d.legend raster=svc_classification title="SVM 2019" title_fontsize=19 font="Helvetica" fontsize=17 bgcolor=white border_color=white
+\end{lstlisting}
 
 %----------- section ----------->
 \pagebreak
@@ -440,18 +518,6 @@ USGS & United States Geological Survey \\
 UTM & Universal Transverse Mercator \\
 \end{tabular}
 }
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Optional
-\appendixtitles{no} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
-\appendixstart
-\appendix
-\section[\appendixname~\thesection]{}
-\subsection[\appendixname~\thesubsection]{}
-The appendix 
-
-\section[\appendixname~\thesection]{}
-All appendix sections must be cited in the main text. In the appendices, Figures, Tables, etc. should be labeled, starting with ``A''---e.g., Figure A1, Figure A2, etc.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{adjustwidth}{-\extralength}{0cm}
