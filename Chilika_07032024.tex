@@ -46,6 +46,9 @@
 \counterwithin*{equation}{section}
 \usepackage[super]{nth}
 \usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{adjustbox}
 
 \definecolor{deepblue}{rgb}{0,0,0.5}
 \definecolor{deepred}{rgb}{0.6,0,0}
@@ -184,9 +187,9 @@ Coastal lagoon of the Chilika Lake has important conservation features including
 
 Mapping lacustrine landscapes for analysis of water quality and, specifically, detecting eutrophication and changes in nearby landscapes is crucial for environmental monitoring of coastal lagoons. Time series of satellite images collected at regular time interval and covering study area is a key instrument for environmental analysis \cite{Lemenkova202324}. To this end, we used six satellite images collected during spring period (February-March) and covering time interval of 2019 to 2024. The images were collected on the following dates: 13 February 2019, 3 March 2020, 2 February 2021, 13 February 2022, 4 March 2023 and 11 February 2024. Spring period enables to detect algae blooms in the coastal lagoon which usually occur in Indian waters during February to May (subject to climate fluctuations). Algae bloom in the coastal lagoon of Chilika is caused by several factors such as monsoonal effects, riverine discharge and seasonal upwelling. Hence, the images were for spring period and had low cloudiness (below 10\%) to increase quality of image analysis.
 
-The satellite data were obtained from the of Landsat 8-9 OLI/TIRS mission and downloaded from the NASA EarthExplorer website (\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}). The original images are shown in Figure \ref{fig03}. Other data include the cartographic geospatial data: raster topographic grid of GEBCO and vector layers of administrative division of India which were used to visualise the location of the study area on the country and state levels, as well as the the relief of the country. These maps were processed using Generic Mapping Tools (GMT) cartographic scripting toolset version 6.4.0 \cite{Wessel} and QGIS version 3.34. The methodology used for mapping is derived from previous works \cite{Lemenkova202217,Lemenkova202212,Lemenkova202203}.
+The satellite data were obtained from the of Landsat 8-9 OLI/TIRS mission and downloaded from the NASA EarthExplorer website (\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}). The original images are shown in Figure \ref{fig03}. The major technical characteristics of the satellite images common for all the scenes is as follows. The images were obtained during day time in nadir from sensor OLI/TIRS of Landsat Collection Category T1, Nr. 2. The Worldwide Reference System (WRS) Path/Row is 140/46. The images were projected into the Universal Transverse Mercator (UTM) projection Zone 45, Datum and Ellipsoid is World Geodetic System 84 (WGS84), Ground Control Points Version 5; Station Identifier LGN. The remaining essential characteristics of the EO data are summarised in Appendix.
 
-Landsat 8-9 OLI/TIRS satellite images provide an added value to convention environmental analysis through land cover classification by machine learning methods. The use of such data and methods can improve the cartographic results in coastal areas that observe some structure variability in landscape patches. 
+Other data include the cartographic geospatial data: raster topographic grid of GEBCO and vector layers of administrative division of India which were used to visualise the location of the study area on the country and state levels, as well as the the relief of the country. These maps were processed using Generic Mapping Tools (GMT) cartographic scripting toolset version 6.4.0 \cite{Wessel} and QGIS version 3.34. The methodology used for mapping is derived from previous works \cite{Lemenkova202217,Lemenkova202212,Lemenkova202203}.
 
 \begin{figure}[H]
   \centering
@@ -501,63 +504,67 @@ The final results of the computations included the convergence for iterations of
   \label{fig09}
 \end{figure}
 
-Accordingly, the stability of points assigned to land cover classes were evaluated and reported as follows for each year: for 2019 = 98.08\% points stable; for 2020 = 98.23\%; for 2021 = 98.19\%; for 2022 = 98.25\%; for 2023 = 98.37\% and for 2024 = 98.08\% points stable, respectively. Finally, class means and standard deviations computed for each band and each year, respectively, are presented in the Appendix \ref{AppB} for years 2019 to 2024. The maps of accuracy assessment using rejection probability techniques are presented in Figure \ref{fig10}.
+Accordingly, the stability of points assigned to land cover classes were evaluated and reported as follows for each year: for 2019 = 98.08\% points stable; for 2020 = 98.23\%; for 2021 = 98.19\%; for 2022 = 98.25\%; for 2023 = 98.37\% and for 2024 = 98.08\% points stable, respectively. Finally, class means and standard deviations computed for each band and each year, respectively, are presented in the Appendix \ref{AppB} for years 2019 to 2024. The maps of accuracy analysis assessment  of image classification has been performed using rejection threshold probability techniques by chi square test which results presented in Figure \ref{fig10}. 
 
 \begin{figure}[H]
   \centering
   \begin{tabular}[b]{c}
-    \includegraphics[width=6.4cm]{Fig_10a.jpg} \\
+    \includegraphics[width=6.3cm]{Fig_10a.jpg} \\
     \small (a): 2019 
   \end{tabular}
   \begin{tabular}[b]{c}
-    \includegraphics[width=6.4cm]{Fig_10b.jpg} \\
+    \includegraphics[width=6.3cm]{Fig_10b.jpg} \\
     \small (b): 2020 
   \end{tabular}
     \begin{tabular}[b]{c}
-    \includegraphics[width=6.4cm]{Fig_10c.jpg} \\
+    \includegraphics[width=6.3cm]{Fig_10c.jpg} \\
     \small (c): 2021
   \end{tabular}
   \begin{tabular}[b]{c}
-    \includegraphics[width=6.4cm]{Fig_10d.jpg} \\
+    \includegraphics[width=6.3cm]{Fig_10d.jpg} \\
     \small (d): 2022 
   \end{tabular}
    \begin{tabular}[b]{c}
-    \includegraphics[width=6.4cm]{Fig_10e.jpg} \\
+    \includegraphics[width=6.3cm]{Fig_10e.jpg} \\
     \small (e): 2023 
   \end{tabular}
   \begin{tabular}[b]{c}
-    \includegraphics[width=6.4cm]{Fig_10f.jpg} \\
+    \includegraphics[width=6.3cm]{Fig_10f.jpg} \\
     \small (f): 2024
   \end{tabular}
-  \caption{Accuracy analysis of the classification of the Landsat 8 OLI/TIRS scenes from 2019 to 2024 using algorithm of reject threshold probability by chi square test. Background shaded relief: GEBCO grid. Software: GRASS GIS. Mapping source: author.}
+  \caption{Accuracy analysis of image classification using algorithm of reject threshold probability by chi square test. Background relief: GEBCO. Software: GRASS GIS. Mapping source: author.}
   \label{fig10}
 \end{figure}
 
-The change detection analysis in land cover types from 2013 to 2023 demonstrated shifts in land cover types within the basin of the Chilika Lake coastal lagoon. The computer land cover classes for each of the category is summarised in Table \ref{tab01}.
-
 \begin{table}[H]
   \centering
-  \begin{tabular}{| ccccccccccc |}
-    \textbf{Year} & Class 1 & Class 2 & Class 3 & Class 4 & Class 5 & Class 6 & Class 7 & Class 8 & Class 9 & Class 10 \\
-    \hline
-    \hline
-    \textbf{2019}  & X & X & X & X & X & X & X & X & X & X\\
-    \textbf{2020}  & X & X & X & X & X & X & X & X & X & X \\
-    \textbf{2021} & X & X & X & X & X & X & X & X & X & X \\
-    \textbf{2022} & X & X & X & X & X & X & X & X & X & X \\
-     \textbf{2023} & X & X & X & X & X & X & X & X & X & X \\
-    \textbf{2024}  & X & X & X & X & X & X & X & X & X & X \\
-  \end{tabular}
-  \caption{Statistical results on the estimated classes of land cover types for the decade period (2019--2024) in Chilika Lake coastal lagoon}
+  \begin{tabularx}{\textwidth}{p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}}
+  \toprule
+  \multirow{2}{*}{Year} & \multicolumn{10}{c}{Classes of land cover types} \\
+     & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+    \midrule
+    \textbf{2019} & 673 & 198 & 447 & 1153 & 754 & 704 & 851 & 1239 & 758 & 62 \\
+    \textbf{2020} & 674 & 183 & 434 & 1237 & 524 & 834 & 760 & 1321 & 809 & 62 \\
+    \textbf{2021} & 660 & 208 & 618 & 1256 & 528 & 849 & 597 & 1233 & 814 & 75 \\
+    \textbf{2022} & 638 & 234 & 346 & 1005 & 1006 & 505 & 1061 & 1363 & 748 & 47 \\
+     \textbf{2023} & 643 & 235 & 836 & 446 & 1004 & 635 & 1089 & 1143 & 846 & 72 \\
+    \textbf{2024}  & 575 & 245 & 610 & 1340 & 510 & 913 & 682 & 1266 & 816 & 57 \\
+\bottomrule
+\end{tabularx}
+  \caption{Estimated classes of land cover types for 2019--2024 in Chilika Lake coastal lagoon}
   \label{tab01}
 \end{table}
+
+The change detection analysis in land cover types from 2013 to 2023 demonstrated shifts in land cover types within the basin of the Chilika Lake coastal lagoon. The computer land cover classes for each of the category is summarised in Table \ref{tab01}.
 
 %----------- section ----------->
 \section{Conclusions}
 
 This study demonstrated the application of ML/ANN techniques for satellite image processing aimed to map and visualise changes over the coastal landscape of Chilika Lake in 2019-2024 time period. Technically, we analysed the difference between the effects of diverse ML algorithms (Maximal Likelihood discriminant analysis, Random Forest, Support Vector Machine and MLPClassifier of ANN) on Landsat image analysis and effects of these approaches to image classification. This study revealed the effectiveness of the ML/ANN algorithms for RS data classification which present a powerful alternative to the traditional cartographic tasks through automation. The results of this research show the impact of climate variability on changes in land cover types during short-term time gap and landscape dynamics around the lagoon of the Chilika Lake. The implications of this study are useful for environmental decision makes and supportive for policy makes in sustainable development of Ramsar marine sites of India.
 
-Landsat sensor with moderate spectral and high temporal resolution has been proved useful in estimating the spatio-temporal variations of land cover types in the coastal lagoon of Chilika in spring period since 2019 to 2024. Random Forest, Support Vector Machines and MultiLayer Perceptron classifier algorithms were successful in capturing the trend of landscape dynamics in the lacustrine surroundings using ML methods of automatic analysis of spectral reflectance of pixels. Similarly, the scripting algorithm of GRASS GIS enabled to effectively perform cartographic workflow using different modules for raster daaa processing. Time series maps of land cover types derived from the classified Landsat images explained the overall relationship between climate effects, environmental patterns and hydrological processes through sedimentation, algal bloom during spring period which were detected in the lake, and  variations in land cover types of the surrounding landscapes in eastern India, evaluated for a short-term period of recent six years.
+The paper also demonstrated the value of EO data for environmental analysis. Landsat 8-9 OLI/TIRS satellite images provide an added value to convention environmental analysis through land cover classification by machine learning methods. The use of such data and methods can improve the cartographic results in coastal areas that observe some structure variability in landscape patches. Landsat sensor with moderate spectral and high temporal resolution has been proved useful in estimating the spatio-temporal variations of land cover types in the coastal lagoon of Chilika in spring period since 2019 to 2024. 
+
+Machine learning (ML) and ANN techniques were evaluated for satellite images processing and proved their effectiveness and usefulness for environmental analysis. Specifically, Random Forest, Support Vector Machines and MultiLayer Perceptron classifier algorithms were successful in capturing the trend of landscape dynamics in the lacustrine surroundings using ML methods of automatic analysis of spectral reflectance of pixels. Similarly, the scripting algorithm of GRASS GIS enabled to effectively perform cartographic workflow using different modules for raster daaa processing. Time series maps of land cover types derived from the classified Landsat images explained the overall relationship between climate effects, environmental patterns and hydrological processes through sedimentation, algal bloom during spring period which were detected in the lake, and  variations in land cover types of the surrounding landscapes in eastern India, evaluated for a short-term period of recent six years.
 
 %----------- section ----------->
 
@@ -591,6 +598,8 @@ RS & Remote Sensing \\
 SVM & Support Vector Machines \\
 USGS & United States Geological Survey \\
 UTM & Universal Transverse Mercator \\
+WGS84 & World Geodetic System 84\\
+WRS & Worldwide Reference System  
 \end{tabular}
 }
 
@@ -599,6 +608,77 @@ UTM & Universal Transverse Mercator \\
 \appendixtitles{no} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
 \appendixstart
 \appendix
+
+%------------------------ App 1 -------------->
+\section[\appendixname~\thesection]{Metadata for the Landsat 8-9 OLI/TIRS images obtained from the USGS}\label{AppL}
+
+\begin{table}[H]
+\footnotesize
+\caption{Metadata for the Landsat 8-9 OLI/TIRS images obtained from the USGS} \label{tabL}
+\begin{adjustwidth}{-\extralength}{0cm}
+    \begin{tabularx}{\fulllength}{llll}
+    \toprule
+        	\textbf{Data Set Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ \hline
+        \textbf{Landsat Scene Identifier} & LC81400462019044LGN00 & LC81400462020063LGN00 & LC81400462021033LGN00 \\ \hline
+        \textbf{Date Acquired} & 2019/02/13 & 2020/03/03 & 2021/02/02 \\ \hline
+        \textbf{Roll Angle} & 0 & 0 & 0 \\ \hline
+        \textbf{Start Time} & 2019-02-13 04:43:38.496305 & 2020-03-03 04:43:50.54638 & 2021-02-02 04:44:01.299722 \\ \hline
+        \textbf{Stop Time} & 2019-02-13 04:44:10.266304 & 2020-03-03 04:44:22.316379 & 2021-02-02 04:44:33.069722 \\ \hline
+        \textbf{Land Cloud Cover} & 0.01 & 0.01 & 0.01 \\ \hline
+        \textbf{Scene Cloud Cover L1} & 0.01 & 0.10 & 0.01 \\ \hline
+        \textbf{Ground Control Points Model} & 537 & 568 & 511 \\ \hline
+        \textbf{Geometric RMSE Model} & 6517 & 6132 & 6777 \\ \hline
+        \textbf{Geometric RMSE Model X} & 4631 & 4199 & 4899 \\ \hline
+        \textbf{Geometric RMSE Model Y} & 4586 & 4468 & 4683 \\ \hline
+        \textbf{Processing Software Version} & LPGS\_15.3.1c & LPGS\_15.3.1c & LPGS\_15.4.0 \\ \hline
+        \textbf{Sun Elevation L0RA} & 46.81303022 & 52.31490489 & 44.35249578 \\ \hline
+        \textbf{Sun Azimuth L0RA} & 139.03612161 & 132.76708087 & 142.18104190 \\ \hline
+        \textbf{TIRS SSM Model} & FINAL & FINAL & FINAL \\ \hline
+        \textbf{Data Type L2} & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP \\ \hline
+        \textbf{Satellite} & 8 & 8 & 8 \\ \hline
+        \textbf{Scene Center Lat DMS} & "20°13'48.04""N" & "20°13'47.89""N" & "20°13'47.39""N" \\ \hline
+        \textbf{Scene Center Long DMS} & "85°06'11.16""E" & "85°05'14.89""E" & "85°05'49.38""E" \\ \hline
+        \textbf{Corner Upper Left Lat DMS} & "21°16'11.10""N" & "21°16'10.16""N" & "21°16'10.70""N" \\ \hline
+        \textbf{Corner Upper Left Long DMS} & "83°58'48.18""E" & "83°57'56.20""E" & "83°58'27.41""E" \\ \hline
+        \textbf{Corner Upper Right Lat DMS} & "21°17'41.71""N" & "21°17'41.46""N" & "21°17'41.60""N" \\ \hline
+        \textbf{Corner Upper Right Long DMS} & "86°11'48.91""E" & "86°10'56.86""E" & "86°11'28.10""E" \\ \hline
+        \textbf{Corner Lower Left Lat DMS} & "19°09'09.76""N" & "19°09'08.93""N" & "19°09'09.43""N" \\ \hline
+        \textbf{Corner Lower Left Long DMS} & "84°01'14.38""E" & "84°00'23.08""E" & "84°00'53.86""E" \\ \hline
+        \textbf{Corner Lower Right Lat DMS} & "19°10'30.65""N" & "19°10'30.43""N" & "19°10'30.54""N" \\ \hline
+        \textbf{Corner Lower Right Long DMS} & "86°12'27.86""E" & "86°11'36.49""E" & "86°12'07.31""E" \\ \midrule
+        	\textbf{Data Set Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ \hline
+        \textbf{Landsat Scene Identifier} & LC91400462022044LGN01 & LC91400462023063LGN00 & LC81400462024042LGN00 \\ \hline
+        \textbf{Date Acquired} & 2022/02/13 & 2023/03/04 & 2024/02/11 \\ \hline
+        \textbf{Roll Angle} & 0 & 0 & -1 \\ \hline
+        \textbf{Start Time} & 2022-02-13 04:44:06 & 2023-03-04 04:44:07 & 2024-02-11 04:43:59 \\ \hline
+        \textbf{Stop Time} & 2022-02-13 04:44:38 & 2023-03-04 04:44:39 & 2024-02-11 04:44:31 \\ \hline
+        \textbf{Land Cloud Cover} & 0.01 & 0.01 & 1.35 \\ \hline
+        \textbf{Scene Cloud Cover L1} & 0.01 & 0.01 & 1.24 \\ \hline
+        \textbf{Ground Control Points Model} & 556 & 473 & 454 \\ \hline
+        \textbf{Geometric RMSE Model} & 6320 & 6977 & 6930 \\ \hline
+        \textbf{Geometric RMSE Model X} & 4628 & 4820 & 4746 \\ \hline
+        \textbf{Geometric RMSE Model Y} & 4304 & 5044 & 5049 \\ \hline
+        \textbf{Processing Software Version} & LPGS\_16.2.0 & LPGS\_16.2.0 & LPGS\_16.3.1 \\ \hline
+        \textbf{Sun Elevation L0RA} & 46.93750742 & 52.43682914 & 46.26502602 \\ \hline
+        \textbf{Sun Azimuth L0RA} & 139.05519463 & 132.73529917 & 139.75153012 \\ \hline
+        \textbf{TIRS SSM Model} & N/A & N/A & FINAL \\ \hline
+        \textbf{Data Type L2} & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP \\ \hline
+        \textbf{Satellite} & 9 & 9 & 8 \\ \hline
+        \textbf{Scene Center Lat DMS} & "20°13'47.24""N" & "20°13'48.14""N" & "20°13'46.99""N" \\ \hline
+        \textbf{Scene Center Long DMS} & "85°04'03.04""E" & "85°03'42.62""E" & "85°02'54.24""E" \\ \hline
+        \textbf{Corner Upper Left Lat DMS} & "21°16'08.83""N" & "21°16'08.47""N" & "21°16'07.54""N" \\ \hline
+        \textbf{Corner Upper Left Long DMS} & "83°56'43.44""E" & "83°56'22.63""E" & "83°55'30.65""E" \\ \hline
+        \textbf{Corner Upper Right Lat DMS} & "21°17'41.10""N" & "21°17'40.99""N" & "21°17'40.74""N" \\ \hline
+        \textbf{Corner Upper Right Long DMS} & "86°09'43.99""E" & "86°09'23.15""E" & "86°08'31.09""E" \\ \hline
+        \textbf{Corner Lower Left Lat DMS} & "19°09'07.78""N" & "19°09'07.42""N" & "19°09'06.59""N" \\ \hline
+        \textbf{Corner Lower Left Long DMS} & "83°59'11.29""E" & "83°58'50.77""E" & "83°57'59.51""E" \\ \hline
+        \textbf{Corner Lower Right Lat DMS} & "19°10'30.11""N" & "19°10'30""N" & "19°10'29.78""N" \\ \hline
+        \textbf{Corner Lower Right Long DMS} & "86°10'24.60""E" & "86°10'04.04""E" & "86°09'12.71""E" \\ \bottomrule
+    \end{tabularx}
+    \end{adjustwidth}
+\end{table}
+
+%------------------------ App 2 -------------->
 \section[\appendixname~\thesection]{Class separability matrices for land cover classes}\label{AppA}
 
 \subsection[\appendixname~\thesubsection]{Class separability matrices: 2019  and 2020}
@@ -700,6 +780,7 @@ UTM & Universal Transverse Mercator \\
  \end{vmatrix} 
 \end{equation}
 
+%------------------------ App 3 -------------->
 \section[\appendixname~\thesection]{Computed class means for land cover classes}\label{AppB}
 
 \begin{longtable}{@{\extracolsep{\fill}}p{1.5cm}cccccccc@{}}
