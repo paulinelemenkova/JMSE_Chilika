@@ -254,10 +254,11 @@ Next steps included Machine Learnign (ML) algorithms for image processing and an
 
 The mathematical foundation of the Random Forest (RF) classification consists in the following steps of the workflow initially developed by \cite{598994}. For $b=1$ to $B$, a bootstrap sample $Z*$ of size $N$ from the training data has been drawn. Afterwards, the random-forest tree $T_b$ is increased to the bootstrapped data. This is done iteratively by the recursively repeating the logical steps for each terminal node of the tree that represent individual class in land cover classification, until the minimum node size $n_min$ is reached. 
 
-The $m$ variables are selected randomly using the data obtained in 'r.random' module of GRASS GIS obtained from the pixels variables 'p'. The best variable/split-point are then selected among the $m$ and the model splits each node into two 'daughter' nodes. The output model of the ensemble of trees is received as $\{T_b\}_1^B$. Then, to make a prediction of the assignment of each pixel within the matrix of the raster image to the specific land cover class, the model evaluates each new point $x$ (that is, a cell on the satellite image) using the following logical expression. Let $\hat{C_b}(x)$ be the class prediction of the $b^{th}$ random-forest tree. Then, the RF classification is performed by running the following equation \cite{709601}:
+The $m$ variables are selected randomly using the data obtained in 'r.random' module of GRASS GIS obtained from the pixels variables 'p'. The best variable/split-point are then selected among the $m$ and the model splits each node into two 'daughter' nodes. The output model of the ensemble of trees is received as $\{T_b\}_1^B$. Then, to make a prediction of the assignment of each pixel within the matrix of the raster image to the specific land cover class, the model evaluates each new point $x$ (that is, a cell on the satellite image) using the following logical expression. Let $\hat{C_b}(x)$ be the class prediction of the $b^{th}$ random-forest tree. Then, the RF classification is performed by running the Equation \ref{eq1} derived from \cite{709601}:
 
 \begin{equation}
 \hat{C^B_{rf}} = majority \:  vote \:  {\hat{C_b}(x)}_1^B
+\label{eq1}
 \end{equation}
 
 Hence, RF classification obtains a class vote from each tree, and then classifies it using majority vote and analysis of each pixel within the raster image. In GRASS GIS, the RF-based image classification is done using the following code presented in Listing \ref{lst01}. Here, the  training pixels were first generated to train the from an earlier land cover classification. Then, they were used as training dataset to perform a classification on recent Landsat image (in the example of code below, for image of 2023). Afterwards, the model was trained using  'RandomForestClassifier' embedded algorithm using 'r.learn.train' module. The prediction of model performance is done using 'r.learn.predict' module. The shaded relief was added as a background to the image, and the isolines were derived using 'r.contour' module. The code is presented in Listing \ref{lst03}.
@@ -285,6 +286,43 @@ The MultiLayer Perceptron (MLP) algorithms is a class of Artificial Neural Netwo
     \caption{General methodological scheme for the Artificial Neural Network (ANN). Software: R, library 'grViz'. Diagram source: author.}
     \label{fig05}
 \end{figure}
+
+In GRASS GIS, the MLPClassifier is derived from the Scikit-Learn Library of Python and is based on fundamentals of predictive learning \cite{Rosenblatt}. Its performance differs from other classifiers since it uses the principle of the feedforward ANN. For data analysis, ANN uses three layers that are used as structures of network topology in a flow of information for data partition. Pixels of raster layer presents the nodes of the input, hidden and output layer (see Figure \ref{fig05}) which train the model using supervised learning. The principal approach of this process consists in the connection between each node in one layer to those in the following layer through a certain weight ($w_{ij}$). Hence, the MLPClassifier iteratively evaluates the training data using these connections in weights of the evaluated pixels. The algorithm changes weights repetitively using estimated error until the output image is approached to the expected result and the error is minimised. This sequential operation is formulated in Equation \ref{eq2}: 
+
+\begin{equation}
+\varepsilon(n)=\frac{1}{2} \sum_{output node j}{e_{j}^2(n)}
+\label{eq2}
+\end{equation}
+
+where $e_j(n)$ is the degree of error in an output node $j$ in the n$^{th}$  pixel of the raster dataset and $\varepsilon(n)$ is the node weights which are iteratively adjusted using the minimisation of the errors in the classified raster image for the n$^{th}$ pixel of the raster matrix. Using optimization, each weight $w_{ij}$ is estimated iteratively and changed accordingly using Equation \ref{eq3}: 
+
+\begin{equation}
+\Delta w_{ji}(n)=-\eta\frac{\vartheta\epsilon(n)}{\vartheta\upsilon_{j}(n)}y_{i}(n)
+\label{eq3}
+\end{equation}
+
+where $y_{i}(n)$ is the result of the previous step of classification, and $\eta$ is the tuning parameter of optimization, which aims at quick convergence of the weights of pixels during the iterative process of image classification.
+
+Hence, the MLPC algorithm is sensitive to feature scaling which is related to the resolution of the original raster image. The essential approach of this algorithms consists in random selection of the hidden nodes and analytical determination of the output weights of neural networks \cite{HUANG2006489}. As a result, the MLPClassifier algorithm ensures higher generalisation output at a faster learning speed.
+
+Using ML modules of GRASS GIS, the image classification using the MLPC algorithm was implemented using the combination of the modules 'r.learn.train' used for extracting training data, supervised machine learning and cross-validation using the Python package Scikit-Learn, and module 'r.learn.predict' for estimating prediction of pixels' classification. Technical implementation was performed using the  the following code: 
+
+\begin{lstlisting}[language=bash,caption=GRASS GIS code for RF method for supervised image classification,style=mystyle,label={lst04}]
+r.learn.train group=L_2019 training_map=training_pixels \
+    model_name=MLPClassifier n_estimators=500 save_model=mlpc_model.gz --overwrite
+r.learn.predict group=L_2019 load_model=mlpc_model.gz output=mlpc_classification --overwrite
+r.category mlpc_classification
+r.colors mlpc_classification color=plasma -e
+# data mapping:
+d.mon wx1
+d.rast shaded_relief1
+d.vect isolines color='100:93:134' width=0
+d.rast mlpc_classification
+d.grid -g size=00:30:00 color=white width=0.1 fontsize=16 text_color=white
+d.legend raster=mlpc_classification title="MLPC 2019" title_fontsize=19 font="Helvetica" fontsize=17 bgcolor=white border_color=white
+d.legend raster=shaded_relief1 title="Relief, m" title_fontsize=19 font="Helvetica" fontsize=17 bgcolor=white border_color=white -f
+d.out.file output=MLPC_2019 format=jpg --overwrite
+\end{lstlisting}
 
 %----------- subsection ----------->
 \subsubsection{Support Vector Machine}
@@ -317,7 +355,6 @@ d.legend raster=svc_classification title="SVM 2019" title_fontsize=19 font="Helv
 \end{lstlisting}
 
 %----------- section ----------->
-\pagebreak
 \section{Results and Discussion}
 
 The following 10 land cover types were identified on the satellite images in the study area using information on classification adopted from the existing studies \cite{Behera2023}: \emph{1) Water (ocean); 2) Rural areas; 3) Coastal lagoon; 4) Swamp/Mangroves; 5) Urban and built-up areas; 6) Deciduous vegetation; 7) Agricultural cropland and fallow lands; 8) Grassland; 9) Scrub vegetation and shrubland; 10) Riverine valleys and aquaculture}, Figure \ref{fig06}.  
@@ -479,6 +516,7 @@ Image analysis showed that the algal growth is increased in 2021 and 2024 which 
 \end{figure}
 
 %----------- section ----------->
+\pagebreak
 \section{Conclusions}
 
 This study demonstrated the application of ML/ANN techniques for satellite image processing aimed to map and visualise changes over the coastal landscape of Chilika Lake in 2019-2024 time period. Technically, we analysed the difference between the effects of diverse ML algorithms (Maximal Likelihood discriminant analysis, Random Forest, Support Vector Machine and MLPClassifier of ANN) on Landsat image analysis and effects of these approaches to image classification. This study revealed the effectiveness of the ML/ANN algorithms for RS data classification which present a powerful alternative to the traditional cartographic tasks through automation. The results of this research show the impact of climate variability on changes in land cover types during short-term time gap and landscape dynamics around the lagoon of the Chilika Lake. The implications of this study are useful for environmental decision makes and supportive for policy makes in sustainable development of Ramsar marine sites of India.
