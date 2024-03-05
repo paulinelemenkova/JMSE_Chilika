@@ -101,7 +101,8 @@ $^{1}$ \quad Department of Geoinformatics, Faculty of Digital and Analytical Sci
 %\firstnote{Current address: Affiliation 3.} 
 
 % Abstract (Do not insert blank lines, i.e. \\) 
-\abstract{\textcolor{red}{\lipsum[1-2]}Functional algorithm of gradient boosting classifier }
+\abstract{This study presents environmental mapping of the Chilika Lake coastal lagoon, India, using satellite images Landsat 8-9 OLI/TIRS processed by Machine Learning (ML) methods. The largest brackish water coastal lagoon in Asia, Chilika Lake is wetland of international importance  included to Ramsar site due to its rich biodiversity, productivity and precious habitat for migrating birds and rare species. Vulnerable ecosystem of Chilika lagoon are subject to climate (monsoon effects) and anthropogenic activities (overexploitation through fishing, pollution by microplastic). Consequences of such environmental pressure results in eutrophication of the lake, coastal erosion, fluctuations in size, and changes in land cover types in the surrounding landscapes. Habitat monitoring of the coastal lagoons is complex and difficult to implement with conventional Geographic Information System (GIS) methods. In particular, landscape variability, patch fragmentation and landscape dynamics play a crucial role in environmental dynamics along the eastern coasts of the Bay of Bengal, strongly affected by the Indian monsoon system which controls the precipitation pattern and ecosystem structure. To improve methods of environmental monitoring of coastal areas, this study employs the methods of ML and  Artificial Neural Networks (ANN) which present a powerful tool for computer vision, image classification and analysis of Earth Observation (EO) data. Multispectral satellite data were processed by several ML image classification methods including Random Forest (RF), Support Vector Machine (SVM) and the ANN-based MultiLayer Perceptron (MLP) Classifier. The results compared and discussed. The ANN-based approach outperformed the other methods in terms of accuracy and precision of mapping. Ten land cover classes around the Chilika coastal lagoon were identified via spatio-temporal variations of land cover types from 2019 until 2024. This study provides ML-based maps implemented using Geographic Resources Analysis Support System (GRASS) GIS image analysis software and aims to support ML-based mapping approach of environmental processes over the Chilika Lake coastal lagoon, India.
+}
 
 % Keywords
 \keyword{Functional algorithm; risk assessment; ensemble learning; hazards; climate change; GRASS GIS; Scikit-Learn; machine learning; Python; Landsat; image analysis; China; classification} 
@@ -136,6 +137,15 @@ There is little research analysing and contrasting landscapes of the Odisha coas
 \subsection{Objective and goal}
 The main goal of this research is to map and analyse changes of the land cover types surrounding coastal lagoon on the lake using ML learning algorithms of GRASS GIS and EO data. We used Landsat 8-9 OLI/TIRS satellite images on recent six years (2019, 2020, 2021, 2022, 2023 and 2024) processed using ANN and ML methods to analyse the spatio-temporal distribution of land cover types in Chilika lagoon, Bay of Bengal, Figure \ref{fig01}. 
 
+To set up the advanced practical background for environmental analysis of Chilika Lake, this study presents the approach of ML for automation of Earth Observation (EO) data processing and visualization. To achieve this goal, the objective is to use the ANN methods by Python's library Scikit-Learn \cite{scikitlearn} which are embedded in the GRASS GIS \cite{GRASS_GIS_software} through ML modules designed for data partition and satellite image processing. The ML approach was selected since it creates a plausible paradigm to map the environmental variability of the coastal landscapes surrounding the lagoon of the Chilika Lake. Among the existing methods, this study employs the MultiLayer Perceptron (MLP) algorithm of ANN which presents an effective solution to image analysis. 
+
+%----------- section ----------->
+\section{Study Area}
+The coastal lagoon formed by the Chilika Lake lies within the Odisha state, at the estuary of the Daya River, entering the Bay of Bengal on the east coast of India (Figure \ref{fig02}). The area covers spatial extent with the coordinates of 19°28'--19°54' N; 85°06'--85°35' E \cite{PANDA201329}.  The largest brackish water lagoon in Asia \cite{BEHERA2020101328,BARIK201739}, Chilika Lake covers a total area of over $1100 km^2$ with existing fluctuations of the lake surface reported between $1165 km^2$ to $906 km^2$ \cite{Behera2023}. The Chilika Lake is located at the junction of two different water masses -- riverine freshwater and oceanic salt waters from the tidal influx of the Bay of Bengal. These different water fronts interact with the bathymetry of the lagoon and generate local hydrographic setting which vary in salinity, current turbulence and circular flow patterns of waves \cite{Nazneen}. 
+
+A recent geological study has shown that the shallow limnological system of Chilika Lake was a part of the Bay of Bengal during the later stages of the Pleistocene period \cite{BOROLE1993761}, and undergone marked geomorphic evolution during the late Holocene \cite{MISHRA2022457,AMIR2021148}. This included denudation and weathering of the surrounding coasts which is largely caused by climate variability and monsoon effects that influenced the distribution of vegetation types, such as mangroves, within the estuarine environment \cite{DASH2023106754}. Currently, the dynamics of surface area in coastal lagoon of Chilika Lake presents a response to the cumulative effects from tidal morphodynamics, winds and morphometry resulted in fluctuating surface and area which in turn affect the ecosystem of surrounding wetlands.
+
+
 \begin{figure}[H]
     \begin{center}
 %    \setlength{\unitlength}{0.5cm}
@@ -145,11 +155,7 @@ The main goal of this research is to map and analyse changes of the land cover t
     \label{fig01}
 \end{figure}
 
-To set up the advanced practical background for environmental analysis of Chilika Lake, this study presents the approach of ML for automation of Earth Observation (EO) data processing and visualization. To achieve this goal, the objective is to use the ANN methods by Python's library Scikit-Learn \cite{scikitlearn} which are embedded in the GRASS GIS \cite{GRASS_GIS_software} through ML modules designed for data partition and satellite image processing. The ML approach was selected since it creates a plausible paradigm to map the environmental variability of the coastal landscapes surrounding the lagoon of the Chilika Lake. Among the existing methods, this study employs the MultiLayer Perceptron (MLP) algorithm of ANN which presents an effective solution to image analysis. 
-
-%----------- section ----------->
-\section{Study Area}
-The coastal lagoon formed by the Chilika Lake lies within the Odisha state, at the estuary of the Daya River, entering the Bay of Bengal on the east coast of India (Figure \ref{fig02}). The area covers spatial extent with the coordinates of 19°28'--19°54' N; 85°06'--85°35' E \cite{PANDA201329}.  The largest brackish water lagoon in Asia \cite{BEHERA2020101328,BARIK201739}, Chilika Lake covers a total area of over $1100 km^2$ with existing fluctuations of the lake surface reported between $1165 km^2$ to $906 km^2$ \cite{Behera2023}. The Chilika Lake is located at the junction of two different water masses -- riverine freshwater and oceanic salt waters from the tidal influx of the Bay of Bengal. These different water fronts interact with the bathymetry of the lagoon and generate local hydrographic setting which vary in salinity, current turbulence and circular flow patterns of waves \cite{Nazneen}. 
+Coastal lagoon of the Chilika Lake has important conservation features including rare aquatic and sub-aquatic plants, including endemic species, mangrove associations and plants of horticultural importance. Over 300 fish species \cite{MOHAPATRA2015195} and 726 of flowering plants \cite{Sarkar2012} points at its significant biodiversity and ecosystem value. Moreover, Chilika Lake is the largest habitat for migratory waterbirds across India and a home to multiple threatened and rare species of plants and animals \cite{Balachandran2020}. Rich natural resources and unique environment of the Chilika Lake attracted humans to this area since ancient period. Thus, there is archaeological evidence for human settlements existing in the Chilika Lake area which served as marine harbour and port since at least Neolithic period \cite{DASH2022105190}. The occupation of the Chilika Lake is explained by the favourable climate setting and its beneficial location which gave access to the Indian Ocean and ensured maritime trade and international commercial connections in ancient India. The importance of the Chilika Lake in both ecological aspect and for historical value for the development of Indian civilisation resulted in its officially designation a as UNESCO World Heritage site \cite{SETHY2023497} and a Ramsar site \cite{BHUVANAGIRI2018343}.
 
 \begin{figure}[H]
     \begin{center}
@@ -159,10 +165,6 @@ The coastal lagoon formed by the Chilika Lake lies within the Odisha state, at t
     \caption{Administrative map of India showing the location of the Odisha state on the eastern coast of the Indian subcontinent. Software: QGIS. Map source: author.}
     \label{fig02}
 \end{figure}
-
-A recent geological study has shown that the shallow limnological system of Chilika Lake was a part of the Bay of Bengal during the later stages of the Pleistocene period \cite{BOROLE1993761}, and undergone marked geomorphic evolution during the late Holocene \cite{MISHRA2022457,AMIR2021148}. This included denudation and weathering of the surrounding coasts which is largely caused by climate variability and monsoon effects that influenced the distribution of vegetation types, such as mangroves, within the estuarine environment \cite{DASH2023106754}. Currently, the dynamics of surface area in coastal lagoon of Chilika Lake presents a response to the cumulative effects from tidal morphodynamics, winds and morphometry resulted in fluctuating surface and area which in turn affect the ecosystem of surrounding wetlands.
-
-Coastal lagoon of the Chilika Lake has important conservation features including rare aquatic and sub-aquatic plants, including endemic species, mangrove associations and plants of horticultural importance. Over 300 fish species \cite{MOHAPATRA2015195} and 726 of flowering plants \cite{Sarkar2012} points at its significant biodiversity and ecosystem value. Moreover, Chilika Lake is the largest habitat for migratory waterbirds across India and a home to multiple threatened and rare species of plants and animals \cite{Balachandran2020}. Rich natural resources and unique environment of the Chilika Lake attracted humans to this area since ancient period. Thus, there is archaeological evidence for human settlements existing in the Chilika Lake area which served as marine harbour and port since at least Neolithic period \cite{DASH2022105190}. The occupation of the Chilika Lake is explained by the favourable climate setting and its beneficial location which gave access to the Indian Ocean and ensured maritime trade and international commercial connections in ancient India. The importance of the Chilika Lake in both ecological aspect and for historical value for the development of Indian civilisation resulted in its officially designation a as UNESCO World Heritage site \cite{SETHY2023497} and a Ramsar site \cite{BHUVANAGIRI2018343}.
 
 %----------- section ----------->
 \section{Materials and Methods}
@@ -174,7 +176,7 @@ Mapping lacustrine landscapes for analysis of water quality and, specifically, d
 
 The satellite data were obtained from the of Landsat 8-9 OLI/TIRS mission and downloaded from the NASA EarthExplorer website (\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}). The original images are shown in Figure \ref{fig03}. Other data include the cartographic geospatial data: raster topographic grid of GEBCO and vector layers of administrative division of India which were used to visualise the location of the study area on the country and state levels, as well as the the relief of the country. These maps were processed using Generic Mapping Tools (GMT) cartographic scripting toolset version 6.4.0 \cite{Wessel} and QGIS version 3.34. The methodology used for processing maps was derived from the existing works \cite{Lemenkova202217,Lemenkova202212,Lemenkova202203}.
 
-Landsat 8-9 OLI/TIRS satellite images provide an added value to convention environmental analysis through land cover classification by machine learning methods. The use of such data and methods can improve the cartographic results in coastal areas that observe some structure variability in landscape patches. As such, combining remote sensing data and machine learning (ML) techniques as done here is useful since the two technologies complement each other in programming approach of GRASS GIS and help overcome the limitation of using just one. Moreover, the current focus on employing ML methods for monitoring coastal lagoon of Chilika Lake underscores its important contribution to modelling geospatial data. Such approach to data processing supports computer-based modelling of landscape dynamics in coastal regions of the Bay of Bengal and help analysing how these regions are affected by environmental and climate variability in the monsoon climate of Indian Ocean.  
+Landsat 8-9 OLI/TIRS satellite images provide an added value to convention environmental analysis through land cover classification by machine learning methods. The use of such data and methods can improve the cartographic results in coastal areas that observe some structure variability in landscape patches. 
 
 \begin{figure}[H]
   \centering
@@ -205,6 +207,8 @@ Landsat 8-9 OLI/TIRS satellite images provide an added value to convention envir
   \caption{Image processing of the Landsat 8 OLI/TIRS scene on March and November 2014 using unsupervised classification by clustering and Maximal Likelihood method and created colour composites using multispectral bands of Landsat images.}
   \label{fig03}
 \end{figure}
+
+As such, combining remote sensing data and machine learning (ML) techniques as done here is useful since the two technologies complement each other in programming approach of GRASS GIS and help overcome the limitation of using just one. Moreover, the current focus on employing ML methods for monitoring coastal lagoon of Chilika Lake underscores its important contribution to modelling geospatial data. Such approach to data processing supports computer-based modelling of landscape dynamics in coastal regions of the Bay of Bengal and help analysing how these regions are affected by environmental and climate variability in the monsoon climate of Indian Ocean.  
 
 \subsection{Methodological workflow}
 The workflow of this study included several processes and approaches to image analysis and multi-source data, which is summarised in the methodological scheme in Figure \ref{fig04}.
@@ -285,27 +289,25 @@ The MultiLayer Perceptron (MLP) algorithms is a class of Artificial Neural Netwo
 %    \setlength{\unitlength}{0.5cm}
 	\hspace{-35pt}\includegraphics[width=12.0cm]{Fig_05.jpg}
     \end{center}
-    \caption{General methodological scheme for the Artificial Neural Network (ANN). Software: R, library 'grViz'. Diagram source: author.}
+    \caption{General methodological scheme for the Artificial Neural Network (ANN) used for image classification. Software: R, library 'grViz'. Diagram source: author.}
     \label{fig05}
 \end{figure}
 
-In GRASS GIS, the MLPClassifier is derived from the Scikit-Learn Library of Python and is based on fundamentals of predictive learning \cite{Rosenblatt}. Its performance differs from other classifiers since it uses the principle of the feedforward ANN. For data analysis, ANN uses three layers that are used as structures of network topology in a flow of information for data partition. Pixels of raster layer presents the nodes of the input, hidden and output layer (see Figure \ref{fig05}) which train the model using supervised learning. The principal approach of this process consists in the connection between each node in one layer to those in the following layer through a certain weight ($w_{ij}$). Hence, the MLPClassifier iteratively evaluates the training data using these connections in weights of the evaluated pixels. The algorithm changes weights repetitively using estimated error until the output image is approached to the expected result and the error is minimised. This sequential operation is formulated in Equation \ref{eq2}: 
+In GRASS GIS, the MLPClassifier is derived from the Scikit-Learn Library of Python and is based on fundamentals of predictive learning \cite{Rosenblatt}. Its performance differs from other classifiers since it uses the principle of the feedforward ANN. For data analysis, ANN uses three layers that are used as structures of network topology in a flow of information for data partition. Pixels of raster layer presents the nodes of the input, hidden and output layer (see Figure \ref{fig05}) which train the model using supervised learning. The principal approach of this process consists in the connection between each node in one layer to those in the following layer through a certain weight ($w_{ij}$). The MLPClassifier iteratively evaluates the training data using these connections in weights of pixels. The algorithm changes weights repetitively using estimated error until the output image is approached to the expected result and the error is minimised. This sequential operation is formulated in Equation \ref{eq2}: 
 
 \begin{equation}
 \varepsilon(n)=\frac{1}{2} \sum_{output node j}{e_{j}^2(n)}
 \label{eq2}
 \end{equation}
 
-where $e_j(n)$ is the degree of error in an output node $j$ in the n$^{th}$  pixel of the raster dataset and $\varepsilon(n)$ is the node weights which are iteratively adjusted using the minimisation of the errors in the classified raster image for the n$^{th}$ pixel of the raster matrix. Using optimization, each weight $w_{ij}$ is estimated iteratively and changed accordingly using Equation \ref{eq3}: 
+where $e_j(n)$ is the degree of error in an output node $j$ in the n$^{th}$  pixel of the raster dataset and $\varepsilon(n)$ is the node weights which are iteratively adjusted using the minimisation of the errors in the classified raster image for the n$^{th}$ pixel of the raster matrix. Using optimization, each weight $w_{ij}$ is estimated and changed accordingly, Equation \ref{eq3}: 
 
 \begin{equation}
 \Delta w_{ji}(n)=-\eta\frac{\vartheta\epsilon(n)}{\vartheta\upsilon_{j}(n)}y_{i}(n)
 \label{eq3}
 \end{equation}
 
-where $y_{i}(n)$ is the result of the previous step of classification, and $\eta$ is the tuning parameter of optimization, which aims at quick convergence of the weights of pixels during the iterative process of image classification.
-
-Hence, the MLPC algorithm is sensitive to feature scaling which is related to the resolution of the original raster image. The essential approach of this algorithms consists in random selection of the hidden nodes and analytical determination of the output weights of neural networks \cite{HUANG2006489}. As a result, the MLPClassifier algorithm ensures higher generalisation output at a faster learning speed.
+where $y_{i}(n)$ is the result of the previous step of classification, and $\eta$ is the tuning parameter of optimization, which aims at quick convergence of the weights of pixels during the iterative process of image classification. Hence, the MLPC algorithm is sensitive to feature scaling which is related to the resolution of the original raster image. The essential approach of this algorithms consists in random selection of the hidden nodes and analytical determination of the output weights of neural networks \cite{HUANG2006489}. As a result, the MLPClassifier algorithm ensures higher generalisation output at a faster learning speed.
 
 Using ML modules of GRASS GIS, the image classification using the MLPC algorithm was implemented using the combination of the modules 'r.learn.train' used for extracting training data, supervised machine learning and cross-validation using the Python package Scikit-Learn, and module 'r.learn.predict' for estimating prediction of pixels' classification. Technical implementation was performed using the  the following code: 
 
@@ -349,7 +351,7 @@ The result of the classification assigns the predicted classes and the support v
 \begin{lstlisting}[language=bash,caption=GRASS GIS code for SVC method for supervised image classification,style=mystyle,label={lst04}]
 r.learn.train group=L_2019 training_map=training_pixels \
     model_name=SVC n_estimators=500 save_model=svc_model.gz --overwrite
-r.learn.predict group=L_2019 load_model=svc_model.gz output=svc_classification --overwrite
+r.learn.predict group=L_2019 load_model=svc_model.gz output=svc_classification
 r.category svc_classification
 r.colors svc_classification color=bcyr -e
 d.rast svc_classification
@@ -359,39 +361,39 @@ d.legend raster=svc_classification title="SVM 2019" title_fontsize=19 font="Helv
 %----------- section ----------->
 \section{Results and Discussion}
 
-The following 10 land cover types were identified on the satellite images in the study area using information on classification adopted from the existing studies \cite{Behera2023}: \emph{1) Water (ocean); 2) Rural areas; 3) Coastal lagoon; 4) Swamp/Mangroves; 5) Urban and built-up areas; 6) Deciduous vegetation; 7) Agricultural cropland and fallow lands; 8) Grassland; 9) Scrub vegetation and shrubland; 10) Riverine valleys and aquaculture}, Figure \ref{fig06}.  
+The following 10 land cover types were identified on the satellite images in the study area using information on classification adopted from the existing studies \cite{Behera2023}, Figure \ref{fig06}.  
 
 \begin{figure}[H]
   \centering
   \begin{tabular}[b]{c}
-    \includegraphics[width=6.4cm]{Fig_06a.jpg} \\
+    \includegraphics[width=6.3cm]{Fig_06a.jpg} \\
     \small (a): 2019 
   \end{tabular}
   \begin{tabular}[b]{c}
-    \includegraphics[width=6.4cm]{Fig_06b.jpg} \\
+    \includegraphics[width=6.3cm]{Fig_06b.jpg} \\
     \small (b): 2020 
   \end{tabular}
     \begin{tabular}[b]{c}
-    \includegraphics[width=6.4cm]{Fig_06c.jpg} \\
+    \includegraphics[width=6.3cm]{Fig_06c.jpg} \\
     \small (c): 2021
   \end{tabular}
   \begin{tabular}[b]{c}
-    \includegraphics[width=6.4cm]{Fig_06d.jpg} \\
+    \includegraphics[width=6.3cm]{Fig_06d.jpg} \\
     \small (d): 2022 
   \end{tabular}
    \begin{tabular}[b]{c}
-    \includegraphics[width=6.4cm]{Fig_06e.jpg} \\
+    \includegraphics[width=6.3cm]{Fig_06e.jpg} \\
     \small (e): 2023 
   \end{tabular}
   \begin{tabular}[b]{c}
-    \includegraphics[width=6.4cm]{Fig_06f.jpg} \\
+    \includegraphics[width=6.3cm]{Fig_06f.jpg} \\
     \small (f): 2024
   \end{tabular}
   \caption{Image processing of the Landsat 8 OLI/TIRS scenes from 2019 to 2024 using unsupervised classification (algorithm of maximum-likelihood discriminant analysis classifier). Background shaded relief: GEBCO grid. Software: GRASS GIS. Mapping source: author.}
   \label{fig06}
 \end{figure}
 
-The spatio-temporal change in land cover types around Chilika lake between the years 2019 and 2024 is shown in maps presented in Figure \ref{fig07}. Comparative analysis of the maps shows that Chilika Lake undergone changes in land cover types due to the cumulative effects from the anthropogenic and natural events such as biological productivity, water eutrophication and extent of mangrove forests. The effects from the human activities in the watershed of Chilika lagoon result in increased siltation and increase of nutrients. Hence, siltation, increase in nutrient enrichment and reduced salinity favoured the weed growth within the basin of lake which resulted in changes in spectral reflectance of the lacustrine surface which was recognised by computer vision using Random Forest method, Figure \ref{fig07}. 
+The include the following land cover types: \emph{1) Water (ocean); 2) Rural areas; 3) Coastal lagoon; 4) Swamp/Mangroves; 5) Urban and built-up areas; 6) Deciduous vegetation; 7) Agricultural cropland and fallow lands; 8) Grassland; 9) Scrub vegetation and shrubland; 10) Riverine valleys and aquaculture}. The spatio-temporal change in land cover types around Chilika lake between the years 2019 and 2024 is shown in maps presented in Figure \ref{fig07}. 
 
 \begin{figure}[H]
   \centering
@@ -423,7 +425,7 @@ The spatio-temporal change in land cover types around Chilika lake between the y
   \label{fig07}
 \end{figure}
 
-Spring algal bloom in inland waters of Chilika Lake is a major issue in spring period which affects water quality, especially in its shallow estuarine segments. The effects of eutrophication lead to degradation of aquatic habitats. The level of eutrophication increased from 2019 to 2020 and 2021, after which the situation stablized. 
+Comparative analysis of the maps shows that Chilika Lake undergone changes in land cover types due to the cumulative effects from the anthropogenic and natural events such as biological productivity, water eutrophication and extent of mangrove forests. The effects from the human activities in the watershed of Chilika lagoon result in increased siltation and increase of nutrients. Hence, siltation, increase in nutrient enrichment and reduced salinity favoured the weed growth within the basin of lake which resulted in changes in spectral reflectance of the lacustrine surface which was recognised by computer vision using Random Forest method, Figure \ref{fig07}. Spring algal bloom in inland waters of Chilika Lake is a major issue in spring period which affects water quality, especially in its shallow estuarine segments. The effects of eutrophication lead to degradation of aquatic habitats. The level of eutrophication increased from 2019 to 2020 and 2021, after which the situation stablized. The results of image classification using SVM method are presented in Figure \ref{fig08}.
 
 \begin{figure}[H]
   \centering
@@ -451,7 +453,7 @@ Spring algal bloom in inland waters of Chilika Lake is a major issue in spring p
     \includegraphics[width=6.4cm]{Fig_08f.jpg} \\
     \small (f): 2024
   \end{tabular}
-  \caption{Support Vector Machine (SVM) ML-based classification of the Landsat 8 OLI/TIRS scenes from 2019 to 2024. Background shaded relief: GEBCO grid. Software: GRASS GIS. Mapping source: author.}
+  \caption{Support Vector Machine (SVM) ML-based classification of the Landsat 8 OLI/TIRS scenes from 2019 to 2024. Background shaded relief: GEBCO. Software: GRASS GIS. Maps source: author.}
   \label{fig08}
 \end{figure}
 
