@@ -184,7 +184,7 @@ Coastal lagoon of the Chilika Lake has important conservation features including
 
 Mapping lacustrine landscapes for analysis of water quality and, specifically, detecting eutrophication and changes in nearby landscapes is crucial for environmental monitoring of coastal lagoons. Time series of satellite images collected at regular time interval and covering study area is a key instrument for environmental analysis \cite{Lemenkova202324}. To this end, we used six satellite images collected during spring period (February-March) and covering time interval of 2019 to 2024. The images were collected on the following dates: 13 February 2019, 3 March 2020, 2 February 2021, 13 February 2022, 4 March 2023 and 11 February 2024. Spring period enables to detect algae blooms in the coastal lagoon which usually occur in Indian waters during February to May (subject to climate fluctuations). Algae bloom in the coastal lagoon of Chilika is caused by several factors such as monsoonal effects, riverine discharge and seasonal upwelling. Hence, the images were for spring period and had low cloudiness (below 10\%) to increase quality of image analysis.
 
-The satellite data were obtained from the of Landsat 8-9 OLI/TIRS mission and downloaded from the NASA EarthExplorer website (\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}). The original images are shown in Figure \ref{fig03}. Other data include the cartographic geospatial data: raster topographic grid of GEBCO and vector layers of administrative division of India which were used to visualise the location of the study area on the country and state levels, as well as the the relief of the country. These maps were processed using Generic Mapping Tools (GMT) cartographic scripting toolset version 6.4.0 \cite{Wessel} and QGIS version 3.34. The methodology used for processing maps was derived from the existing works \cite{Lemenkova202217,Lemenkova202212,Lemenkova202203}.
+The satellite data were obtained from the of Landsat 8-9 OLI/TIRS mission and downloaded from the NASA EarthExplorer website (\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}). The original images are shown in Figure \ref{fig03}. Other data include the cartographic geospatial data: raster topographic grid of GEBCO and vector layers of administrative division of India which were used to visualise the location of the study area on the country and state levels, as well as the the relief of the country. These maps were processed using Generic Mapping Tools (GMT) cartographic scripting toolset version 6.4.0 \cite{Wessel} and QGIS version 3.34. The methodology used for mapping is derived from previous works \cite{Lemenkova202217,Lemenkova202212,Lemenkova202203}.
 
 Landsat 8-9 OLI/TIRS satellite images provide an added value to convention environmental analysis through land cover classification by machine learning methods. The use of such data and methods can improve the cartographic results in coastal areas that observe some structure variability in landscape patches. 
 
@@ -221,7 +221,7 @@ Landsat 8-9 OLI/TIRS satellite images provide an added value to convention envir
 As such, combining remote sensing data and machine learning (ML) techniques as done here is useful since the two technologies complement each other in programming approach of GRASS GIS and help overcome the limitation of using just one. Moreover, the current focus on employing ML methods for monitoring coastal lagoon of Chilika Lake underscores its important contribution to modelling geospatial data. Such approach to data processing supports computer-based modelling of landscape dynamics in coastal regions of the Bay of Bengal and help analysing how these regions are affected by environmental and climate variability in the monsoon climate of Indian Ocean.  
 
 \subsection{Methodological workflow}
-The workflow of this study included several processes and approaches to image analysis and multi-source data, which is summarised in the methodological scheme in Figure \ref{fig04}.
+The workflow of this study included several processes and approaches to image analysis and multi-source data, summarised in the methodological scheme in Figure \ref{fig04}.
 
 \begin{figure}[H]
     \begin{center}
@@ -239,7 +239,7 @@ The images were processed using the GRASS GIS (v. 8.3) image processing software
 \begin{lstlisting}[language=bash,caption=GRASS GIS code for clustering method using k-means algorithm,style=mystyle,label={lst01}]
 g.region raster=L_2019_01 -p
 i.group group=L_2019 subgroup=res_30m \
-  input=L_2019_01,L_2019_02,L_2019_03,L_2019_04,L_2019_05,L_2019_06,L_2019_07 --overwrite
+input=L_2019_01,L_2019_02,L_2019_03,L_2019_04,L_2019_05,L_2019_06,L_2019_07
 i.cluster group=L_2019 subgroup=res_30m \
   signaturefile=cluster_L_2019 \
   classes=10 reportfile=rep_clust_L_2019.txt --overwrite
@@ -282,10 +282,10 @@ Hence, RF classification obtains a class vote from each tree, and then classifie
 \begin{lstlisting}[language=bash,caption=GRASS GIS code for RF method for supervised image classification,style=mystyle,label={lst03}]
 r.random input=L_2019_clusters seed=100 npoints=1000 raster=training_pixels --overwrite
 r.learn.train group=L_2023 training_map=training_pixels \
-    model_name=RandomForestClassifier n_estimators=500 save_model=rf_model.gz --overwrite
-r.learn.predict group=L_2023 load_model=rf_model.gz output=rf_classification --overwrite
+    model_name=RandomForestClassifier n_estimators=500 save_model=rf_model.gz
+r.learn.predict group=L_2023 load_model=rf_model.gz output=rf_classification 
 r.category rf_classification
-r.import input=/path/Chilika/gebco2023.tif output=shaded\_relief1 extent=region --overwrite
+r.import input=/path/Chilika/gebco2023.tif output=shaded\_relief1 extent=region 
 r.contour shaded\_relief1 out=isolines step=200 --overwrite
 \end{lstlisting}
 
@@ -467,7 +467,9 @@ Comparative analysis of the maps shows that Chilika Lake undergone changes in la
   \label{fig08}
 \end{figure}
 
-Image analysis showed that the algal growth is increased in 2021 and 2024 which was best detected using the ANN approach of MLPClassifier, Figure \ref{fig09}. The hydrological effects can be explained by the increase in water turbidity during spring period which affect the visibility of the lake surface through the decreased transparency of water column affected by the increased photosynthetic activity during spring period. 
+Image analysis showed that the algal growth is increased in 2021 and 2024 which was best detected using the ANN approach of MLPClassifier, Figure \ref{fig09}. The hydrological effects can be explained by the increase in water turbidity during spring period which affect the visibility of the lake surface through the decreased transparency of water column affected by the increased photosynthetic activity during spring period. The class separability matrices computed for 10 land cover types identified in the Chilika lagoon for years 2019, 2020, 2021, 2022, 2023 and 2024 are reported in the tables placed in the Appendix \ref{AppA}. 
+
+The final results of the computations included the convergence for iterations of pixels assigned to the land cover classes. The convergence were computed for each image and demonstrated the following results: for year 2019 = 98.1\%; for year 2020 = 98.2\%; for year 2021 = 98.2\%; for year 2022 = \%; for year 2023 = 98.4\% and for year 2024 = 98.1\%, which shows high precision and accuracy of the calculations using GRASS GIS algorithms of image processing. 
 
 \begin{figure}[H]
   \centering
@@ -499,7 +501,7 @@ Image analysis showed that the algal growth is increased in 2021 and 2024 which 
   \label{fig09}
 \end{figure}
 
-The class separability matrices computed for 10 land cover classes identified in the Chilika Lake landscapes for years 2019, 2020, 2021, 2022, 2023 and 2024 are reported in the tables placed in the Appendix \ref{AppA}. The final results of the computations included the convergence for iterations of pixels assigned to the land cover classes. The convergence were computed for each image and demonstrated the following results: for year 2019 = 98.1\%; for year 2020 = 98.2\%; for year 2021 = 98.2\%; for year 2022 = \%; for year 2023 = 98.4\% and for year 2024 = 98.1\%, which shows high precision and accuracy of the calculations using GRASS GIS algorithms of image processing. Accordingly, the stability of points assigned to land cover classes were evaluated and reported as follows for each year: for 2019 = 98.08\% points stable; for 2020 = 98.23\%; for 2021 = 98.19\%; for 2022 = 98.25\%; for 2023 = 98.37\% and for 2024 = 98.08\% points stable, respectively. Finally, class means and standard deviations computed for each band and each year, respectively, are presented in the Appendix for years 2019 to 2024. The maps of accuracy assessment using rejection probability techniques are presented in Figure \ref{fig10}.
+Accordingly, the stability of points assigned to land cover classes were evaluated and reported as follows for each year: for 2019 = 98.08\% points stable; for 2020 = 98.23\%; for 2021 = 98.19\%; for 2022 = 98.25\%; for 2023 = 98.37\% and for 2024 = 98.08\% points stable, respectively. Finally, class means and standard deviations computed for each band and each year, respectively, are presented in the Appendix \ref{AppB} for years 2019 to 2024. The maps of accuracy assessment using rejection probability techniques are presented in Figure \ref{fig10}.
 
 \begin{figure}[H]
   \centering
@@ -680,7 +682,7 @@ UTM & Universal Transverse Mercator \\
  \end{vmatrix} 
 \end{equation}
 
-\section[\appendixname~\thesection]{}
+\section[\appendixname~\thesection]{Computed class means for land cover classes}\label{AppB}
 
 \begin{longtable}{@{\extracolsep{\fill}}p{1.5cm}cccccccc@{}}
 \caption{Class means of Digital Numbers (DN) of pixels computed for pixels assigned to 10 land cover classes in the landscapes around Chilika Lake within each Landsat 8-9 OLI/TIRS band (1 to 7) for years 2019 to 2024} \label{tab01}\\
