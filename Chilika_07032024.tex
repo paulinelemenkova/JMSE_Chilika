@@ -45,6 +45,7 @@
 \usepackage{chngcntr}
 \counterwithin*{equation}{section}
 \usepackage[super]{nth}
+\usepackage{longtable}
 
 \definecolor{deepblue}{rgb}{0,0,0.5}
 \definecolor{deepred}{rgb}{0.6,0,0}
@@ -498,6 +499,8 @@ Image analysis showed that the algal growth is increased in 2021 and 2024 which 
   \label{fig09}
 \end{figure}
 
+The class separability matrices computed for 10 land cover classes identified in the Chilika Lake landscapes for years 2019, 2020, 2021, 2022, 2023 and 2024 are reported in the tables placed in the Appendix \ref{AppA}. The final results of the computations included the convergence for iterations of pixels assigned to the land cover classes. The convergence were computed for each image and demonstrated the following results: for year 2019 = 98.1\%; for year 2020 = 98.2\%; for year 2021 = 98.2\%; for year 2022 = \%; for year 2023 = 98.4\% and for year 2024 = 98.1\%, which shows high precision and accuracy of the calculations using GRASS GIS algorithms of image processing. Accordingly, the stability of points assigned to land cover classes were evaluated and reported as follows for each year: for 2019 = 98.08\% points stable; for 2020 = 98.23\%; for 2021 = 98.19\%; for 2022 = 98.25\%; for 2023 = 98.37\% and for 2024 = 98.08\% points stable, respectively. Finally, class means and standard deviations computed for each band and each year, respectively, are presented in the Appendix for years 2019 to 2024. The maps of accuracy assessment using rejection probability techniques are presented in Figure \ref{fig10}.
+
 \begin{figure}[H]
   \centering
   \begin{tabular}[b]{c}
@@ -575,7 +578,7 @@ UTM & Universal Transverse Mercator \\
 \appendixtitles{no} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
 \appendixstart
 \appendix
-\section[\appendixname~\thesection]{Class separability matrices for land cover classes}
+\section[\appendixname~\thesection]{Class separability matrices for land cover classes}\label{AppA}
 
 \subsection[\appendixname~\thesubsection]{Class separability matrices: 2019  and 2020}
 \begin{equation}
@@ -677,7 +680,104 @@ UTM & Universal Transverse Mercator \\
 \end{equation}
 
 \section[\appendixname~\thesection]{}
-All appendix sections must be cited in the main text. In the appendices, Figures, Tables, etc. should be labeled, starting with ``A''---e.g., Figure A1, Figure A2, etc.
+
+\begin{longtable}{@{\extracolsep{\fill}}p{1.5cm}cccccccc@{}}
+\caption{Class means computed for pixels assigned to 10 land cover classes in the landscapes around Chilika Lake within each Landsat 8-9 OLI/TIRS band (1 to 7) for years 2019 to 2024} \label{tab01}\\
+\hline \textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7} \\ \hline 
+\endfirsthead
+
+\multicolumn{5}{c}%
+{{\tablename\ \thetable{} -- continued from previous page}} \\
+\textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7}  \\ \hline 
+\endhead
+
+\hline \multicolumn{8}{r}{{Continued on next page}} \\ \hline
+\endfoot
+
+\hline \hline
+\endlastfoot
+
+\bf{2019} &  &  &  &  &  &  & \\
+\hline
+1 & 7384.59 & 7627.99 & 7895.94 & 7432.46 & 7311.54 & 7522.6 & 7534.26 \\
+2 & 8643.32 & 9065.21 & 10097.8 & 9576.69 & 8982.72 & 8163.85 & 7900.08 \\
+3 & 7909.62 & 8189.18 & 9032.65 & 8872.02 & 13230.6 & 11239.2 & 9522.02 \\
+4 & 7855.42 & 8099.7 & 9003.44 & 8780.11 & 15341.4 & 12452.6 & 9902.94 \\
+5 & 7993.15 & 8247.89 & 9267.59 & 9042.79 & 16989.7 & 13587.9 & 10478.3 \\
+6 & 8356.75 & 8702.28 & 9805.76 & 9943.78 & 16308 & 15025.3 & 11968.9 \\
+7 & 8386.91 & 8760.24 & 9764.89 & 10023.5 & 14226.4 & 14156.7 & 11883.2 \\
+8 & 8770.28 & 9187.13 & 10314.4 & 10890.7 & 15345.3 & 16391.3 & 13700.7 \\
+9 & 9215.28 & 9707.92 & 10991.3 & 11942.4 & 16298 & 18419.5 & 15557.1 \\
+10 & 10984.1 & 11566.3 & 13775 & 15936.7 & 18901.8 & 22878.1 & 21892.5 \\
+\hline
+\bf{2020} &  &  &  & & & & \\
+\hline
+1 & X & X & X & X & X & X & X \\
+2 & X & X & X & X & X & X & X \\
+3 & X & X & X & X & X & X & X \\
+4 & X & X & X & X & X & X & X \\
+5 & X & X & X & X & X & X & X \\
+6 & X & X & X & X & X & X & X \\
+7 & X & X & X & X & X & X & X \\
+8 & X & X & X & X & X & X & X \\
+9 & X & X & X & X & X & X & X \\
+10 & X & X & X & X & X & X & X \\
+\hline
+
+\bf{2021} &  &  &  & & & & \\
+\hline
+1 & X & X & X & X & X & X & X \\
+2 & X & X & X & X & X & X & X \\
+3 & X & X & X & X & X & X & X \\
+4 & X & X & X & X & X & X & X \\
+5 & X & X & X & X & X & X & X \\
+6 & X & X & X & X & X & X & X \\
+7 & X & X & X & X & X & X & X \\
+8 & X & X & X & X & X & X & X \\
+9 & X & X & X & X & X & X & X \\
+10 & X & X & X & X & X & X & X \\
+\hline
+\bf{2022} &  &  &  & & & & \\
+\hline
+1 & X & X & X & X & X & X & X \\
+2 & X & X & X & X & X & X & X \\
+3 & X & X & X & X & X & X & X \\
+4 & X & X & X & X & X & X & X \\
+5 & X & X & X & X & X & X & X \\
+6 & X & X & X & X & X & X & X \\
+7 & X & X & X & X & X & X & X \\
+8 & X & X & X & X & X & X & X \\
+9 & X & X & X & X & X & X & X \\
+10 & X & X & X & X & X & X & X \\
+\hline
+\bf{2023} &  &  &  & & & & \\
+\hline
+1 & X & X & X & X & X & X & X \\
+2 & X & X & X & X & X & X & X \\
+3 & X & X & X & X & X & X & X \\
+4 & X & X & X & X & X & X & X \\
+5 & X & X & X & X & X & X & X \\
+6 & X & X & X & X & X & X & X \\
+7 & X & X & X & X & X & X & X \\
+8 & X & X & X & X & X & X & X \\
+9 & X & X & X & X & X & X & X \\
+10 & X & X & X & X & X & X & X \\
+\hline
+\bf{2024} &  &  &  & & & & \\
+\hline
+1 & X & X & X & X & X & X & X \\
+2 & X & X & X & X & X & X & X \\
+3 & X & X & X & X & X & X & X \\
+4 & X & X & X & X & X & X & X \\
+5 & X & X & X & X & X & X & X \\
+6 & X & X & X & X & X & X & X \\
+7 & X & X & X & X & X & X & X \\
+8 & X & X & X & X & X & X & X \\
+9 & X & X & X & X & X & X & X \\
+10 & X & X & X & X & X & X & X \\
+\hline
+\end{longtable}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{adjustwidth}{-\extralength}{0cm}
