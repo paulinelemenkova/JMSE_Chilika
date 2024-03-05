@@ -349,7 +349,7 @@ $x_{i} \in R^p$ where $ i=1 \dots n$ as two classes and a vector $y \in \{1, - 1
 \label{eq4}
 \end{equation}
 
-which depends on the definitions of $y_{i}(\omega^{T}\varphi (x_i) + b)\geq 1-\zeta_{i}$ which should be greater than one for the optimal prediction of the correctly classified pixels on a raster scene, and $\zeta_{i}\geq 0, i = 1,\dots,n$. The SVC analyses digital numbers of pixels on the image to maximise the margins of the classes using iterative analysis. The estimated decision function in a classified matrix of the image consists of cells for a sample of $x$ pixels, Equation \ref{eq5}:
+which depends on the definitions of $y_{i}(\omega^{T}\varphi (x_i) + b)\geq 1-\zeta_{i}$ which should be greater than one for the optimal prediction of the correctly classified pixels on a raster scene, and $\zeta_{i}\geq 0, i = 1,\dots,n$. The SVC analyses Digital Numbers (DN) of pixels on the image to maximise the margins of the classes using iterative analysis. The estimated decision function in a classified matrix of the image consists of cells for a sample of $x$ pixels, Equation \ref{eq5}:
 
 \begin{equation}
 \sum_{i\in SV}y_{i}\alpha_{i}K(x_{i},x) + b
@@ -557,6 +557,7 @@ The following abbreviations are used in this manuscript:\\
 ANN & Artificial Neural Networks \\
 CDOM & Coloured Dissolved Organic Matter \\
 DL & Deep Learning \\
+DN & Digital Number \\
 EO & Earth Observation \\
 GEBCO & General Bathymetric Chart of the Oceans \\
 GMT & Generic Mapping Tools \\
@@ -682,7 +683,7 @@ UTM & Universal Transverse Mercator \\
 \section[\appendixname~\thesection]{}
 
 \begin{longtable}{@{\extracolsep{\fill}}p{1.5cm}cccccccc@{}}
-\caption{Class means computed for pixels assigned to 10 land cover classes in the landscapes around Chilika Lake within each Landsat 8-9 OLI/TIRS band (1 to 7) for years 2019 to 2024} \label{tab01}\\
+\caption{Class means of Digital Numbers (DN) of pixels computed for pixels assigned to 10 land cover classes in the landscapes around Chilika Lake within each Landsat 8-9 OLI/TIRS band (1 to 7) for years 2019 to 2024} \label{tab01}\\
 \hline \textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7} \\ \hline 
 \endfirsthead
 
@@ -712,16 +713,16 @@ UTM & Universal Transverse Mercator \\
 \hline
 \bf{2020} &  &  &  & & & & \\
 \hline
-1 & X & X & X & X & X & X & X \\
-2 & X & X & X & X & X & X & X \\
-3 & X & X & X & X & X & X & X \\
-4 & X & X & X & X & X & X & X \\
-5 & X & X & X & X & X & X & X \\
-6 & X & X & X & X & X & X & X \\
-7 & X & X & X & X & X & X & X \\
-8 & X & X & X & X & X & X & X \\
-9 & X & X & X & X & X & X & X \\
-10 & X & X & X & X & X & X & X \\
+1 & 7362.63 & 7605.24 & 8058.61 & 7428.78 & 7302.72 & 7611.18 & 7600.81 \\
+2 & 8799.63 & 9212.01 & 10298.1 & 9846.45 & 9447.31 & 8374.1 & 8010.46 \\
+3 & 7943.86 & 8190.79 & 9124.49 & 8775.28 & 13978.1 & 11732.6 & 9604.04 \\
+4 & 7951.76 & 8182.82 & 9148.86 & 8762.19 & 15483.8 & 12974.3 & 10132.6 \\
+5 & 8046.6 & 8290.53 & 9367.25 & 8877.5 & 17339.2 & 13624.9 & 10362.4 \\
+6 & 8289.78 & 8579.24 & 9693.26 & 9484.22 & 16220.4 & 14673.9 & 11489.4 \\
+7 & 8460.6 & 8784.33 & 9843.28 & 9877.32 & 14561 & 14590 & 12004.6 \\
+8 & 8682.86 & 9047.62 & 10243.8 & 10406.1 & 15846.7 & 16209.3 & 13175.8 \\
+9 & 9103.29 & 9524.9 & 10833.7 & 11361.1 & 16366.5 & 18052.3 & 15014.9 \\
+10 & 11001.5 & 11588.6 & 13781.4 & 15754.9 & 19292 & 23392.5 & 21832.9 \\
 \hline
 
 \bf{2021} &  &  &  & & & & \\
