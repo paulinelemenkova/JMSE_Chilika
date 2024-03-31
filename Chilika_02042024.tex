@@ -20,7 +20,7 @@
 \copyrightyear{2024}
 %\externaleditor{Academic Editor: Firstname Lastname}
 \datereceived{5 March 2024} 
-\daterevised{}
+\daterevised{2 April 2024}
 \dateaccepted{} 
 \datepublished{} 
 \hreflink{https://doi.org/} % If needed use \linebreak
@@ -150,25 +150,31 @@ There is little research analysing and contrasting landscapes of the Odisha coas
 \subsection{Objective and goal}
 The main goal of this research is to map and analyse changes of the land cover types surrounding coastal lagoon on the lake using ML learning algorithms of GRASS GIS and EO data. We used Landsat 8-9 OLI/TIRS satellite images on recent six years (2019, 2020, 2021, 2022, 2023 and 2024) processed using ANN and ML methods to analyse the spatio-temporal distribution of land cover types in Chilika lagoon, Bay of Bengal, Figure \ref{fig01}. 
 
-To set up the advanced practical background for environmental analysis of Chilika Lake, this study presents the approach of ML for automation of Earth Observation (EO) data processing and visualization. To achieve this goal, the objective is to use the ANN methods by Python's library Scikit-Learn \cite{scikitlearn} which are embedded in the GRASS GIS \cite{GRASS_GIS_software} through ML modules designed for data partition and satellite image processing. The ML approach was selected since it creates a plausible paradigm to map the environmental variability of the coastal landscapes surrounding the lagoon of the Chilika Lake. Among the existing methods, this study employs the MultiLayer Perceptron (MLP) algorithm of ANN which presents an effective solution to image analysis. 
-
-%----------- section ----------->
-\section{Study Area}
-The coastal lagoon formed by the Chilika Lake lies within the Odisha state, at the estuary of the Daya River, entering the Bay of Bengal on the east coast of India (Figure \ref{fig02}). The area covers spatial extent with the coordinates of 19°28'--19°54' N; 85°06'--85°35' E \cite{PANDA201329}.  The largest brackish water lagoon in Asia \cite{BEHERA2020101328,BARIK201739}, Chilika Lake covers a total area of over $1100 km^2$ with existing fluctuations of the lake surface reported between $1165 km^2$ to $906 km^2$ \cite{Behera2023}. The Chilika Lake is located at the junction of two different water masses -- riverine freshwater and oceanic salt waters from the tidal influx of the Bay of Bengal. These different water fronts interact with the bathymetry of the lagoon and generate local hydrographic setting which vary in salinity, current turbulence and circular flow patterns of waves \cite{Nazneen}. 
-
-A recent geological study has shown that the shallow limnological system of Chilika Lake was a part of the Bay of Bengal during the later stages of the Pleistocene period \cite{BOROLE1993761}, and undergone marked geomorphic evolution during the late Holocene \cite{MISHRA2022457,AMIR2021148}. This included denudation and weathering of the surrounding coasts which is largely caused by climate variability and monsoon effects that influenced the distribution of vegetation types, such as mangroves, within the estuarine environment \cite{DASH2023106754}. Currently, the dynamics of surface area in coastal lagoon of Chilika Lake presents a response to the cumulative effects from tidal morphodynamics, winds and morphometry resulted in fluctuating surface and area which in turn affect the ecosystem of surrounding wetlands.
-
-
 \begin{figure}[H]
     \begin{center}
 %    \setlength{\unitlength}{0.5cm}
-	\hspace{-35pt}\includegraphics[width=14.0cm]{Fig_01.jpg}
+	\hspace{-35pt}\includegraphics[width=11.0cm]{Fig_01.jpg}
     \end{center}
     \caption{Topographic map of India with indicated study area showing the location of the Landsat data over the coastal lagoon of Chilika Lake. Software: GMT. Map source: author.}
     \label{fig01}
 \end{figure}
 
-Coastal lagoon of the Chilika Lake has important conservation features including rare aquatic and sub-aquatic plants, including endemic species, mangrove associations and plants of horticultural importance. Over 300 fish species \cite{MOHAPATRA2015195} and 726 of flowering plants \cite{Sarkar2012} points at its significant biodiversity and ecosystem value. Moreover, Chilika Lake is the largest habitat for migratory waterbirds across India and a home to multiple threatened and rare species of plants and animals \cite{Balachandran2020}. Rich natural resources and unique environment of the Chilika Lake attracted humans to this area since ancient period. Thus, there is archaeological evidence for human settlements existing in the Chilika Lake area which served as marine harbour and port since at least Neolithic period \cite{DASH2022105190}. The occupation of the Chilika Lake is explained by the favourable climate setting and its beneficial location which gave access to the Indian Ocean and ensured maritime trade and international commercial connections in ancient India. The importance of the Chilika Lake in both ecological aspect and for historical value for the development of Indian civilisation resulted in its officially designation a as UNESCO World Heritage site \cite{SETHY2023497} and a Ramsar site \cite{BHUVANAGIRI2018343}.
+To set up the advanced practical background for environmental analysis of Chilika Lake, this study presents the approach of ML for automation of Earth Observation (EO) data processing and visualization. To achieve this goal, the objective is to use the ANN methods by Python's library Scikit-Learn \cite{scikitlearn} which are embedded in the GRASS GIS \cite{GRASS_GIS_software} through ML modules designed for data partition and satellite image processing. The ML approach was selected since it creates a plausible paradigm to map the environmental variability of the coastal landscapes surrounding the lagoon of the Chilika Lake. Among the existing methods, this study employs the MultiLayer Perceptron (MLP) algorithm of ANN which presents an effective solution to image analysis. 
+
+%----------- section ----------->
+\section{Study Area}
+The \hl{study }area covers spatial extent with the coordinates of 19°28'--19°54' N; 85°06'--85°35' E, \hl{Figure} \ref{figchil}, \cite{PANDA201329}. 
+
+\begin{figure}[H]
+    \begin{center}
+%    \setlength{\unitlength}{0.5cm}
+	\hspace{-35pt}\includegraphics[width=14.0cm]{Topo_IN_Chilika.jpg}
+    \end{center}
+    \caption{Topographic map of India with indicated study area showing the location of the Landsat data over the coastal lagoon of Chilika Lake. Software: GMT. Map source: author.}
+    \label{figchil}
+\end{figure}
+
+The largest brackish water lagoon in Asia \cite{BEHERA2020101328,BARIK201739}, Chilika Lake covers a total area of over $1100 km^2$ with existing fluctuations of the lake surface reported between $1165 km^2$ to $906 km^2$ \cite{Behera2023}. The \hl{lake} is located at the junction of two different water masses -- riverine freshwater and oceanic salt waters from the tidal influx of the Bay of Bengal. These different water fronts interact with the bathymetry of the lagoon and generate local hydrographic setting which vary in salinity, current turbulence and circular flow patterns of waves \cite{Nazneen}. The coastal lagoon formed by the Chilika Lake lies within the Odisha state, at the estuary of the Daya River, entering the Bay of Bengal on the east coast of India (Figure \ref{fig02}). 
 
 \begin{figure}[H]
     \begin{center}
@@ -178,6 +184,10 @@ Coastal lagoon of the Chilika Lake has important conservation features including
     \caption{Administrative map of India showing the location of the Odisha state on the eastern coast of the Indian subcontinent. Software: QGIS. Map source: author.}
     \label{fig02}
 \end{figure}
+
+A recent geological study has shown that the shallow limnological system of Chilika Lake was a part of the Bay of Bengal during the later stages of the Pleistocene period \cite{BOROLE1993761}, and undergone marked geomorphic evolution during the late Holocene \cite{MISHRA2022457,AMIR2021148}. This included denudation and weathering of the surrounding coasts which is largely caused by climate variability and monsoon effects that influenced the distribution of vegetation types, such as mangroves, within the estuarine environment \cite{DASH2023106754}. Currently, the dynamics of surface area in coastal lagoon of Chilika Lake presents a response to the cumulative effects from tidal morphodynamics, winds and morphometry resulted in fluctuating surface and area which in turn affect the ecosystem of surrounding wetlands.
+
+Coastal lagoon of the Chilika Lake has important conservation features including rare aquatic and sub-aquatic plants, including endemic species, mangrove associations and plants of horticultural importance. Over 300 fish species \cite{MOHAPATRA2015195} and 726 of flowering plants \cite{Sarkar2012} points at its significant biodiversity and ecosystem value. Moreover, Chilika Lake is the largest habitat for migratory waterbirds across India and a home to multiple threatened and rare species of plants and animals \cite{Balachandran2020}. Rich natural resources and unique environment of the Chilika Lake attracted humans to this area since ancient period. Thus, there is archaeological evidence for human settlements existing in the Chilika Lake area which served as marine harbour and port since at least Neolithic period \cite{DASH2022105190}. The occupation of the Chilika Lake is explained by the favourable climate setting and its beneficial location which gave access to the Indian Ocean and ensured maritime trade and international commercial connections in ancient India. The importance of the Chilika Lake in both ecological aspect and for historical value for the development of Indian civilisation resulted in its officially designation a as UNESCO World Heritage site \cite{SETHY2023497} and a Ramsar site \cite{BHUVANAGIRI2018343}.
 
 %----------- section ----------->
 \section{Materials and Methods}
