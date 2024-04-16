@@ -609,21 +609,21 @@ Accordingly, the stability of points assigned to land cover classes were evaluat
 
 Change detection analysis in the land cover types from 2013 to 2023 demonstrated shifts in land cover types within the basin of the Chilika Lake coastal lagoon. The computed areas occupied by various land cover classes for each of the category is summarised in Table \ref{tab01}. Such variability of landscape patches around the Chilika Lake proved existing fluctuations in the processes of siltation and eutrophication in the coastal lagoon over the studied period (years 2019-2024). Major causes of such environmental changes are related to the sedimentation processes such as low river flow speed which cause stagnation of water and eutrophication. Second, the increased sediment budgetary balance and flushing of sediments into the Bay of Bengal also contribute to the changes of the lake level. Since water fluctuations in various parts of the Chilika Lake are subject to the monsoon effects in dry and wet seasons, wetland types can be discriminated on the satellite images along the margin areas of the lagoon. These variations are also caused by the different hydrological effects (e.g., currents and water level) and geomorphic settings of the surrounding relief. 
  
- \hl{Table} \ref{tab02} \hl{compares the hyper parameters of the GRASS GIS used for classification indices in for ANN and various models of machine learning (ML).} 
+ \hl{Table} \ref{tab02} \hl{compares the hyper parameters of the GRASS GIS used for classification indices in for ANN and various models of ML. Computing Cohen's Kappa was done to compare the results of raster image classification, such as landscapes viewed by RS Landsat sensors and identified using ANN and ML algorithms of GRASS GIS. In this way, the Cohen's Kappa presents a straightforward statistical approach that computes the confusion matrix by considering each pixel of the comparable raster images as a single rating made by two raters. With this regards, the results were computed and summarised in a Table below}.
  
  \begin{table}[H]
   \centering
-  \begin{tabularx}{\textwidth}{p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}}
+  \begin{tabularx}{\textwidth}{p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}p{1.5cm}}
   \toprule
-  \multirow{2}{*}{Year} & \multicolumn{10}{c}{Classes of land cover types} \\
-     & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+  \multirow{2}{*}{Year} & \multicolumn{3}{c}{Cohen's Kappa quantification of agreement } & \multicolumn{3}{c}{F-1 score of predictive performance}\\
+      & RF & SVM & MLPC & RF & SVM & MLPC \\
     \midrule
-    \textbf{2019} & 673 & 198 & 447 & 1153 & 754 & 704 & 851 & 1239 & 758 & 62 \\
-    \textbf{2020} & 674 & 183 & 434 & 1237 & 524 & 834 & 760 & 1321 & 809 & 62 \\
-    \textbf{2021} & 660 & 208 & 618 & 1256 & 528 & 849 & 597 & 1233 & 814 & 75 \\
-    \textbf{2022} & 638 & 234 & 346 & 1005 & 1006 & 505 & 1061 & 1363 & 748 & 47 \\
-     \textbf{2023} & 643 & 235 & 836 & 446 & 1004 & 635 & 1089 & 1143 & 846 & 72 \\
-    \textbf{2024}  & 575 & 245 & 610 & 1340 & 510 & 913 & 682 & 1266 & 816 & 57 \\
+    \textbf{2019} & 673 & 198 & 447  & 673 & 198 & 447\\
+    \textbf{2020} & 674 & 183 & 434  & 673 & 198 & 447 \\
+    \textbf{2021} & 660 & 208 & 618 & 673 & 198 & 447 \\
+    \textbf{2022} & 638 & 234 & 346  & 673 & 198 & 447\\
+     \textbf{2023} & 643 & 235 & 836  & 673 & 198 & 447\\
+    \textbf{2024} & 575 & 245 & 610 & 673 & 198 & 447 \\
 \bottomrule
 \end{tabularx}
   \caption{\hl{Hyperparameters for machine learning (ML) models in GRASS GIS: 1) Random Forest Classifier, 2) Support Vector Machine (SVM) Classifier, and 3) Multilayer Perceptron Classifiers (MLPClassifier). Estimated classes of land cover types for 2019--2024 in Chilika Lake coastal lagoon}}
