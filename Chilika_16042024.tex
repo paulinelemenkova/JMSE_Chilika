@@ -609,7 +609,9 @@ Accordingly, the stability of points assigned to land cover classes were evaluat
 
 Change detection analysis in the land cover types from 2013 to 2023 demonstrated shifts in land cover types within the basin of the Chilika Lake coastal lagoon. The computed areas occupied by various land cover classes for each of the category is summarised in Table \ref{tab01}. Such variability of landscape patches around the Chilika Lake proved existing fluctuations in the processes of siltation and eutrophication in the coastal lagoon over the studied period (years 2019-2024). Major causes of such environmental changes are related to the sedimentation processes such as low river flow speed which cause stagnation of water and eutrophication. Second, the increased sediment budgetary balance and flushing of sediments into the Bay of Bengal also contribute to the changes of the lake level. Since water fluctuations in various parts of the Chilika Lake are subject to the monsoon effects in dry and wet seasons, wetland types can be discriminated on the satellite images along the margin areas of the lagoon. These variations are also caused by the different hydrological effects (e.g., currents and water level) and geomorphic settings of the surrounding relief. 
  
- \hl{Table} \ref{tab02} \hl{compares the hyper parameters of the GRASS GIS used for classification indices in for ANN and various models of ML. Computing Cohen's Kappa was done to compare the results of raster image classification, such as landscapes viewed by RS Landsat sensors and identified using ANN and ML algorithms of GRASS GIS. In this way, the Cohen's Kappa presents a straightforward statistical approach that computes the confusion matrix by considering each pixel of the comparable raster images as a single rating made by two raters. With this regards, the results were computed and summarised in a Table below}.
+ \hl{Table} \ref{tab02} \hl{compares the hyper parameters of the GRASS GIS used for classification indices in for ANN and various models of ML. Computing Cohen's Kappa was done to compare the results of raster image classification, such as landscapes viewed by RS Landsat sensors and identified using ANN and ML algorithms of GRASS GIS. In this way, the Cohen's Kappa presents a straightforward statistical approach that computes the confusion matrix by considering each pixel of the comparable raster images as a single rating made by two raters. With this regards, the results were computed and summarised below}.
+ 
+ \hl{Table} \ref{tab02} \hl{summarises and compares such parameters as accuracy, F1 score, Cohen's kappa coefficient and related parameters. Based on the computed values of Cohen's Kappa coefficient and the F1 method for the evaluation of classified data, the results suggest that the 0.785 Cohen's Kappa coefficient and F1 score of 0.89 are rated as the good strength of agreement. Hence, the ANN technique can be interpreted as a reliable approach for satellite image classification in terms of accuracy, followed by the SVM and RF. The interpretation of the  F-score is as follows. The highest possible value of 1.0, indicates perfect precision and recall of variables, while the lowest theoretically possible value is 0 indicates the lowest precision or recall which are zero in this case. Hence, generally, higher values generally mean better results of satellite image classification. Likewise, as other correlation statistics, the kappa can range from -1 to +1. The interpretation of values is as follows. Values of the levels of 0.60 to 0.79 have moderate level of agreement, those in the interval of 0.8--0.9 (that is, over 80\% below 90\%) are acceptable as having strong level of agreement, and those above 0.9 are almost perfect} \cite{McHugh}.
  
  \begin{table}[H]
   \centering
@@ -618,19 +620,17 @@ Change detection analysis in the land cover types from 2013 to 2023 demonstrated
   \multirow{2}{*}{Year} & \multicolumn{3}{c}{Cohen's Kappa quantification of agreement } & \multicolumn{3}{c}{F-1 score of predictive performance}\\
       & RF & SVM & MLPC & RF & SVM & MLPC \\
     \midrule
-    \textbf{2019} & 673 & 198 & 447  & 673 & 198 & 447\\
-    \textbf{2020} & 674 & 183 & 434  & 673 & 198 & 447 \\
-    \textbf{2021} & 660 & 208 & 618 & 673 & 198 & 447 \\
-    \textbf{2022} & 638 & 234 & 346  & 673 & 198 & 447\\
-     \textbf{2023} & 643 & 235 & 836  & 673 & 198 & 447\\
-    \textbf{2024} & 575 & 245 & 610 & 673 & 198 & 447 \\
+    \textbf{2019} & 0.73 & 0.78 & 0.84  & 0.78 & 0.82 & 0.92\\
+    \textbf{2020} & 0.73 & 0.73 & 0.82  & 0.77 & 0.84 & 0.91 \\
+    \textbf{2021} & 0.71 & 0.74 & 0.81 & 0.77 & 0.79 & 0.92 \\
+    \textbf{2022} & 0.80 & 0.81 & 0.83  & 0.81 & 0.81 & 0.95\\
+     \textbf{2023} & 0.78 & 0.79 & 0.85  & 0.84 & 0.83 & 0.96\\
+    \textbf{2024} & 0.76 & 0.77 & 0.86 & 0.83 & 0.82 & 0.94 \\
 \bottomrule
 \end{tabularx}
   \caption{\hl{Hyperparameters for machine learning (ML) models in GRASS GIS: 1) Random Forest Classifier, 2) Support Vector Machine (SVM) Classifier, and 3) Multilayer Perceptron Classifiers (MLPClassifier). Estimated classes of land cover types for 2019--2024 in Chilika Lake coastal lagoon}}
   \label{tab02}
 \end{table}
-
-\hl{Table} \ref{tab02} \hl{summarises and compares such parameters as accuracy, F1 score, Cohen's kappa coefficient and related parameters. Based on the computed values of Cohen's Kappa coefficient and the F1 method for the evaluation of classified data, the results suggest that the 0.785 Cohen's Kappa coefficient and F1 score of 0.89 are rated as the good strength of agreement. Hence, the ANN technique can be interpreted as a reliable approach for satellite image classification in terms of accuracy, followed by the SVM and RF.}
 
 The short-term evolution of the physiographic habitats and land cover types around the Chilika coastal lagoon is strongly affected by the humid monsoon climate of the Bay of Bengal and human activities. The analysis of satellite images performed using ML and ANN algorithms enabled to recognise fluctuations over the areas of Chilika lagoon which depend on the water level, tidal level, monsoon effects and inflow of rivers of Daya and Bhargavi into the lagoon. In terms of technical capabilities, the ANN model performed the best in terms of learning capabilities of model in GRASS GIS and effectiveness in capturing anomalies and outliers in classified pixels assigned to various land cover classes. Although the ANN model required high computational resources and demonstrated a high time-consuming model, its performance was excellent with regard to the other models. Besides, the lagoon depends on the inflow from the sea waters through the small stream inlets. Such variations in hydrology strongly affect the lacustrine environments as demonstrated on the satellite images processed using GRASS GIS. 
 
