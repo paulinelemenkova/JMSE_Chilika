@@ -396,7 +396,7 @@ d.legend raster=svc_classification title="SVM 2019" title_fontsize=19 font="Helv
 
 The GitHub repository is created for a summary of the methodology and the results of all the models and classification outputs. The programming scripts used for plotting the data, confusion matrices and maps are also included in this repository for a comparative analysis of the statistical outputs and quantitative estimations on land cover types.
 
-\hl{The overall performance of the tested ML classifiers and ANN were evaluated for accuracy, F1 score, Cohen's kappa coefficient and other parameters. Here the Cohen's kappa is a quantitative measure which evaluates the reliability for rating coefficients that are assessing the accuracy of pixels's classification and assignment to diverse land cover types} \cite{Cohen}. \hl{The applicability of Cohen's Kappa techniques for data evaluation is proven by the use in various studies} \cite{YU2024131896,LI2023138565,BONHOMME201596}. \hl{The reliability was evaluated for three used classifiers: 1) Random Forest Classifier, 2) Support Vector Machine (SVM) Classifier, and 3) Multilayer Perceptron Classifiers (MLPClassifier) to evaluate the accuracy of these approaches to satellite image processing. The Cohen's Kappa is an important factor in the interpretation of test findings regarding raster image classification. In this study, the Cohen's kappa was defined in weighted form using the formula below: :}
+\hl{The overall performance of the tested ML classifiers and ANN were evaluated for accuracy, F1 score, Cohen's kappa coefficient and other parameters. Here the Cohen's kappa is a quantitative measure which evaluates the reliability for rating coefficients that are assessing the accuracy of pixels's classification and assignment to diverse land cover types} \cite{Cohen}. \hl{The applicability of Cohen's Kappa techniques for data evaluation is proven by the use in various studies} \cite{YU2024131896,LI2023138565,BONHOMME201596}. \hl{The reliability was evaluated for three used classifiers: 1) Random Forest Classifier, 2) Support Vector Machine (SVM) Classifier, and 3) Multilayer Perceptron Classifiers (MLPClassifier) to evaluate the accuracy of these approaches to satellite image processing. The Cohen's Kappa is an important factor in the interpretation of test findings regarding raster image classification. In this study, the Cohen's kappa was defined in weighted form using the formula in Equation} \ref{eq6}:
 
 \begin{equation}
 K = \frac{P_0 - P_e}{1 - P_e}
@@ -406,10 +406,40 @@ K = \frac{P_0 - P_e}{1 - P_e}
 \hl{where the $P_0$ indicates the probability of agreement, and $P_e$ -- the probability of random agreement.} 
 \hl{The advantages of the Cohen's kappa is that it presents a robust measure of estimating the statistical probability of evaluation compared to the simple percent agreement calculation} \cite{Sim}. \hl{This is possible since Cohen's kappa takes into account the possibility of random agreement of pixels' assignment to diverse land cover classes}. \hl{Hence, it is an appropriate measure of reliability of pixels assigned to diverse land cover classes. In this way, the Cohen's kappa estimates the degree to which these classifiers produce similar results under consistent environmental conditions of landscapes, that is, the same date, sun light and azimuth angle of the satellite images.}
 
+\hl{In contrast to the Cohen's Kappa, the F-score evaluates the predictive performance and classification performance. Generally, It is calculated from the precision of the classification using the number of correctly classified pixels divided by the number of all samples that are predicted to be correct. Precision indicates positive predictive value in sensitive classification} \cite{Hand,sitarz2022extending}. \hl{According to previous studies on image classification} \cite{Taha}\hl{, the estimation of the F score is performed using the following formula in Equation} \ref{eq7}:
+
+\begin{equation}
+F_1 = \frac{2}{recall^{-1} + precision^{-1}} = 2 x \frac{precision \cdot recall}{precision + recall} = \frac{2tp}{2tp + fp + fn}
+\label{eq7}
+\end{equation}
+
 %----------- section ----------->
 \section{Results and Discussion}
 
-The following 10 land cover types were identified on the satellite images in the study area using information on classification adopted from the existing studies \cite{Behera2023}, Figure \ref{fig07}. 
+\hl{The} identified categories include the following land cover types defined as classes corresponding to the following land cover patterns: 1) Salt water bodies (ocean); 2) Brackish water (lake);  3) Wetlands and coastal lagoon; 4) Dense deciduous forest; 5) Agricultural land, croplands; 6) Trees and vegetated areas; 7) Built-up and urban areas; 8) Grassland and shrubland; 9) Rural areas; 10) Fresh water (river). Spatio-temporal change in land cover types around Chilika lake between the years 2019 and 2024 is shown in maps presented in Figures \ref{fig07} -- \ref{fig10} and compared with the existing similar research \cite{Sinha2020,Mangla}. The hydrological effects can be explained by the increase in water turbidity during spring period which affect the visibility of the lake surface through the decreased transparency of water column affected by the increased photosynthetic activity during spring period. The distribution of mangroves that are mostly situated along the tidal water ways are discriminated due to their spectral separability on the EO data. Thus, salt marsh grasses are generally located along the tidal flats due to the specific environmental setting of these physiographic units. 
+
+\hl{The areas of wetlands and coastal lagoon as well as} water bodies increased due to new mouth opening of the Chilika Lake. The scrubland and grassland decreased while the forest areas increased. This numerical computations of changes are summarised in Table \ref{tab01} and the statistical report tables provided in the GitHub repository. The dynamics in land cover types in the coastal area of Chilika imply that that scrubland and grassland converted into forest due to higher dense vegetation cover. Notably, the agriculture fallow land does not show much differences between the estimated years of 2019 and 2024.
+
+\begin{table}[H]
+  \centering
+  \begin{tabularx}{\textwidth}{p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}}
+  \toprule
+  \multirow{2}{*}{Year} & \multicolumn{10}{c}{Classes of land cover types} \\
+     & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+    \midrule
+    \textbf{2019} & 673 & 198 & 447 & 1153 & 754 & 704 & 851 & 1239 & 758 & 62 \\
+    \textbf{2020} & 674 & 183 & 434 & 1237 & 524 & 834 & 760 & 1321 & 809 & 62 \\
+    \textbf{2021} & 660 & 208 & 618 & 1256 & 528 & 849 & 597 & 1233 & 814 & 75 \\
+    \textbf{2022} & 638 & 234 & 346 & 1005 & 1006 & 505 & 1061 & 1363 & 748 & 47 \\
+     \textbf{2023} & 643 & 235 & 836 & 446 & 1004 & 635 & 1089 & 1143 & 846 & 72 \\
+    \textbf{2024}  & 575 & 245 & 610 & 1340 & 510 & 913 & 682 & 1266 & 816 & 57 \\
+\bottomrule
+\end{tabularx}
+  \caption{Estimated classes of land cover types for 2019--2024 in Chilika Lake coastal lagoon}
+  \label{tab01}
+\end{table}
+
+The comparative analysis of the maps shows that the surroundings of the Chilika Lake undergone changes in land cover types. This is caused by the cumulative effects from both the anthropogenic and natural events and results in variations of biological productivity, water eutrophication and the extent of mangrove forests which strongly depend on the variations in the salinity as discussed above. In turn, the salinity level in the lake is regulated by the monsoon processes and the changes in oceanic seawater and river inflow and counterparts. The effects from the human activities in the watershed of Chilika lagoon result in increased siltation and increase of nutrients. The land cover types were identified on the satellite images in the study area using information on classification adopted from the existing studies \cite{Behera2023}, Figure \ref{fig07}. 
 
 \begin{figure}[H]
   \centering
@@ -473,7 +503,7 @@ During the evaluated period of 2019--2024, notable changes were observed in the 
   \label{fig08}
 \end{figure}
 
-Likewise, the areas of wetlands and coastal lagoon and water bodies increased due to new mouth opening of the Chilika Lake. The scrubland and grassland decreased while the forest areas increased. This numerical computations of changes are summarised in Table \ref{tab01} and the statistical report tables provided in the GitHub repository. The dynamics in land cover types in the coastal area of Chilika imply that that scrubland and grassland converted into forest due to higher dense vegetation cover. Notably, the agriculture fallow land does not show much differences between the estimated years of 2019 and 2024, Figure \ref{fig09}.
+Besides the anthropogenic issues, the variations in the colour and salinity of water within the Chilika Lake visible on the images are related to the monsoon rains which strongly influence the hydrography of the coastal lagoon, Figure \ref{fig09}. Thus, inflow of sediment and water from the catchments of rivers and tributaries upstream are maximum during monsoon months. This is also increased by the oceanic sediment transport. Consequently, these months for notable for intensive floods and turbulence of waters in the coastal lagoon. Accordingly, the impact of both oceanic tides and freshwater inflow from the rivers regulate the salinity of Chilika Lake and change it depending on the dominating force. 
 
 \begin{figure}[H]
   \centering
@@ -505,7 +535,7 @@ Likewise, the areas of wetlands and coastal lagoon and water bodies increased du
   \label{fig09}
 \end{figure}
 
-Besides the anthropogenic issues, the variations in the colour and salinity of water within the Chilika Lake visible on the images are related to the monsoon rains which strongly influence the hydrography of the coastal lagoon, Figure \ref{fig09}. Thus, inflow of sediment and water from the catchments of rivers and tributaries upstream are maximum during monsoon months. This is also increased by the oceanic sediment transport. Consequently, these months for notable for intensive floods and turbulence of waters in the coastal lagoon. Accordingly, the impact of both oceanic tides and freshwater inflow from the rivers regulate the salinity of Chilika Lake and change it depending on the dominating force. Spatial variability of the salinity detected in the images classified using ANN-based  MLPClassifier demonstrates the decrease during the monsoon period due to the influx of freshwater, which especially concerns northern and central segments of the lake, while southern sector is the least affected even during monsoon and maintains its brackish-water conditions, Figure \ref{fig10}.
+Spatial variability of the salinity detected in the images classified using ANN-based  MLPClassifier demonstrates the decrease during the monsoon period due to the influx of freshwater, which especially concerns northern and central segments of the lake, while southern sector is the least affected even during monsoon and maintains its brackish-water conditions, Figure \ref{fig10}. \hl{Such hydrological} pattern are well reflected in the satellite images which show various colours of water in the lake. During the spring period, when the images were taken, the water level of the lagoon gradually decreases and reaches its lowest level during summer. Finally, the effects of winds also creates an input into the balance of salinity of the Chilika Lake by water turbidity in upper layers. Such climate effects facilitate the influx of saline water from the ocean and increases the salinity of the lake accordingly. In turn, \hl{the} variability in salinity and geochemical characteristics related to such complex processes affect aquatic vegetation, algae bloom during favourable period which can be identified on the satellite images. 
 
 \begin{figure}[H]
   \centering
@@ -537,43 +567,9 @@ Besides the anthropogenic issues, the variations in the colour and salinity of w
   \label{fig10}
 \end{figure}
 
-Such hydrological pattern are well reflected in the satellite images which show various colours of water in the lake. During the spring period, when the images were taken, the water level of the lagoon gradually decreases and reaches its lowest level during summer. Finally, the effects of winds also creates an input into the balance of salinity of the Chilika Lake by water turbidity in upper layers. Such climate effects facilitate the influx of saline water from the ocean and increases the salinity of the lake accordingly.  In turn, variability in salinity and geochemical characteristics related to such complex processes affect aquatic vegetation, algae bloom during favourable period which can be identified on the satellite images. 
-
-The identified categories include the following land cover types defined as classes corresponding to the following land cover patterns: 1) Salt water bodies (ocean); 2) Brackish water (lake);  3) Wetlands and coastal lagoon; 4) Dense deciduous forest; 5) Agricultural land, croplands; 6) Trees and vegetated areas; 7) Built-up and urban areas; 8) Grassland and shrubland; 9) Rural areas; 10) Fresh water (river). The spatio-temporal change in land cover types around Chilika lake between the years 2019 and 2024 is shown in maps presented in Figure \ref{fig09} and compared with the existing similar research \cite{Sinha2020,Mangla}.
-
 The siltation, increase in nutrient enrichment and reduced salinity favoured the growth of weed  and eutrophication within the basin of lake. Such changes can be detected by computer vision algorithms using Random Forest method due to different levels of spectral reflectance of the lacustrine surface, Figure \ref{fig08}. Hence, spring algal bloom in the inland waters of Chilika Lake is a major issue in spring period, when the imagery was taken, which in turn affects water quality, especially in the shallow estuarine segments of the lake. Furthermore, the effects of eutrophication lead to degradation of the aquatic habitats. For instance, the level of eutrophication increased in the lake from 2019 to 2020 and 2021, after which the situation stabilised. The results of image classification using SVM method are presented in Figure \ref{fig09}. Image analysis showed that the algal growth is increased in 2021 and 2024 which was best detected using the ANN approach of MLPClassifier, Figure \ref{fig10}. 
 
-The hydrological effects can be explained by the increase in water turbidity during spring period which affect the visibility of the lake surface through the decreased transparency of water column affected by the increased photosynthetic activity during spring period. The distribution of mangroves that are mostly situated along the tidal water ways are discriminated due to their spectral separability on the EO data. Thus, salt marsh grasses are generally located along the tidal flats due to the specific environmental setting of these physiographic units. 
-
-The comparative analysis of the maps shows that the surroundings of the Chilika Lake undergone changes in land cover types. This is caused by the cumulative effects from both the anthropogenic and natural events and results in variations of biological productivity, water eutrophication and the extent of mangrove forests which strongly depend on the variations in the salinity as discussed above. In turn, the salinity level in the lake is regulated by the monsoon processes and the changes in oceanic seawater and river inflow and counterparts. The effects from the human activities in the watershed of Chilika lagoon result in increased siltation and increase of nutrients. 
-
-\begin{table}[H]
-  \centering
-  \begin{tabularx}{\textwidth}{p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}p{0.9cm}}
-  \toprule
-  \multirow{2}{*}{Year} & \multicolumn{10}{c}{Classes of land cover types} \\
-     & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
-    \midrule
-    \textbf{2019} & 673 & 198 & 447 & 1153 & 754 & 704 & 851 & 1239 & 758 & 62 \\
-    \textbf{2020} & 674 & 183 & 434 & 1237 & 524 & 834 & 760 & 1321 & 809 & 62 \\
-    \textbf{2021} & 660 & 208 & 618 & 1256 & 528 & 849 & 597 & 1233 & 814 & 75 \\
-    \textbf{2022} & 638 & 234 & 346 & 1005 & 1006 & 505 & 1061 & 1363 & 748 & 47 \\
-     \textbf{2023} & 643 & 235 & 836 & 446 & 1004 & 635 & 1089 & 1143 & 846 & 72 \\
-    \textbf{2024}  & 575 & 245 & 610 & 1340 & 510 & 913 & 682 & 1266 & 816 & 57 \\
-\bottomrule
-\end{tabularx}
-  \caption{Estimated classes of land cover types for 2019--2024 in Chilika Lake coastal lagoon}
-  \label{tab01}
-\end{table}
-
-
-Diverse types of lacustrine vegetation such as weeds and grasses distributed along the sheltered lagoon margins include dense algae meadows on the flats and shallow water areas, which are mostly occupied by brackish weeds and other marsh grasses. Such vegetation largely depends on the specific lacustrine environment and is naturally distributed along the inner margin of the Chilika coasts. Marine influences on the Chilika coastal lagoon is directed through the barrier spits and estuaries of the adjacent rivers. Among the environmental problems that affected the variations in the land cover types are the strong eutrophicate which was visible on the images due to the heavy nutrient upload. 
-
-Change detection analysis in the land cover types from 2013 to 2023 demonstrated shifts in land cover types within the basin of the Chilika Lake coastal lagoon. The computed areas occupied by various land cover classes for each of the category is summarised in Table \ref{tab01}. Such variability of landscape patches around the Chilika Lake proved existing fluctuations in the processes of siltation and eutrophication in the coastal lagoon over the studied period (years 2019-2024). Major causes of such environmental changes are related to the sedimentation processes such as low river flow speed which cause stagnation of water and eutrophication. Second, the increased sediment budgetary balance and flushing of sediments into the Bay of Bengal also contribute to the changes of the lake level. Since water fluctuations in various parts of the Chilika Lake are subject to the monsoon effects in dry and wet seasons, wetland types can be discriminated on the satellite images along the margin areas of the lagoon. These variations are also caused by the different hydrological effects (e.g., currents and water level) and geomorphic settings of the surrounding relief. 
-
-The final results of the computations included the convergence for iterations of pixels assigned to the land cover classes. The convergence were computed for each image and demonstrated the following results: for year 2019 = 98.1\%; for year 2020 = 98.2\%; for year 2021 = 98.2\%; for year 2022 = \%; for year 2023 = 98.4\% and for year 2024 = 98.1\%, which shows high precision and accuracy of the calculations using GRASS GIS algorithms of image processing. The class separability matrices computed for 10 land cover types identified in the Chilika lagoon for years 2019, 2020, 2021, 2022, 2023 and 2024 are reported in the tables placed in the Appendix \ref{AppC}. 
-
-Accordingly, the stability of points assigned to land cover classes were evaluated and reported as follows for each year: for 2019 = 98.08\% points stable; for 2020 = 98.23\%; for 2021 = 98.19\%; for 2022 = 98.25\%; for 2023 = 98.37\% and for 2024 = 98.08\% points stable, respectively. Finally, class means and standard deviations computed for each band and each year, respectively, are presented in the Appendix \ref{AppB} for years 2019 to 2024. The maps of accuracy analysis assessment  of image classification has been performed using rejection threshold probability techniques by chi square test which results presented in Figure \ref{fig11}. 
+\hl{The evaluation of accuracy was performed using chi-square test and visualised in Figure} \ref{fig11}. Accordingly, the stability of points assigned to land cover classes were evaluated and reported as follows for each year: for 2019 = 98.08\% points stable; for 2020 = 98.23\%; for 2021 = 98.19\%; for 2022 = 98.25\%; for 2023 = 98.37\% and for 2024 = 98.08\% points stable, respectively. Finally, class means and standard deviations computed for each band and each year, respectively, are presented in the Appendix \ref{AppB} for years 2019 to 2024. The maps of accuracy analysis assessment  of image classification has been performed using rejection threshold probability techniques by chi square test which results presented in Figure \ref{fig11}. 
 
 \begin{figure}[H]
   \centering
@@ -605,7 +601,11 @@ Accordingly, the stability of points assigned to land cover classes were evaluat
   \label{fig11}
 \end{figure}
 
- The open GitHub repository with GRASS GIS scripts and the results of the ANN and ML modelling of the satellite images used for RS data processing is available online at: \href{https://github.com/paulinelemenkova/India_Chilika_Lake_GRASS_GIS_ANN_ML_Image_Processing}{https://github.com/paulinelemenkova/India\_Chilika\_Lake\_GRASS\_GIS\_ANN\_ML\_Image\_Processing} (accessed on 4 April 2024) and contains the results of the image processing. 
+\hl{The final results} of the computations included the convergence for iterations of pixels assigned to the land cover classes. The convergence were computed for each image and demonstrated the following results: for year 2019 = 98.1\%; for year 2020 = 98.2\%; for year 2021 = 98.2\%; for year 2022 = \%; for year 2023 = 98.4\% and for year 2024 = 98.1\%, which shows high precision and accuracy of the calculations using GRASS GIS algorithms of image processing. The class separability matrices computed for 10 land cover types identified in the Chilika lagoon for years 2019, 2020, 2021, 2022, 2023 and 2024 are reported in the tables placed in the Appendix \ref{AppC}. The\hl{ }GitHub repository with GRASS GIS scripts and the results of the ANN and ML \hl{image processing} is available online at: \href{https://github.com/paulinelemenkova/India_Chilika_Lake_GRASS_GIS_ANN_ML_Image_Processing}{https://github.com/paulinelemenkova/India\_Chilika\_Lake\_GRASS\_GIS\_ANN\_ML\_Image\_Processing} (accessed on 4 April 2024) and contains the results of the image processing. 
+ 
+ Diverse types of lacustrine vegetation such as weeds and grasses distributed along the sheltered lagoon margins include dense algae meadows on the flats and shallow water areas, which are mostly occupied by brackish weeds and other marsh grasses. Such vegetation largely depends on the specific lacustrine environment and is naturally distributed along the inner margin of the Chilika coasts. Marine influences on the Chilika coastal lagoon is directed through the barrier spits and estuaries of the adjacent rivers. Among the environmental problems that affected the variations in the land cover types are the strong eutrophicate which was visible on the images due to the heavy nutrient upload. 
+
+Change detection analysis in the land cover types from 2013 to 2023 demonstrated shifts in land cover types within the basin of the Chilika Lake coastal lagoon. The computed areas occupied by various land cover classes for each of the category is summarised in Table \ref{tab01}. Such variability of landscape patches around the Chilika Lake proved existing fluctuations in the processes of siltation and eutrophication in the coastal lagoon over the studied period (years 2019-2024). Major causes of such environmental changes are related to the sedimentation processes such as low river flow speed which cause stagnation of water and eutrophication. Second, the increased sediment budgetary balance and flushing of sediments into the Bay of Bengal also contribute to the changes of the lake level. Since water fluctuations in various parts of the Chilika Lake are subject to the monsoon effects in dry and wet seasons, wetland types can be discriminated on the satellite images along the margin areas of the lagoon. These variations are also caused by the different hydrological effects (e.g., currents and water level) and geomorphic settings of the surrounding relief. 
  
  \hl{The Table} \ref{tab02} \hl{compares the hyper parameters of the GRASS GIS used for classification indices in for ANN and various models of machine learning (ML). It summarises and compares such parameters as accuracy, F1 score, Cohen's kappa coefficient and related parameters. Based on the computed values of Cohen's Kappa coefficient and the F1 method for the evaluation of classified data, the results suggest that the 0.785 Cohen's Kappa coefficient and F1 score of 0.89 are rated as the good strength of agreement. Hence, the ANN technique can be interpreted as a reliable approach for satellite image classification in terms of accuracy, followed by the SVM and RF.}
  
