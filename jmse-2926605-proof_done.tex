@@ -105,7 +105,7 @@
 
 % Authors, for the paper (add full first names)
 \Author{Polina Lemenkova \orcidA{}} %Author: yes, everything is correct.
-%MDPI: Please carefully check the accuracy of names and affiliations.
+%MDPI: Please carefully check the accuracy of names and affiliations. %Author: yes, everything is correct.
 %\longauthorlist{yes}
 
 % MDPI internal command: Authors, for metadata in PDF
@@ -168,7 +168,8 @@ The ML approach was selected since it creates a plausible paradigm to map the en
    % \end{center}
     \caption{Topographic map of India with indicated study area showing the location of the Landsat data within the country. Software: GMT. Map source: author.}
 %MDPI: Figures 1 and 2 have same captions. Please check and revise if necessary. %Author: Caption for Figure 2 is corrected.
-%MDPI: Please note: 1. Figures and Tables should be cited after where they are first mentioned, we have adjusted all. 2. The size and position of figures/tables will be adjusted appropriately to avoid blank space and to ensure the clarity and readability of the image during the final steps. %Author: many thanks, yes, I agree and confirm all the changes.
+%MDPI: Please note: 1. Figures and Tables should be cited after where they are first mentioned, we have adjusted all. 2. The size and position of figures/tables will be adjusted appropriately to avoid blank space and to ensure the clarity and readability of the image during the final steps. 
+%Author: many thanks, yes, I agree and confirm all the changes.
     \label{fig01}
 \end{figure}
 
@@ -227,7 +228,8 @@ Water turbidity is relatively low during the late winter to early spring period 
 
 
 
-The satellite data were obtained from the   Landsat 8-9 OLI/TIRS mission and downloaded from the NASA EarthExplorer {website} %MDPI: Please add the access date for all URL (Format: Date Month Year). e.g., (accessed on 1 January 2020). It should be before the accepted date. %Author: information is added and checked throughout.
+The satellite data were obtained from the   Landsat 8-9 OLI/TIRS mission and downloaded from the NASA EarthExplorer {website} %MDPI: Please add the access date for all URL (Format: Date Month Year). e.g., (accessed on 1 January 2020). It should be before the accepted date. 
+%Author: information is added and checked throughout.
  (\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}, access date: 3 March 2024). The original images are shown in Figure~\ref{fig04}. Image frames acquired from EarthExplorer were imported to the GRASS GIS individually using extent and resolution corresponding to the multispectral bands, then pre-processed for top-of-atmosphere reflectance using the ``i.landsat.toar'' module. The major technical characteristics of the satellite images common for all the scenes are as follows. The images were obtained during the daytime in the nadir from sensor OLI/TIRS of Landsat Collection Category T1, Nr. 2. The Worldwide Reference System (WRS) Path/Row is 140/46. The images were projected into the Universal Transverse Mercator (UTM) projection Zone 45, Datum and Ellipsoid is World Geodetic System 84 (WGS84), Ground Control Points Version 5; Station Identifier LGN. The remaining technical characteristics of the EO data are summarized in   Appendix~\ref{AppA}. Other geospatial data include the cartographic datasets: the raster topographic grid of the General Bathymetric Chart of the Oceans (GEBCO) and vector layers of the administrative division of India. These data were used to visualize the location of the region within the country at the state level, as well as the terrain of the study area. 
  
  \begin{figure}[H]
@@ -260,7 +262,8 @@ These data were processed using the GRASS GIS software version 8.3.1, Generic Ma
 	\includegraphics[width=9.5cm]{Fig_05.jpg}
   %  \end{center}
     \caption{Flowchart showing the methodological scheme used in this research. Software: {RStudio Desktop version 4.3.2.} Diagram source: author.}
-    %MDPI: Please state the version number of the software. If it is not applicable, the related website or proof should be provided. %Author: information is added.
+    %MDPI: Please state the version number of the software. If it is not applicable, the related website or proof should be provided. 
+    %Author: information is added.
     \label{fig05}
 \end{figure}
 
@@ -270,7 +273,8 @@ As such, combining RS data and machine learning (ML) techniques presents the int
 \subsection{Image Processing}
 The images were processed using the GRASS GIS (v. 8.3) image processing software using methods explained in the following subsections. First, the images were imported and preprocessed. Then, the images were classified using the unsupervised clustering of the maximum-likelihood discriminant analysis classifier (MaxLik). During the clustering steps, the signature file was generated and reported using the k-means algorithm. The aim of this step is to perform cluster maps and to obtain a training dataset. The classification was performed by the 'i.maxlik' module of GRASS GIS. The code for these steps is presented in Listing~\ref{lst01} using GRASS GIS syntax:
 
-\begin{lstlisting}[captionpos=t,language=bash,caption={GRASS} %MDPI: We formatted the all listings to  standard format. Please confirm. %Author: yes, I agree and confirm.
+\begin{lstlisting}[captionpos=t,language=bash,caption={GRASS} %MDPI: We formatted the all listings to  standard format. Please confirm. 
+%Author: yes, I agree and confirm.
  GIS code for clustering method using k-means algorithm.,label={lst01}]
 g.region raster=L_2019_01 -p
 i.group group=L_2019 subgroup=res_30m \
@@ -356,13 +360,15 @@ where $y_{i}(n)$ is the result of the previous step of classification, and $\eta
 	\includegraphics[width=10.4cm]{Fig_06.jpg}
    % \end{center}
     \caption{General methodological scheme for the Artificial Neural Network (ANN) used for image classification. Software:{ R version 4.3.3, DiagrammeR library version 1.0.11.} Diagram source: author.}
-    %MDPI: Please state the version number of the software. If it is not applicable, the related website or proof should be provided. %Author: information is added.
+    %MDPI: Please state the version number of the software. If it is not applicable, the related website or proof should be provided. 
+    %Author: information is added.
     \label{fig06}
 \end{figure}
 
 Using ML modules of GRASS GIS, the image classification using the MLPC algorithm was implemented using the combination of the modules ``r.learn.train'' used for extracting training data, supervised machine learning, and cross-validation using the Python package Scikit-Learn, and the module ``r.learn.predict'' for estimating prediction of pixels' classification. The technical implementation was performed using the code in Listing \ref{lst04}: 
 
-\begin{lstlisting}[captionpos=t,language=bash,caption={GRASS} %MDPI: Listing 4 and 5 have same labels {lst04}. Please check and revise. Please mention Listing 4 before and close to where it is first presented in the text, and make sure all lstlistings are mentioned in numerical order. %Author: label of Listing 5 is corrected. Mention of Listing 4 is corrected.
+\begin{lstlisting}[captionpos=t,language=bash,caption={GRASS} %MDPI: Listing 4 and 5 have same labels {lst04}. Please check and revise. Please mention Listing 4 before and close to where it is first presented in the text, and make sure all lstlistings are mentioned in numerical order. 
+%Author: label of Listing 5 is corrected. Mention of Listing 4 is corrected.
  GIS code for RF method for supervised image classification.,label={lst04}]
 r.learn.train group=L_2019 training_map=training_pixels \
     model_name=MLPClassifier n_estimators=500 save_model=mlpc_model.gz --overwrite
@@ -436,7 +442,8 @@ Widely used in diverse cases of image processing, such as classification, partit
 The areas of wetlands and coastal lagoon as well as water bodies increased due to new mouth opening of the Chilika Lake. The scrubland and grassland decreased, while the forest areas increased. This numerical computations of changes are summarized in Table~\ref{tab01}, and the statistical report tables are provided in the GitHub repository. The dynamics in land cover types in the coastal area of Chilika imply that that scrubland and grassland were converted into forest due to higher dense vegetation cover. Notably, the agriculture fallow land does not show much difference between the estimated years of 2019 and 2024.
 
 \begin{table}[H] 
-\caption{{Estimated} %MDPI: Table 1 and Table A2 have same labels {tab01}. Please check and revise. Please mention Table 1 before and close to where it is first presented in the text, and make sure all tables are mentioned in numerical order. %Author: caption of Table A2 in Appendix is corrected (and its reference in the text). The references of Tables are checked.
+\caption{{Estimated} %MDPI: Table 1 and Table A2 have same labels {tab01}. Please check and revise. Please mention Table 1 before and close to where it is first presented in the text, and make sure all tables are mentioned in numerical order. 
+%Author: caption of Table A2 in Appendix is corrected (and its reference in the text). The references of Tables are checked.
  classes of land cover types for 2019--2024 in the Chilika Lake coastal lagoon.\label{tab01}}
 \newcolumntype{C}{>{\centering\arraybackslash}X}
 \begin{tabularx}{\textwidth}{CCCCCCCCCCC}
@@ -444,7 +451,8 @@ The areas of wetlands and coastal lagoon as well as water bodies increased due t
  \multirow{2}{*}{\textbf{Year}} & \multicolumn{10}{c}{\textbf{Classes of Land Cover Types}} \\
      & \textbf{1} & \textbf{2 }& \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} \\
     \midrule
-    {{2019}} %MDPI: Please confirm if the bold is unnecessary and can be removed. The following highlights are the same. %Author: yes, bold can be removed (I removed it).
+    {{2019}} %MDPI: Please confirm if the bold is unnecessary and can be removed. The following highlights are the same. 
+    %Author: yes, bold can be removed (I removed it).
  & 673 & 198 & 447 & 1153 & 754 & 704 & 851 & 1239 & 758 & 62 \\
     {{2020}}  
  & 674 & 183 & 434 & 1237 & 524 & 834 & 760 & 1321 & 809 & 62 \\
@@ -492,7 +500,7 @@ During the evaluated period of 2019--2024, notable changes were observed in the 
     \small (\textbf{f}) 2024
   \end{tabular}
   \caption{{Image processing} 
-  %MDPI: Please change the hyphen (-) into a minus sign ($-$, "U+2212") in image if possible. e.g., "-1" should be "$-$1". The following highlights are the same.
+  %MDPI: Please change the hyphen (-) into a minus sign ($-$, "U+2212") in image if possible. e.g., "-1" should be "$-$1". The following highlights are the same. %Author:  yes, corrected.
  %MDPI: Please add the left bracket in the image, e.g., "1)" should be "(1)".  The following highlights are the same. 
  %Author: Figure 7 is corrected as requested: changed hyphen (-) into a minus sign; added left bracket in the image.
  of the Landsat 8 OLI/TIRS scenes from 2019 to 2024 using unsupervised classification (algorithm of maximum-likelihood discriminant analysis classifier). Background shaded relief: GEBCO grid. Software: GRASS GIS. Mapping source: author.}
@@ -692,7 +700,7 @@ Time series maps of land cover types derived from the classified Landsat images 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \funding{The APC was funded by MDPI and the IOAP Participant University of Salzburg.} 
-%MDPI: Please add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' and and ``The APC was funded by XXX''. Check carefully that the details given are accurate and use the standard spelling of funding agency names at \url{https://search.crossref.org/funding}, any errors may affect your future funding.
+%MDPI: Please add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' and and ``The APC was funded by XXX''. Check carefully that the details given are accurate and use the standard spelling of funding agency names at \url{https://search.crossref.org/funding}, any errors may affect your future funding. % Author: information is checked and corrected.
 
 \institutionalreview{Not applicable.}
 
@@ -746,63 +754,65 @@ WRS & Worldwide Reference System
     \begin{tabularx}{\fulllength}{llll}
     \toprule
         	\textbf{Data Set Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ \hline
-        \textbf{Landsat Scene Identifier} & LC81400462019044LGN00 & LC81400462020063LGN00 & LC81400462021033LGN00 \\ \hline
-        \textbf{Date Acquired} & 2019/02/13 & 2020/03/03 & 2021/02/02 \\ \hline
-        \textbf{Roll Angle} & 0 & 0 & 0 \\ \hline
-        \textbf{Start Time} & 2019-02-13 04:43:38.496305 & 2020-03-03 04:43:50.54638 & 2021-02-02 04:44:01.299722 \\ \hline
-        \textbf{Stop Time} & 2019-02-13 04:44:10.266304 & 2020-03-03 04:44:22.316379 & 2021-02-02 04:44:33.069722 \\ \hline
-        \textbf{Land Cloud Cover} & 0.01 & 0.01 & 0.01 \\ \hline
-        \textbf{Scene Cloud Cover L1} & 0.01 & 0.10 & 0.01 \\ \hline
-        \textbf{Ground Control Points Model} & 537 & 568 & 511 \\ \hline
-        \textbf{Geometric RMSE Model} & 6517 & 6132 & 6777 \\ \hline
-        \textbf{Geometric RMSE Model X} & 4631 & 4199 & 4899 \\ \hline
-        \textbf{Geometric RMSE Model Y} & 4586 & 4468 & 4683 \\ \hline
-        \textbf{Processing Software Version} & LPGS\_15.3.1c & LPGS\_15.3.1c & LPGS\_15.4.0 \\ \hline
-        \textbf{Sun Elevation L0RA} & 46.81303022 & 52.31490489 & 44.35249578 \\ \hline
-        \textbf{Sun Azimuth L0RA} & 139.03612161 & 132.76708087 & 142.18104190 \\ \hline
-        \textbf{TIRS SSM Model} & FINAL & FINAL & FINAL \\ \hline
-        \textbf{Data Type L2} & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP \\ \hline
-        \textbf{Satellite} & 8 & 8 & 8 \\ \hline
-        \textbf{Scene Center Lat DMS} & "20°13'48.04""N" & "20°13'47.89""N" & "20°13'47.39""N" \\ \hline
-        \textbf{Scene Center Long DMS} & "85°06'11.16""E" & "85°05'14.89""E" & "85°05'49.38""E" \\ \hline
-        \textbf{Corner Upper Left Lat DMS} & "21°16'11.10""N" & "21°16'10.16""N" & "21°16'10.70""N" \\ \hline
-        \textbf{Corner Upper Left Long DMS} & "83°58'48.18""E" & "83°57'56.20""E" & "83°58'27.41""E" \\ \hline
-        \textbf{Corner Upper Right Lat DMS} & "21°17'41.71""N" & "21°17'41.46""N" & "21°17'41.60""N" \\ \hline
-        \textbf{Corner Upper Right Long DMS} & "86°11'48.91""E" & "86°10'56.86""E" & "86°11'28.10""E" \\ \hline
-        \textbf{Corner Lower Left Lat DMS} & "19°09'09.76""N" & "19°09'08.93""N" & "19°09'09.43""N" \\ \hline
-        \textbf{Corner Lower Left Long DMS} & "84°01'14.38""E" & "84°00'23.08""E" & "84°00'53.86""E" \\ \hline
-        \textbf{Corner Lower Right Lat DMS} & "19°10'30.65""N" & "19°10'30.43""N" & "19°10'30.54""N" \\ \hline
-        \textbf{Corner Lower Right Long DMS} & "86°12'27.86""E" & "86°11'36.49""E" & "86°12'07.31""E" \\ 
+        \textbf{Landsat Scene Identifier} %MDPI: Please confirm if the bold is unnecessary and can be removed. The following highlights are the same. % Author: I confirm that the bold is unnecessary and can be removed (I removed it).
+& LC81400462019044LGN00 & LC81400462020063LGN00 & LC81400462021033LGN00 \\ \hline
+        {Date Acquired} & 2019/02/13 & 2020/03/03 & 2021/02/02 \\ \hline
+        {Roll Angle} & 0 & 0 & 0 \\ \hline
+        {Start Time} & 2019-02-13 04:43:38.496305 & 2020-03-03 04:43:50.54638 & 2021-02-02 04:44:01.299722 \\ \hline
+        {Stop Time} & 2019-02-13 04:44:10.266304 & 2020-03-03 04:44:22.316379 & 2021-02-02 04:44:33.069722 \\ \hline
+        {Land Cloud Cover} & 0.01 & 0.01 & 0.01 \\ \hline
+        {Scene Cloud Cover L1} & 0.01 & 0.10 & 0.01 \\ \hline
+        {Ground Control Points Model} & 537 & 568 & 511 \\ \hline
+        {Geometric RMSE Model} & 6517 & 6132 & 6777 \\ \hline
+        {Geometric RMSE Model X} & 4631 & 4199 & 4899 \\ \hline
+        {Geometric RMSE Model Y} & 4586 & 4468 & 4683 \\ \hline
+        {Processing Software Version} & LPGS\_15.3.1c & LPGS\_15.3.1c & LPGS\_15.4.0 \\ \hline
+        {Sun Elevation L0RA} & 46.81303022 & 52.31490489 & 44.35249578 \\ \hline
+        {Sun Azimuth L0RA} & 139.03612161 & 132.76708087 & 142.18104190 \\ \hline
+        {TIRS SSM Model} & FINAL & FINAL & FINAL \\ \hline
+        {Data Type L2} & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP \\ \hline
+        {Satellite} & 8 & 8 & 8 \\ \hline
+        {Scene Center Lat DMS} & 20°13'48.04"N & 20°13'47.89"N %MDPI: We removed  extra '', please confirm this change. % Author: yes, I confirm.
+        & 20°13'47.39"N \\ \hline
+        {Scene Center Long DMS} & 85°06'11.16"E & 85°05'14.89"E & 85°05'49.38"E \\ \hline
+        {Corner Upper Left Lat DMS} & 21°16'11.10"N & 21°16'10.16"N & 21°16'10.70"N \\ \hline
+        {Corner Upper Left Long DMS} & 83°58'48.18"E & 83°57'56.20"E & 83°58'27.41"E \\ \hline
+        {Corner Upper Right Lat DMS} & 21°17'41.71"N & 21°17'41.46"N & 21°17'41.60"N \\ \hline
+        {Corner Upper Right Long DMS} & 86°11'48.91"E & 86°10'56.86"E & 86°11'28.10"E \\ \hline
+        {Corner Lower Left Lat DMS} & 19°09'09.76"N & 19°09'08.93"N & 19°09'09.43"N \\ \hline
+        {Corner Lower Left Long DMS} & 84°01'14.38"E & 84°00'23.08"E & 84°00'53.86"E \\ \hline
+        {Corner Lower Right Lat DMS} & 19°10'30.65"N & 19°10'30.43"N & 19°10'30.54"N \\ \hline
+        {Corner Lower Right Long DMS} & 86°12'27.86"E & 86°11'36.49"E & 86°12'07.31"E \\ 
         \midrule
         \midrule
         	\textbf{Data Set Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ \hline
         \textbf{Landsat Scene Identifier} & LC91400462022044LGN01 & LC91400462023063LGN00 & LC81400462024042LGN00 \\ \hline
-        \textbf{Date Acquired} & 2022/02/13 & 2023/03/04 & 2024/02/11 \\ \hline
-        \textbf{Roll Angle} & 0 & 0 & -1 \\ \hline
-        \textbf{Start Time} & 2022-02-13 04:44:06 & 2023-03-04 04:44:07 & 2024-02-11 04:43:59 \\ \hline
-        \textbf{Stop Time} & 2022-02-13 04:44:38 & 2023-03-04 04:44:39 & 2024-02-11 04:44:31 \\ \hline
-        \textbf{Land Cloud Cover} & 0.01 & 0.01 & 1.35 \\ \hline
-        \textbf{Scene Cloud Cover L1} & 0.01 & 0.01 & 1.24 \\ \hline
-        \textbf{Ground Control Points Model} & 556 & 473 & 454 \\ \hline
-        \textbf{Geometric RMSE Model} & 6320 & 6977 & 6930 \\ \hline
-        \textbf{Geometric RMSE Model X} & 4628 & 4820 & 4746 \\ \hline
-        \textbf{Geometric RMSE Model Y} & 4304 & 5044 & 5049 \\ \hline
-        \textbf{Processing Software Version} & LPGS\_16.2.0 & LPGS\_16.2.0 & LPGS\_16.3.1 \\ \hline
-        \textbf{Sun Elevation L0RA} & 46.93750742 & 52.43682914 & 46.26502602 \\ \hline
-        \textbf{Sun Azimuth L0RA} & 139.05519463 & 132.73529917 & 139.75153012 \\ \hline
-        \textbf{TIRS SSM Model} & N/A & N/A & FINAL \\ \hline
-        \textbf{Data Type L2} & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP \\ \hline
-        \textbf{Satellite} & 9 & 9 & 8 \\ \hline
-        \textbf{Scene Center Lat DMS} & "20°13'47.24""N" & "20°13'48.14""N" & "20°13'46.99""N" \\ \hline
-        \textbf{Scene Center Long DMS} & "85°04'03.04""E" & "85°03'42.62""E" & "85°02'54.24""E" \\ \hline
-        \textbf{Corner Upper Left Lat DMS} & "21°16'08.83""N" & "21°16'08.47""N" & "21°16'07.54""N" \\ \hline
-        \textbf{Corner Upper Left Long DMS} & "83°56'43.44""E" & "83°56'22.63""E" & "83°55'30.65""E" \\ \hline
-        \textbf{Corner Upper Right Lat DMS} & "21°17'41.10""N" & "21°17'40.99""N" & "21°17'40.74""N" \\ \hline
-        \textbf{Corner Upper Right Long DMS} & "86°09'43.99""E" & "86°09'23.15""E" & "86°08'31.09""E" \\ \hline
-        \textbf{Corner Lower Left Lat DMS} & "19°09'07.78""N" & "19°09'07.42""N" & "19°09'06.59""N" \\ \hline
-        \textbf{Corner Lower Left Long DMS} & "83°59'11.29""E" & "83°58'50.77""E" & "83°57'59.51""E" \\ \hline
-        \textbf{Corner Lower Right Lat DMS} & "19°10'30.11""N" & "19°10'30""N" & "19°10'29.78""N" \\ \hline
-        \textbf{Corner Lower Right Long DMS} & "86°10'24.60""E" & "86°10'04.04""E" & "86°09'12.71""E" \\ \bottomrule
+        {Date Acquired} & 2022/02/13 & 2023/03/04 & 2024/02/11 \\ \hline
+        {Roll Angle} & 0 & 0 & -1 \\ \hline
+        {Start Time} & 2022-02-13 04:44:06 & 2023-03-04 04:44:07 & 2024-02-11 04:43:59 \\ \hline
+        {Stop Time} & 2022-02-13 04:44:38 & 2023-03-04 04:44:39 & 2024-02-11 04:44:31 \\ \hline
+        {Land Cloud Cover} & 0.01 & 0.01 & 1.35 \\ \hline
+        {Scene Cloud Cover L1} & 0.01 & 0.01 & 1.24 \\ \hline
+        {Ground Control Points Model} & 556 & 473 & 454 \\ \hline
+        {Geometric RMSE Model} & 6320 & 6977 & 6930 \\ \hline
+        {Geometric RMSE Model X} & 4628 & 4820 & 4746 \\ \hline
+        {Geometric RMSE Model Y} & 4304 & 5044 & 5049 \\ \hline
+        {Processing Software Version} & LPGS\_16.2.0 & LPGS\_16.2.0 & LPGS\_16.3.1 \\ \hline
+        {Sun Elevation L0RA} & 46.93750742 & 52.43682914 & 46.26502602 \\ \hline
+        {Sun Azimuth L0RA} & 139.05519463 & 132.73529917 & 139.75153012 \\ \hline
+        {TIRS SSM Model} & N/A & N/A & FINAL \\ \hline
+        {Data Type L2} & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP \\ \hline
+        {Satellite} & 9 & 9 & 8 \\ \hline
+        {Scene Center Lat DMS} & 20°13'47.24"N & 20°13'48.14"N & 20°13'46.99"N \\ \hline
+        {Scene Center Long DMS} & 85°04'03.04"E & 85°03'42.62"E & 85°02'54.24"E \\ \hline
+        {Corner Upper Left Lat DMS} & 21°16'08.83"N & 21°16'08.47"N & 21°16'07.54"N \\ \hline
+        {Corner Upper Left Long DMS} & 83°56'43.44"E & 83°56'22.63"E & 83°55'30.65"E \\ \hline
+        {Corner Upper Right Lat DMS} & 21°17'41.10"N & 21°17'40.99"N & 21°17'40.74"N \\ \hline
+        {Corner Upper Right Long DMS} & 86°09'43.99"E & 86°09'23.15"E & 86°08'31.09"E \\ \hline
+        {Corner Lower Left Lat DMS} & 19°09'07.78"N & 19°09'07.42"N & 19°09'06.59"N \\ \hline
+        {Corner Lower Left Long DMS} & 83°59'11.29"E & 83°58'50.77"E & 83°57'59.51"E \\ \hline
+        {Corner Lower Right Lat DMS} & 19°10'30.11"N & 19°10'30"N & 19°10'29.78"N \\ \hline
+        {Corner Lower Right Long DMS} & 86°10'24.60"E & 86°10'04.04"E & 86°09'12.71"E \\ \bottomrule
     \end{tabularx}
     \end{adjustwidth}
 \end{table}
