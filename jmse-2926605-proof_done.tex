@@ -1,0 +1,1895 @@
+%  LaTeX support: latex@mdpi.com 
+%  For support, please attach all files needed for compiling as well as the log file, and specify your operating system, LaTeX version, and LaTeX editor.
+
+%=================================================================
+\documentclass[jmse,article,accept,pdftex,oneauthor]{Definitions/mdpi} 
+
+%=================================================================
+%----------
+% journal
+
+% MDPI internal commands
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2024}
+\copyrightyear{2024}
+\externaleditor{Academic Editors: Eugen Rusu, Simona Verde,  Virginia Zamparelli and Pietro Mastro}
+\datereceived{5 March 2024} 
+\daterevised{16 April 2024}
+\dateaccepted{23 April 2024} 
+\datepublished{} 
+\hreflink{https://doi.org/} % If needed use \linebreak
+%\doinum{}
+\usepackage{lipsum} 
+\usepackage{makecell}
+%=================================================================
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, inputenc, calc, indentfirst, fancyhdr, graphicx, epstopdf, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, tabto, xcolor, soul, multirow, microtype, tikz, totcount, changepage, attrib, upgreek, cleveref, amsthm, hyphenat, natbib, hyperref, footmisc, url, geometry, newfloat, caption
+
+\graphicspath{{figures/}} % path to folder with figures
+\usepackage{subcaption}
+\usepackage{listings}
+ \captionsetup[lstlisting]{position=top, margin=0cm,labelfont={bf, small, stretch=1.17}, labelsep=period, textfont={small, stretch=1.17}, aboveskip=6pt, singlelinecheck=off, justification=justified}
+\usepackage{xcolor}
+\usepackage{gensymb} % for \textdegree
+\usepackage{tabularx}
+\usepackage{amsmath,mathtools,amsthm}
+	\setcounter{MaxMatrixCols}{15}
+\usepackage{array}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{float}
+\usepackage{chngcntr}
+\counterwithin*{equation}{section}
+\usepackage[super]{nth}
+\usepackage{longtable}
+\usepackage{tabularx}
+\usepackage{multirow}
+\usepackage{adjustbox}
+\usepackage{chngcntr}
+
+\counterwithin*{equation}{section}
+
+\definecolor{deepblue}{rgb}{0,0,0.5}
+\definecolor{deepred}{rgb}{0.6,0,0}
+\definecolor{deepmagenta}{RGB}{195,12,214}
+\definecolor{deepgreen}{RGB}{29,122,30}
+\definecolor{mintgreen}{RGB}{192,249,192}
+\definecolor{codepurple}{RGB}{204, 0, 153}
+\definecolor{LightCyan}{rgb}{0.88,1,1}
+\definecolor{GainsboroPurple}{RGB}{247,176,247}
+\definecolor{LightSlateGrey}{RGB}{124,118,118}
+%    
+\lstdefinestyle{mystyle}{
+    commentstyle=\color{LightSlateGrey},
+    keywordstyle=\color{deepgreen}\bfseries,
+    emphstyle=\color{deepred},
+    numberstyle=\tiny\color{deepmagenta},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\scriptsize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+
+%MDPI: 1. The initial layout for your manuscript was done by our layout team. Please do not change the layout, otherwise we cannot proceed to the next step.
+%2. Please directly correct on this version.
+%3. Please do not delete our comments.
+%4. Please revise and answer all questions that we pro-posed. Such as: “It should be italic”; “I confirm”; “I have checked and revised all.”
+%5. Please make sure that all the symbols in the paper are of the same format.
+%6. Please carefully check every information in the manuscript. The information we mentioned is necessary for journal publication, so please complete and revise the relevant information. It is not allowed to change any information after publication. Please pay attention to this proofreading.
+%7. Please note that at this stage (the manuscript has been accepted in its present content/format) we will not accept authorship or content changes to the manuscript text.
+%8. Please note that we will keep the original format or revise the issues by ourselves if the comments are not replied.
+
+%=================================================================
+% Full title of the paper (Capitalized)
+\Title{Artificial Neural Networks for Mapping Coastal Lagoon of Chilika Lake, India, Using Earth Observation Data}
+
+% MDPI internal command: Title for citation in the left column
+\TitleCitation{Artificial Neural Networks for Mapping Coastal Lagoon of Chilika Lake, India, Using Earth Observation Data}
+
+% Author Orchid ID: enter ID or remove command
+\newcommand{\orcidauthorA}{0000-0002-5759-1089} % Polina Add \orcidA{} behind the author's name
+
+% Authors, for the paper (add full first names)
+\Author{\hl{Polina Lemenkova} \orcidA{}}
+%MDPI: Please carefully check the accuracy of names and affiliations.
+%\longauthorlist{yes}
+
+% MDPI internal command: Authors, for metadata in PDF
+\AuthorNames{Polina Lemenkova}
+
+% MDPI internal command: Authors, for citation in the left column
+\AuthorCitation{Lemenkova, P.}
+% If this is a Chicago style journal: Lastname, Firstname, Firstname Lastname, and Firstname Lastname.
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address [1]{%
+Department of Geoinformatics, Faculty of Digital and Analytical Sciences, Universität Salzburg, Schillerstraße 30, A-5020 Salzburg, Austria; polina.lemenkova@plus.ac.at; Tel.: +43-677-6173-2772
+}
+
+% Contact information of the corresponding author
+%\corres{Correspondence: polina.lemenkova@plus.ac.at; Tel.: +43-677-6173-2772 (P.L.)}
+
+% Current address and/or shared authorship
+%\firstnote{Current address: Affiliation 3.} 
+
+% Abstract (Do not insert blank lines, i.e. \\) 
+\abstract{This study presents the environmental mapping of the Chilika Lake coastal lagoon, India, using satellite images Landsat 8-9 OLI/TIRS processed using machine learning (ML) methods. The largest brackish water coastal lagoon in Asia, Chilika Lake, is a wetland of international importance included in the Ramsar site due to its rich biodiversity, productivity, and precious habitat for migrating birds and rare species. The vulnerable ecosystems of the Chilika Lagoon are subject to climate effects (monsoon effects) and anthropogenic activities (overexploitation through fishing and pollution by microplastics). Such environmental pressure results in the eutrophication of the lake, coastal erosion, fluctuations in size, and changes in land cover types in the surrounding landscapes. The habitat monitoring of the coastal lagoons is complex and difficult to implement with conventional Geographic Information System (GIS) methods. In particular, landscape variability, patch fragmentation, and landscape dynamics play a crucial role in environmental dynamics along the eastern coasts of the Bay of Bengal, which is strongly affected by the Indian monsoon system, which controls the precipitation pattern and ecosystem structure. To improve methods of environmental monitoring of coastal areas, this study employs the methods of ML and  Artificial Neural Networks (ANNs), which present a powerful tool for computer vision, image classification, and analysis of Earth Observation (EO) data. Multispectral satellite data were processed by several ML image classification methods, including Random Forest (RF), Support Vector Machine (SVM), and the ANN-based MultiLayer Perceptron (MLP) Classifier. The results are compared and discussed. The ANN-based approach outperformed the other methods in terms of accuracy and precision of mapping. Ten land cover classes around the Chilika coastal lagoon were identified via spatio-temporal variations in land cover types from 2019 until 2024. This study provides ML-based maps implemented using Geographic Resources Analysis Support System (GRASS) GIS image analysis software and aims to support ML-based mapping approach of environmental processes over the Chilika Lake coastal lagoon, India.
+}
+
+% Keywords
+\keyword{functional algorithm; risk assessment; ensemble learning; hazards; climate change; GRASS GIS; scikit-learn; machine learning; Python; Landsat; image analysis; China; classification} 
+
+% The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
+%\PACS{J0101}
+%\MSC{}
+%\JEL{}
+
+\begin{document}
+
+%----------- section ----------->
+\section{Introduction}
+
+\subsection{Background}
+
+Coastal lagoons play a key role in the hydrological and ecological processes in the zones between land and sea. They distribute and diversify riverine sediments~\cite{AMARAL2023165264}, reduce turbulence of tidal flow~\cite{XUE2023103048}, regulate seasonal current water circulation~\cite{MAO2023102276}, and enrich shelf waters with nutrients~\cite{CEBRIAN20099}. Worldwide, coastal lagoons are among the most productive and biodiverse systems, providing essential habitat for a wide variety of aquatic species and threatened marine fauna~\cite{MATEOSMOLINA2024116117,ZAMORALOPEZ2023108447,MIGNUCCI2023108450}. Coastal and brackish water lagoons that form continuities in the terrestrial and shelf ecosystems present transitional aquatic ecosystems located in the zones between land and sea. They are often associated with dynamic environmental conditions and high biodiversity due to their connections to the marine and terrestrial communities~\cite{PEREZRUZAFA2019253}. 
+
+Formed as a result of the marine transgression, coastal lagoons vary with depth and geomorphic features, tidal circulation patterns, salinity, and wind forcing~\cite{KJERFVE198663}. The formation of the barriers between the land and ocean is driven by the controversial forces of erosion and sediment deposition within the coastal lagoons~\cite{BOYD1992139}. The accumulation of river sediments depends on the speed of the river that enters the coastal lagoon and transports sediments in large quantities. Furthermore, complex hydrological processes such as winds, oceanic current,s and coastal waves, as well as groundwater discharge~\cite{DANISH2020103816}, intensify the mixing of sediments and nutrients within the coastal lagoons~\cite{KUMAR2016155}. Moreover, different slope and substrate types and density-driven currents with diverse morphodynamic tidal regimes affect littoral zones and create stratified conditions of sediment resuspension~\cite{BORTOLIN2020105782,Larson2012}. 
+
+Topographically isolated and hydrologically distinct from the surrounding landscapes, coastal lagoons include unique species of wild flora and fauna (e.g., bird species). The transitional location of the coastal lagoons determines their high levels of biodiversity through the intense physical--chemical gradients. A particular feature of the coastal lagoons that ensures their high productivity as aquatic systems is their shallow bathymetry~\cite{PEREZRUZAFA2024171264}. The water mass of the lagoon is well mixed because the sunlight reaches all levels of the shallow systems of the coastal lagoons until the lowest bottom layer of water due to the active waves and currents. Such dynamics activate the recycling of nutrients and increase biological productivity~\cite{Kennish2016}. They have been   declared as marine protected areas worldwide due to their rich bioproductivity and valuable environment. 
+
+However, recent monitoring has indicated their decline, habitat loss, and environmental vulnerability~\cite{BASTOS2023102144,SUWANDHAHANNADI2024107069,MOHAPATRA2023163109}. These declines have been attributed to a variety of indirect and direct causes, including climate change~\cite{SIMANTIRIS2023108231} and anthropogenic activities with their associated pollution~\cite{GHANDOURAH2023102982}. High levels of stress result  in   environmental threats to these treasured ecosystems~\cite{Davis}. Among recent environmental problems of coastal lagoons are affected biodiversity patterns and loss of habitats and rare species~\cite{Kumari2022}, as well as disrupted land cover patterns due to climate effects. Examples of pollution include organic, chemical, and biological types such as microplastic~\cite{GARCESORDONEZ2022120366,BRUSCHI2023110596} or heavy metals~\cite{Tripathi2022}. 
+
+The transitional nature of coastal lagoons makes them vulnerable to the cumulative effects from  climate fluctuations, specifically rising sea levels~\cite{CARRASCO2016356}, flooding~\cite{INACIO2023100491}, hydrological disturbances, nutrient availability~\cite{LUNARDINI2000135}, and human impacts~\cite{Luglie}. The richness in natural resources of coastal lagoons attracts the local population and urges them to actively use the resources of the aquatic environment. Hence, coastal lagoons serve as a valuable source of food and natural resources and support economic development and sustainability for the local population. In turn, this leads to the overexploitation of these unique areas and increases anthropogenic pressure~\cite{PAULY1994377}. 
+
+\subsection{Objective and Goal}
+The main goal of this research is to map and analyze changes in the land cover types surrounding the coastal lagoon on the lake using machine learning (ML) algorithms using Geographic Resources Analysis Support System (GRASS) GIS and Earth Observation (EO) data. We used Landsat 8-9 OLI/TIRS satellite images from recent six years (2019, 2020, 2021, 2022, 2023 and 2024) and processed them using ANN and ML methods to analyze the spatio-temporal distribution of land cover types in Chilika coastal lagoon, Bay of Bengal, India (Figure~\ref{fig01}). To set up the advanced practical background for the environmental analysis of Chilika Lake, this study presents an  ML  approach for the automation of EO data processing, classification, and visualization. To achieve this goal, the objective is to use the ANN methods from Python's library \hl{Scikit-Learn}%MDPI: Please state the version number of the software. If it is not applicable, the related website or proof should be provided. Please review the full text and make sure each software is mentioned in main text and has a version number or website. 
+~\cite{scikitlearn}, which are embedded in the \hl{GRASS GIS}~\cite{GRASS_GIS_software} through ML modules designed for data partition and satellite image processing. 
+
+The ML approach was selected since it creates a plausible paradigm to map the environmental variability of the coastal landscapes surrounding the lagoon of Chilika Lake. Among the existing methods, this study employs the MultiLayer Perceptron (MLP) algorithm of ANN, which presents an effective solution to image analysis. 
+
+\begin{figure}[H]
+   % \begin{center}
+%    \setlength{\unitlength}{0.5cm}
+	\includegraphics[width=12.0cm]{Fig_01.jpg}
+   % \end{center}
+    \caption{\hl{Topographic}  map of India with indicated study area showing the location of the Landsat data over the coastal lagoon of Chilika Lake. Software: GMT. Map source: author.}
+%MDPI: Figures 1 and 2 have same captions. Please check and revise if necessary.
+%MDPI: Please note: 1. Figures and Tables should be cited after where they are first mentioned, we have adjusted all. 2. The size and position of figures/tables will be adjusted appropriately to avoid blank space and to ensure the clarity and readability of the image during the final steps.
+    \label{fig01}
+\end{figure}
+
+\subsection{Research Gap}
+There is little research analyzing and contrasting landscapes of the Odisha coasts using the ML approach. Existing studies draw generalizations regarding the links between the ecosystems of the coastal lagoon of Chilika Lake and the adjacent habitat \mbox{communities~\cite{Sinha2020,BARIK2019352,MISHRA2022150769,BARAL2023103248}.} However, they utilize the conventional tools of cartographic software, which applies traditional mapping methods. To the best of our knowledge, no reported research has been carried out using ANN techniques to study the environmental variability of Chilika Lake with a spatial extent with the coordinates of 19°28$'$--19°54$'$ N; 85°06$'$--85°35$'$~E; see Figure~\ref{fig02}.
+
+At the same time, ANN methods and scripting libraries are promising tools for cartographic tasks and image processing for mapping areas of coastal lagoons, which are notable for the high complexity of land cover patterns and the heterogeneity of landscapes~\cite{9884758,Lemenkova202229,6910592,9553880,Lemenkova202227,ERDEM2021964}. In this regard, GRASS GIS presents a powerful cartographic toolset that includes diverse modules that can be used for satellite image processing~\cite{Lemenkova202307}. Hence, besides the traditional general-purpose programming languages, GRASS GIS is also used for creation%Please confirm intended meaning is retained
+. Hence, ML applications in cartography provide insight into its spatio-temporal variability of landscapes and  environmental processes through the classification of the EO data~\cite{HAN202387,10292983,990132,WU2024103612}.  
+\vspace{-12pt}
+\begin{figure}[H]
+    %\begin{center}
+%    \setlength{\unitlength}{0.5cm}
+	\includegraphics[width=12.0cm]{Fig_02.jpg}
+   % \end{center}
+    \caption{Topographic map of India with indicated study area showing the location of the Landsat data over the coastal lagoon of Chilika Lake. Software: GMT. Map source: author.}
+    \label{fig02}
+\end{figure}
+
+\subsection{Theoretical Framework and Motivation}
+Monitoring coastal landscapes and variations in land cover types around coastal lagoons is essential for land management and conservation activities of the Chilika Lake. Such activities are carried out and reported in previous studies based on conventional mapping. Nevertheless, monitoring land cover types in a lake using traditional methods is often time-consuming and labor-intensive and includes considerable manual work, which is prone to errors. Though mapping using Geographic Information System (GIS) presents a reliable solution to Earth Observation (EO) data processing, estimation accuracy is still a notable challenge in mapping coastal areas with high heterogeneity of land cover types. Due to the logical straightforwardness of the classification algorithms, their application for thematic GIS-based mapping and analysis of landscape dynamics presents a well-known approach to cartographic workflow with existing case studies on Chilika Lake, the Mahanadi Delta, and the Odisha coastal area~\cite{G2019595,MISHRA2023162488,REDDY2014287,HAZRA2022100223}. 
+
+However, the spectral complexity of the multispectral satellite images makes recognizing land cover types in coastal areas a challenging and less accurate task using k-means clustering or ``MaxLike'' classification. For instance, specifically for lagoons, the optical properties of coastal waters and shelf areas are significantly affected by the suspended sediment from the colored dissolved organic matter (CDOM), which can create noise on the EO data. On the other hand, the classification of the EO data using machine learning (ML) methods has been fairly successful. For example, to solve these issues, ML algorithms present automation of image classification~\cite{6049966,9297369}, which is achieved through computer vision algorithms of pattern recognition and analysis that enables the recognition of geometrical complexity~\cite{990132}. 
+
+The application of   ML methods based on the Artificial Neural Networks (ANNs) applied to Remote Sensing (RS) data processing considerably increases the effectiveness of mapping~\cite{rs16010127,rs15041148}. Advanced ML methods enable  the landscape dynamics of spatial and temporal trends to be automatically revealed through computer-based algorithms of pattern recognition and data analysis, as reported in existing studies~\cite{AMANI2023108324,LI2023104653,Lemenkova202021,TSELKA2023131,LATIF202316}. Several ML and AI algorithms exist to analyze and quantify spatial data using analytical and empirical approaches. Their main approach includes neural networks that teach computers to process data in an analytical way that simulates the human brain in pattern recognition~\cite{HUANG2006489,Rosenblatt}. Among the advanced ML algorithms    are the Random Forest (RF)~\cite{598994}, Support Vector Machines (SVMs)~\cite{Cortes}, and Naive Bayes~\cite{Zhang2004TheOO}, to mention a few. In this study, we use such algorithms for processing RS data. The goal of this approach is to perform satellite image classification with a case study of Chilika Lake coastal lagoon, East India.
+
+%----------- section ----------->
+\section{Study Area}
+The study area covers a spatial extent with the coordinates of 19°28$'$--19°54$'$ N; \linebreak  85°06$'$--85°35$'$ E,~\cite{PANDA201329} located in the state of Odisha, East India, Figure~\ref{fig03}. 
+
+\begin{figure}[H]
+   % \begin{center}
+%    \setlength{\unitlength}{0.5cm}
+	\includegraphics[width=12.0cm]{Fig_03.jpg}
+  %  \end{center}
+    \caption{Administrative map of India showing the location of the Odisha state on the eastern coast of the Indian subcontinent. Software: QGIS. Map source: author.}
+    \label{fig03}
+\end{figure}
+
+The largest brackish water lagoon in Asia~\cite{BEHERA2020101328,BARIK201739}, Chilika Lake covers a total area of over $1100~\text{km}^2$ with existing fluctuations of the lake surface reported between $1165~\text{km}^2$ and $906~\text{km}^2$~\cite{Behera2023}. The lake is located at the junction of two different water masses---riverine freshwater and oceanic salt waters from the tidal influx of the Bay of Bengal. Different water fronts interact with the bathymetry of the lagoon and generate local hydrographic settings, which causes local variations in salinity, current turbulence, and circular flow patterns of waves~\cite{Nazneen}. The coastal lagoon formed by the Chilika Lake lies at the estuary of the Daya River, which enters the Bay of Bengal on the east coast of India; see Figure~\ref{fig03}. 
+
+A recent geological study has shown that the shallow limnological system of Chilika Lake was a part of the Bay of Bengal during the later stages of the Pleistocene period~\cite{BOROLE1993761}, and underwent marked geomorphic evolution during the late Holocene~\cite{MISHRA2022457,AMIR2021148}. This included significant denudation and weathering of the surrounding coasts. Such processes are mostly caused by climate variability and accelerated by the effects of monsoon cycles, which influence the distribution of mangroves and other vegetation types around the lake and estuarine environment~\cite{DASH2023106754}. Currently, the dynamics of the surface area in the coastal lagoon of Chilika Lake present a response to the cumulative effects of tidal morphodynamics, winds, and morphometry. The integrating forces of these processes resulted in fluctuating surface and area, which affect the ecosystem of the surrounding wetlands.
+
+The coastal lagoon of the Chilika Lake has important conservation features. These include, for instance, rare aquatic and sub-aquatic plants, endemic species, mangrove associations, and plants of horticultural importance. The significant biodiversity and ecosystem value of the Chilika Lake can be illustrated by the impressive number of species, which exceeds 300 fish species~\cite{MOHAPATRA2015195} and 726 species of flowering plants~\cite{Sarkar2012}. Moreover, Chilika Lake is the largest habitat for migratory waterbirds across India and a home to multiple threatened and rare species, including both plants and animals~\cite{Balachandran2020}. 
+
+Such rich natural resources and the unique environment of Chilika Lake have attracted humans to this area since the ancient period. Archaeological records prove  that human settlements existed in the Chilika Lake area since at least the Neolithic period when this area served as a marine harbor and port ~\cite{DASH2022105190}. The attractiveness of   Chilika Lake is explained by its favorable climate, beneficial topographic setting, and strategic location, which have given access to the Indian Ocean and ensure safe maritime trade and international commercial connections in India since the ancient period. The importance of the Chilika Lake   both ecologically  and historically  in the development of Indian civilization resulted in its official  designation a as UNESCO World Heritage site~\cite{SETHY2023497} and a Ramsar site~\cite{BHUVANAGIRI2018343}.
+
+%----------- section ----------->
+\section{Materials and Methods}
+
+%----------- subsection ----------->
+\subsection{Data}
+
+Spatial analysis was limited to RS data using multispectral satellite images Landsat. A time series of satellite images collected at regular time intervals and covering the study area is a key instrument for environmental analysis~\cite{Lemenkova202324}. To this end, six satellite images were collected during the spring period (February--March) and covering the time interval of 2019 to 2024. All but two datasets (early March 2020 and early March 2023) were acquired within the period of February (that is, images on 2019, 2021, 2022, and 2024), when the aquatic and coastal vegetation around the lagoon is typically well developed prior to the pre-monsoon decline during the period from April to June and monsoon rains, which last in India from June to September. Hence, the images were taken on the following dates: 13 February 2019, 3 March 2020, 2 February 2021, 13 February 2022, 4 March 2023 and 11 February 2024. 
+
+Water turbidity is relatively low during the late winter to early spring period due to seasonally reduced rainfall in the ``no monsoon'' period. This allowed for the identification of land cover types through the satellite image analysis. Finally, the spring period enables the detection of algae blooms in the coastal lagoon, which usually occur in India from February to May (subject to climate fluctuations). Algae bloom in the coastal lagoon of Chilika Lake is caused by several factors such as the effects of monsoon cycles, riverine discharge, and seasonal upwelling. Hence, the images were selected for spring period with low cloudiness (below 10\%) to increase the quality of image analysis. 
+
+
+
+The satellite data were obtained from the   Landsat 8-9 OLI/TIRS mission and downloaded from the NASA EarthExplorer \hl{website} %MDPI: Please add the access date for all URL (Format: Date Month Year). e.g., (accessed on 1 January 2020). It should be before the accepted date.
+ (\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}). The original images are shown in Figure~\ref{fig04}. Image frames acquired from EarthExplorer were imported to the GRASS GIS individually using extent and resolution corresponding to the multispectral bands, then pre-processed for top-of-atmosphere reflectance using the ``i.landsat.toar'' module. The major technical characteristics of the satellite images common for all the scenes are as follows. The images were obtained during the daytime in the nadir from sensor OLI/TIRS of Landsat Collection Category T1, Nr. 2. The Worldwide Reference System (WRS) Path/Row is 140/46. The images were projected into the Universal Transverse Mercator (UTM) projection Zone 45, Datum and Ellipsoid is World Geodetic System 84 (WGS84), Ground Control Points Version 5; Station Identifier LGN. The remaining technical characteristics of the EO data are summarized in   Appendix~\ref{AppA}. Other geospatial data include the cartographic datasets: the raster topographic grid of the General Bathymetric Chart of the Oceans (GEBCO) and vector layers of the administrative division of India. These data were used to visualize the location of the region within the country at the state level, as well as the terrain of the study area. 
+ 
+ \begin{figure}[H]
+% \centering
+  \begin{tabular}[b]{cc}
+    \includegraphics[width=4.2cm]{Fig_04a.jpg}  &   \includegraphics[width=4.2cm]{Fig_04b.jpg}\\
+    \small (\textbf{a}) 2019 & \small (\textbf{b}) 2020 \\
+  
+    
+    \includegraphics[width=4.2cm]{Fig_04c.jpg} & \includegraphics[width=4.2cm]{Fig_04d.jpg} \\
+    \small (\textbf{c}) 2021& \small (\textbf{d}) 2022 \\
+
+   
+    \includegraphics[width=4.2cm]{Fig_04e.jpg}& \includegraphics[width=4.2cm]{Fig_04f.jpg}\\
+    \small (\textbf{e}) 2023 & \small (\textbf{f}) 2024\\
+ 
+    
+  \end{tabular}
+  \caption{Original data used for image processing: satellite images Landsat 8 OLI/TIRS covering the region of Chilika Lake on 2019, 2020, 2021, 2022, 2023 and 2024. Data source: EarthExplorer repository of the United States Geological Survey (USGS). Compilation source: author.}
+  \label{fig04}
+\end{figure}
+ 
+
+\subsection{Methodological Workflow}
+These data were processed using the GRASS GIS software version 8.3.1, Generic Mapping Tools (GMT) cartographic scripting toolset version 6.4.0~\cite{Wessel} and QGIS software version 3.34. The methodology used for mapping is derived from previous works~\cite{Lemenkova202217,Lemenkova202212,Lemenkova202203}. The workflow of this study included several processes and approaches to image analysis and multi-source data, as summarized in the methodological scheme in Figure~\ref{fig05}.
+\vspace{-12pt}
+\begin{figure}[H]
+   % \begin{center}
+%    \setlength{\unitlength}{0.5cm}
+	\includegraphics[width=9.5cm]{Fig_05.jpg}
+  %  \end{center}
+    \caption{Flowchart showing the methodological scheme used in this research. Software: \hl{RStudio.} Diagram source: author.}
+    %MDPI: Please state the version number of the software. If it is not applicable, the related website or proof should be provided.
+    \label{fig05}
+\end{figure}
+
+As such, combining RS data and machine learning (ML) techniques presents the integration of the two technologies that complement each other in the programming approach of GRASS GIS and help overcome the limitation of using just one. Moreover, the current focus on employing the ML methods for monitoring the coastal lagoon of the Chilika Lake underscores its important contribution to the modeling of the geospatial data. This approach to data processing supports the computer-based modeling of landscape dynamics in the coastal regions of the Bay of Bengal and helps analyze how these regions are affected by the environmental and climate variability in the monsoon climate of the Indian Ocean. 
+
+%----------- subsection ----------->
+\subsection{Image Processing}
+The images were processed using the GRASS GIS (v. 8.3) image processing software using methods explained in the following subsections. First, the images were imported and preprocessed. Then, the images were classified using the unsupervised clustering of the maximum-likelihood discriminant analysis classifier (MaxLik). During the clustering steps, the signature file was generated and reported using the k-means algorithm. The aim of this step is to perform cluster maps and to obtain a training dataset. The classification was performed by the 'i.maxlik' module of GRASS GIS. The code for these steps is presented in Listing~\ref{lst01} using GRASS GIS syntax:
+
+\begin{lstlisting}[captionpos=t,language=bash,caption=\hl{GRASS} %MDPI: We formatted the all listings to  standard format. Please confirm. 
+ GIS code for clustering method using k-means algorithm.,label={lst01}]
+g.region raster=L_2019_01 -p
+i.group group=L_2019 subgroup=res_30m \
+input=L_2019_01,L_2019_02,L_2019_03,L_2019_04,L_2019_05,L_2019_06,L_2019_07
+i.cluster group=L_2019 subgroup=res_30m \
+  signaturefile=cluster_L_2019 \
+  classes=10 reportfile=rep_clust_L_2019.txt --overwrite
+i.maxlik group=L_2019 subgroup=res_30m \
+  signaturefile=cluster_L_2019 \
+  output=L_2019_clusters reject=L_2019_cluster_reject --overwrite
+\end{lstlisting}
+
+The visualization of the maps was performed using cartographic tools of GRASS GIS as follows in Listing~\ref{lst02}: 
+
+\begin{lstlisting}[captionpos=t,language=bash,caption=GRASS 
+ GIS code for mapping and cartographic display.,label={lst02}]
+g.region raster=L_2019_01 -p
+d.mon wx0
+d.rast shaded_relief1
+d.vect isolines color='100:93:134' width=0
+d.rast L_2019_clusters
+d.grid -g size=00:30:00 color=white width=0.1 fontsize=16 text_color=white
+d.legend raster=L_2019_clusters title="Clusters 2019" title_fontsize=19 font="Helvetica" fontsize=17 bgcolor=white border_color=white
+d.legend raster=shaded_relief1 title="Relief, m" title_fontsize=19 font="Helvetica" fontsize=17 bgcolor=white border_color=white -f
+d.out.file output=Chilika_2019 format=jpg --overwrite
+\end{lstlisting}
+
+The next steps included machine learning (ML) algorithms for image processing and analysis by GRASS GIS.
+%----------- subsection ----------->
+\subsection{Machine Learning}
+
+\subsubsection{Random Forest}
+
+The mathematical foundation of the Random Forest (RF) classification consists of the following steps of the workflow initially developed by~\cite{598994}. For $b=1$ to $B$, a bootstrap sample $Z*$ of size $N$ from the training data has been drawn. Afterward, the random-forest tree $T_b$ is increased to the bootstrapped data. This is carried out iteratively by recursively repeating the logical steps for each terminal node of the tree that represents the individual class in land cover classification until the minimum node size min is reached. 
+
+The $m$ variables are randomly selected  using the data obtained in the ``r.random'' module of GRASS GIS obtained from the pixel variables ``p''. The best variable and split point are then selected among the $m$, and the model splits each node into two ``daughter'' nodes. The output model of the ensemble of trees is received as $\{T_b\}_1^B$. Then, to make a prediction of the assignment of each pixel within the matrix of the raster image to the specific land cover class, the model evaluates each new point $x$ (that is, a cell on the satellite image) using the following logical expression. Let $\hat{C_b}(x)$ be the class prediction of the $b$-th random-forest tree. Then, the RF classification is performed by running   Equation~\eqref{eq1} derived from~\cite{709601}:
+
+\begin{equation}
+\hat{C^B_{rf}} = majority \:  vote \:  {\hat{C_b}(x)}_1^B
+\label{eq1}
+\end{equation}
+
+The criteria for the RF model include the number of pixels forming the class (the spectral reflectance variability of vegetation and land categories). The optimal parameter was defined as 10 classes using   existing similar studies. Second, the extent of the area in the pixel's surrounding was set up according to the resolution of the Landsat images as 30 meter per pixel around the target land cover class, forming the complete landscape pattern, plus including the pixels themselves evaluated for spectral reflectance using the ANN and ML methods. Hence, the RF classification obtains a class vote from each tree  and then classifies it using majority vote and analysis of each pixel within the raster image. In GRASS GIS, the RF-based image classification is carried out using the   code presented in Listing~\ref{lst01}. 
+
+Here, the  training pixels were first generated to train from an earlier land cover classification. Then, they were used as training datasets to perform a classification on recent Landsat images (in the example of code below, for the image of 2023). Afterwards, the model was trained using the  ``RandomForestClassifier'' embedded algorithm using ``r.learn.train'' module. The prediction of the model's performance was carried out  using the ``r.learn.predict'' module. The shaded relief was added as a background to the image, and the isolines were derived using the ``r.contour'' module. The code is presented in Listing~\ref{lst03}.
+
+\begin{lstlisting}[captionpos=t,language=bash,caption=\hl{GRASS}  
+ GIS code for RF method for supervised image classification.,label={lst03}]
+r.random input=L_2019_clusters seed=100 npoints=1000 raster=training_pixels --overwrite
+r.learn.train group=L_2023 training_map=training_pixels \
+    model_name=RandomForestClassifier n_estimators=500 save_model=rf_model.gz
+r.learn.predict group=L_2023 load_model=rf_model.gz output=rf_classification 
+r.category rf_classification
+r.import input=/path/Chilika/gebco2023.tif output=shaded\_relief1 extent=region 
+r.contour shaded\_relief1 out=isolines step=200 --overwrite
+\end{lstlisting}
+\vspace{-6pt}
+
+\subsubsection{MultiLayer Perceptron}
+
+The process of optimal categorization of the image scene into the land categories was performed iteratively using the ML tools defining the key parameters of spectral reflectance. The MultiLayer Perceptron (MLP) algorithms are a class of Artificial Neural Network (ANN) methods. The general methodological scheme for the ANN is presented in Figure~\ref{fig06}. 
+
+
+
+In GRASS GIS, the MLPClassifier is derived from the Scikit-Learn Library of Python 
+ and is based on fundamentals of predictive learning~\cite{Rosenblatt}. Its performance differs from other classifiers since it uses the principle of the feedforward ANN. For data analysis, ANN uses three layers that are used as structures of network topology in the flow of information for data partition. Pixels of the raster layer present  the nodes of the input, hidden, and output layers (see Figure~\ref{fig06}), which train the model using supervised learning. The principal approach of this process consists of the connection between each node in one layer to those in the following layer through a certain weight ($w_{ij}$). The MLPClassifier iteratively evaluates the training data using these connections in weights of pixels. The algorithm changes weights repetitively using estimated error until the output image   approaches the expected result and the error is minimized. This sequential operation is formulated in Equation~\eqref{eq2}: 
+
+\begin{equation}
+\varepsilon(n)=\frac{1}{2} \sum_{output node j}{e_{j}^2(n)}
+\label{eq2}
+\end{equation}
+where $e_j(n)$ is the degree of error in an output node $j$ in the $n$-th  pixel of the raster dataset and $\varepsilon(n)$ is the node weights, which are iteratively adjusted using the minimization of the errors in the classified raster image for the $n$-th pixel of the raster matrix. Using optimization, each weight $w_{ij}$ is estimated and changed accordingly, as in Equation~\eqref{eq3}: 
+
+\begin{equation}
+\Delta w_{ji}(n)=-\eta\frac{\vartheta\epsilon(n)}{\vartheta\upsilon_{j}(n)}y_{i}(n)
+\label{eq3}
+\end{equation}
+where $y_{i}(n)$ is the result of the previous step of classification, and $\eta$ is the tuning parameter of optimization, which aims at the quick convergence of the weights of pixels during the iterative process of image classification. Hence, the MLPC algorithm is sensitive to feature scaling, which is related to the resolution of the original raster image. The essential approach of this algorithm  consists of the random selection of the hidden nodes and analytical determination of the output weights of neural networks~\cite{HUANG2006489}. As a result, the MLPClassifier algorithm ensures higher generalization output at a faster learning speed.
+
+\begin{figure}[H]
+ %   \begin{center}
+%    \setlength{\unitlength}{0.5cm}
+	\includegraphics[width=10.4cm]{Fig_06.jpg}
+   % \end{center}
+    \caption{General methodological scheme for the Artificial Neural Network (ANN) used for image classification. Software:\hl{ R, library ``grViz''.} Diagram source: author.}
+    %MDPI: Please state the version number of the software. If it is not applicable, the related website or proof should be provided.
+    \label{fig06}
+\end{figure}
+
+Using ML modules of GRASS GIS, the image classification using the MLPC algorithm was implemented using the combination of the modules ``r.learn.train'' used for extracting training data, supervised machine learning, and cross-validation using the Python package Scikit-Learn, and the module ``r.learn.predict'' for estimating prediction of pixels' classification. The technical implementation was performed using    the following code: 
+
+\begin{lstlisting}[captionpos=t,language=bash,caption=\hl{GRASS} %MDPI: Listing 4 and 5 have same labels {lst04}. Please check and revise. Please mention Listing 4 before and close to where it is first presented in the text, and make sure all lstlistings are mentioned in numerical order.
+ GIS code for RF method for supervised image classification.,label={lst04}]
+r.learn.train group=L_2019 training_map=training_pixels \
+    model_name=MLPClassifier n_estimators=500 save_model=mlpc_model.gz --overwrite
+r.learn.predict group=L_2019 load_model=mlpc_model.gz output=mlpc_classification --overwrite
+r.category mlpc_classification
+r.colors mlpc_classification color=plasma -e
+# data mapping:
+d.mon wx1
+d.rast shaded_relief1
+d.vect isolines color='100:93:134' width=0
+d.rast mlpc_classification
+d.grid -g size=00:30:00 color=white width=0.1 fontsize=16 text_color=white
+d.legend raster=mlpc_classification title="MLPC 2019" title_fontsize=19 font="Helvetica" fontsize=17 bgcolor=white border_color=white
+d.legend raster=shaded_relief1 title="Relief, m" title_fontsize=19 font="Helvetica" fontsize=17 bgcolor=white border_color=white -f
+d.out.file output=MLPC_2019 format=jpg --overwrite
+\end{lstlisting}
+\vspace{-6pt} 
+
+\subsubsection{Support Vector Machine}
+
+The Support Vector Machine (SVM) Classifier  uses supervised learning methods~\cite{Cortes} and classifies the data into classes using decisions on the largest separation between the classes. Hence, it discriminates the values of the pixels constituting the images  and identifies the largest distance to the nearest training sample. When SVC uses training vectors of sample pixels that are located within the margin of classes using the following algorithm approach---$x_{i} \in R^p$, where $ i=1 \dots n$ as two classes and a vector $y \in \{1, - 1\}^n$---it aims to find the $w \in R^p$ and $b \in R$ so that the assignment of pixels to correct land cover class is true for most samples using   Equation~\eqref{eq4}:
+
+\begin{equation}
+\min_{\omega,b,\zeta}\frac{1}{2}\omega^T\omega+C\sum_{i=n}^{n}\zeta_{i}
+\label{eq4}
+\end{equation}
+which depends on the definitions of $y_{i}(\omega^{T}\varphi (x_i) + b)\geq 1-\zeta_{i}$, which should be greater than one for the optimal prediction of the correctly classified pixels on a raster scene, and $\zeta_{i}\geq 0, i = 1,\dots,n$. The SVC analyzes Digital Numbers (DNs) of pixels on the image to maximize the margins of the classes using iterative analysis. The estimated decision function in a classified matrix of the image consists of cells for a sample of $x$ pixels, as shown in Equation~\eqref{eq5}:
+
+\begin{equation}
+\sum_{i\in SV}y_{i}\alpha_{i}K(x_{i},x) + b
+\label{eq5}
+\end{equation}
+
+The result of the classification assigns the predicted classes and the support vectors, which are summarized using attributes of the classification. The effectiveness of the SVM method is that it is a memory-efficient approach that optimizes the use of the computational capacities of the machine. The flexibility of this algorithm is ensured by different Kernel functions defined, which include both common and custom kernels. The practical implementation of this approach in GRASS GIS is presented in Listing~\ref{lst04} below. First, the SVC model is trained using the ``r.learn.train'' module. Then, the prediction of pixel assignments is carried out using the ``r.learn.predict'' module. Afterward, the raster categories thatare automatically applied to the classification output are checked using ``r.category'' module. The visualization is performed using the modules ``r.colors'', ``d.rast'', and ``d.legend''. An example of the code used for classification of the image for 2019 is presented below. 
+\newpage
+\begin{lstlisting}[captionpos=t,language=bash,caption=\hl{GRASS} GIS code for SVC method for supervised image classification.,label={lst04}]
+r.learn.train group=L_2019 training_map=training_pixels \
+    model_name=SVC n_estimators=500 save_model=svc_model.gz --overwrite
+r.learn.predict group=L_2019 load_model=svc_model.gz output=svc_classification
+r.category svc_classification
+r.colors svc_classification color=bcyr -e
+d.rast svc_classification
+d.legend raster=svc_classification title="SVM 2019" title_fontsize=19 font="Helvetica" fontsize=17 bgcolor=white border_color=white
+\end{lstlisting}
+
+The GitHub repository is created to summarize the methodology and the results of all the models and classification outputs. The programming scripts used for plotting the data, confusion matrices, and maps are also included in this repository for a comparative analysis of the statistical outputs and quantitative estimations on land cover types.
+
+{The overall performance of the tested ML classifiers and ANN were evaluated for accuracy, F1 score, Cohen's kappa coefficient, and other parameters. Here, Cohen's kappa is a quantitative measure that evaluates the reliability of rating coefficients that   assess  the accuracy of pixels's classification and assignment to diverse land cover types~\cite{Cohen}. The applicability of Cohen's Kappa techniques for data evaluation is proven by their use in various studies~\cite{YU2024131896,LI2023138565,BONHOMME201596}. The reliability was evaluated for three  classifiers---(1) Random Forest Classifier, (2) Support Vector Machine (SVM) Classifier, and (3) Multilayer Perceptron Classifiers (MLPClassifier)---to evaluate the accuracy of these approaches to satellite image processing. Cohen's Kappa is an important factor in the interpretation of test findings regarding raster image classification. In this study, Cohen's kappa was defined in weighted form using the formula in Equation~\eqref{eq6}:}
+
+\begin{equation}
+K = \frac{P_0 - P_e}{1 - P_e}
+\label{eq6}
+\end{equation}
+where the $P_0$ indicates the probability of agreement and $P_e$ is the probability of random agreement.
+The advantage  of   Cohen's kappa is that it presents a robust measure of estimating the statistical probability of evaluation compared to the simple percent agreement calculation~\cite{Sim}. This is possible since Cohen's kappa takes into account the possibility of the random agreement of pixels' assignment to diverse land cover classes. Hence, it is an appropriate measure of the reliability of pixels assigned to diverse land cover classes. In this way, Cohen's kappa estimates the degree to which these classifiers produce similar results under consistent environmental conditions of landscapes, that is, the same date, sunlight, and azimuth angle of the satellite images.
+
+In contrast to Cohen's Kappa, the F-score evaluates the predictive performance and classification performance. Generally, it is calculated from the precision of the classification using the number of correctly classified pixels divided by the number of all samples that are predicted to be correct. Precision indicates the positive predictive value in sensitive classification~\cite{Hand,sitarz2022extending}. According to previous studies on image classification~\cite{Taha}, the estimation of the F score is performed using the following formula in Equation~\eqref{eq7}:
+
+\begin{equation}
+F_1 = \frac{2}{recall^{-1} + precision^{-1}} = 2 x \frac{precision \cdot recall}{precision + recall} = \frac{2tp}{2tp + fp + fn}
+\label{eq7}
+\end{equation}
+
+Widely used in diverse cases of image processing, such as classification, partition, or segmentation~\cite{HUANG2018202,Song,Lietal2023}, the F1 score presents the harmonic mean of the precision and recall of image classification model. These two metrics contribute equally to the estimation, which enables the F1 score metric to correctly indicate the reliability of image classification.
+
+%----------- section ----------->
+\section{Results and Discussion}
+
+{The identified categories include the following land cover types, defined as classes corresponding to the following land cover patterns:~(1) salt water bodies (ocean);~(2) brackish water (lake);~(3) wetlands and coastal lagoon;~(4) dense deciduous forest; (5) agricultural land, croplands; (6) trees and vegetated areas; (7) built-up and urban areas; (8) grassland and shrubland; (9) rural areas; and (10) freshwater (river). The spatio-temporal change in land cover types around Chilika Lake between the years 2019 and 2024 is shown in maps presented in Figures~\ref{fig07}--\ref{fig10} and compared with   existing similar research~\cite{Sinha2020,Mangla}. The hydrological effects can be explained by the increase in water turbidity during the spring period, which affects the visibility of the lake surface through the decreased transparency of the water column affected by the increased photosynthetic activity during this period. The distribution of mangroves that are mostly situated along the tidal water ways are distinguished due to their spectral separability on the EO data. Thus, salt marsh grasses are generally located along the tidal flats due to the specific environmental setting of these physiographic units. }
+
+The areas of wetlands and coastal lagoon as well as water bodies increased due to new mouth opening of the Chilika Lake. The scrubland and grassland decreased, while the forest areas increased. This numerical computations of changes are summarized in Table~\ref{tab01}, and the statistical report tables are provided in the GitHub repository. The dynamics in land cover types in the coastal area of Chilika imply that that scrubland and grassland were converted into forest due to higher dense vegetation cover. Notably, the agriculture fallow land does not show much difference between the estimated years of 2019 and 2024.
+
+\begin{table}[H] 
+\caption{\hl{Estimated} %MDPI: Table 1 and Table A2 have same labels {tab01}. Please check and revise. Please mention Table 1 before and close to where it is first presented in the text, and make sure all tables are mentioned in numerical order.
+ classes of land cover types for 2019--2024 in the Chilika Lake coastal lagoon.\label{tab01}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCCCCCCCCCC}
+\toprule
+ \multirow{2}{*}{\textbf{Year}} & \multicolumn{10}{c}{\textbf{Classes of Land Cover Types}} \\
+     & \textbf{1} & \textbf{2 }& \textbf{3} & \textbf{4} & \textbf{5} & \textbf{6} & \textbf{7} & \textbf{8} & \textbf{9} & \textbf{10} \\
+    \midrule
+    \hl{\textbf{2019}} %MDPI: Please confirm if the bold is unnecessary and can be removed. The following highlights are the same.
+ & 673 & 198 & 447 & 1153 & 754 & 704 & 851 & 1239 & 758 & 62 \\
+    \hl{\textbf{2020}}  
+ & 674 & 183 & 434 & 1237 & 524 & 834 & 760 & 1321 & 809 & 62 \\
+   \hl{ \textbf{2021}}  
+ & 660 & 208 & 618 & 1256 & 528 & 849 & 597 & 1233 & 814 & 75 \\
+    \hl{\textbf{2022}}  
+ & 638 & 234 & 346 & 1005 & 1006 & 505 & 1061 & 1363 & 748 & 47 \\
+     \hl{\textbf{2023}}  
+ & 643 & 235 & 836 & 446 & 1004 & 635 & 1089 & 1143 & 846 & 72 \\
+   \hl{ \textbf{2024}}  
+  & 575 & 245 & 610 & 1340 & 510 & 913 & 682 & 1266 & 816 & 57 \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+
+The comparative analysis of the maps shows that the surroundings of the Chilika Lake underwent changes in land cover types. This was caused by the cumulative effects from both the anthropogenic and natural events and results in variations of biological productivity, water eutrophication, and the extent of mangrove forests which strongly depend on the variations in the salinity as discussed above. In turn, the salinity level in the lake is regulated by the monsoon processes and the changes in oceanic seawater and river inflow and counterparts. The effects from the human activities in the watershed of Chilika lagoon result in increased siltation and an increase in nutrients. The land cover types were identified on the satellite images in the study area using information on classification adopted from   existing studies~\cite{Behera2023}; see Figure~\ref{fig07}. 
+
+During the evaluated period of 2019--2024, notable changes were observed in the Chilika Lake surroundings, including settlements and populated built-up areas, agriculture lands, croplands and plantations, and barren or wasteland areas. At the same time, other classes did not show many differences in the five-year time span. Between 2019 and 2024 (Table~\ref{tab01}), the area of agricultural plantations as well as barren land decreased, while urban population areas and built-up areas occupied by settlements increased. The increase in the settlement and built-up areas is identified between 2019 and 2022 and between 2023 and 2024, which might refer to the natural increase in urban population caused by socio-economic drivers; see Figure~\ref{fig08}. 
+\vspace{-12pt}
+\begin{figure}[H]
+  \centering
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.3cm]{Fig_07a.jpg} \\
+    \small (\textbf{a}) 2019 
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.3cm]{Fig_07b.jpg} \\
+    \small (\textbf{b}) 2020 
+  \end{tabular}
+    \begin{tabular}[b]{c}
+    \includegraphics[width=6.3cm]{Fig_07c.jpg} \\
+    \small (\textbf{c}) 2021
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.3cm]{Fig_07d.jpg} \\
+    \small (\textbf{d}) 2022 
+  \end{tabular}
+   \begin{tabular}[b]{c}
+    \includegraphics[width=6.3cm]{Fig_07e.jpg} \\
+    \small (\textbf{e}) 2023 
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.3cm]{Fig_07f.jpg} \\
+    \small (\textbf{f}) 2024
+  \end{tabular}
+  \caption{\hl{Image processing} 
+  %MDPI: Please change the hyphen (-) into a minus sign ($-$, "U+2212") in image if possible. e.g., "-1" should be "$-$1". The following highlights are the same.
+ %MDPI: Please add the left bracket in the image, e.g., "1)" should be "(1)".  The following highlights are the same.
+ of the Landsat 8 OLI/TIRS scenes from 2019 to 2024 using unsupervised classification (algorithm of maximum-likelihood discriminant analysis classifier). Background shaded relief: GEBCO grid. Software: GRASS GIS. Mapping source: author.}
+  \label{fig07}
+\end{figure}
+\unskip
+\begin{figure}[H]
+ % \centering
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_08a.jpg} \\
+    \small (\textbf{a}) 2019 
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_08b.jpg} \\
+    \small (\textbf{b}) 2020 
+  \end{tabular}
+    \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_08c.jpg} \\
+    \small (\textbf{c}) 2021
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_08d.jpg} \\
+    \small (\textbf{d}) 2022 
+  \end{tabular}
+   \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_08e.jpg} \\
+    \small (\textbf{e}) 2023 
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_08f.jpg} \\
+    \small (\textbf{f}) 2024
+  \end{tabular}
+  \caption{\hl{Random} Forest ML-based classification of the Landsat 8 OLI/TIRS scenes from 2019 to 2024. Background shaded relief: GEBCO grid. Software: GRASS GIS. Mapping source: author.}
+  \label{fig08}
+\end{figure}
+
+Besides the anthropogenic issues, the variations in the color and salinity of water within the Chilika Lake visible on the images are related to the monsoon rains, which strongly influence the hydrography of the coastal lagoon; see Figure~\ref{fig09}. Thus, the inflow of sediment and water from the catchments of rivers and tributaries upstream are at a maximum during monsoon months. This is also increased by the oceanic sediment transport. Consequently, these months are notable for intensive floods and turbulence of waters in the coastal lagoon. Accordingly, the impact of both oceanic tides and freshwater inflow from the rivers regulate the salinity of Chilika Lake and change it depending on the dominating force. 
+
+\begin{figure}[H]
+%  \centering
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_09a.jpg} \\
+    \small (\textbf{a}) 2019 
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_09b.jpg} \\
+    \small (\textbf{b}) 2020 
+  \end{tabular}
+    \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_09c.jpg} \\
+    \small (\textbf{c}) 2021
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_09d.jpg} \\
+    \small (\textbf{d}) 2022 
+  \end{tabular}
+   \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_09e.jpg} \\
+    \small (\textbf{e}) 2023 
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_09f.jpg} \\
+    \small (\textbf{f}) 2024
+  \end{tabular}
+  \caption{\hl{Support} Vector Machine (SVM) ML-based classification of the Landsat 8 OLI/TIRS scenes from 2019 to 2024. Background shaded relief: GEBCO. Software: GRASS GIS. Maps source: author.}
+  \label{fig09}
+\end{figure}
+
+Spatial variability of the salinity detected in the images classified using the ANN-based  MLPClassifier demonstrates the decrease during the monsoon period due to the influx of freshwater, which especially concerns the  northern and central segments of the lake, while the southern sector is the least affected even during monsoon and maintains its brackish-water conditions; see Figure~\ref{fig10}. Such hydrological patterns are well reflected in the satellite images, which show various colors of water in the lake. During   spring periods, when the images were taken, the water level of the lagoon gradually decreases and reaches its lowest level during summer. Finally, the effects of winds also creates an input into the balance of salinity of the Chilika Lake by water turbidity in upper layers. Such climate effects facilitate the influx of saline water from the ocean and increase  the salinity of the lake accordingly. In turn, the variability in salinity and geochemical characteristics related to such complex processes affect aquatic vegetation and algae bloom during favorable periods, which can be identified in the satellite images. 
+
+\begin{figure}[H]
+ % \centering
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_10a.jpg} \\
+    \small (\textbf{a}) 2019 
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_10b.jpg} \\
+    \small (\textbf{b}) 2020 
+  \end{tabular}
+    \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_10c.jpg} \\
+    \small (\textbf{c}) 2021
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_10d.jpg} \\
+    \small (\textbf{d}) 2022 
+  \end{tabular}
+   \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_10e.jpg} \\
+    \small (\textbf{e}) 2023 
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.4cm]{Fig_10f.jpg} \\
+    \small (\textbf{f}) 2024
+  \end{tabular}
+  \caption{\hl{MLPClassifier} ANN-based classification of the Landsat 8 OLI/TIRS scenes from 2019 to 2024. Background shaded relief: GEBCO grid. Software: GRASS GIS. Mapping source: author.}
+  \label{fig10}
+\end{figure}
+
+The siltation, increase in nutrient enrichment, and reduced salinity favored the growth of weeds  and eutrophication within the basin of lake. Such changes can be detected by computer vision algorithms using the Random Forest method due to different levels of spectral reflectance of the lacustrine surface; see Figure~\ref{fig08}. Hence, spring algal bloom in the inland waters of Chilika Lake is a major issue in the spring period, when the imagery was taken, which in turn affects water quality, especially in the shallow estuarine segments of the lake. Furthermore, the effects of eutrophication lead to the degradation of the aquatic habitats. For instance, the level of eutrophication increased in the lake from 2019 to 2020 and 2021, after which the situation stabilised. The results of image classification using SVM method are presented in Figure~\ref{fig09}. Image analysis showed that the algal growth is increased in 2021 and 2024, which was best detected using the ANN approach of MLPClassifier, Figure~\ref{fig10}. The evaluation of accuracy was performed using chi-square test and visualized in Figure~\ref{fig11}. 
+\vspace{-6pt}
+\begin{figure}[H]
+ % \centering
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.3cm]{Fig_11a.jpg} \\
+    \small (\textbf{a}) 2019 
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.3cm]{Fig_11b.jpg} \\
+    \small (\textbf{b}) 2020 
+  \end{tabular}
+    \begin{tabular}[b]{c}
+    \includegraphics[width=6.3cm]{Fig_11c.jpg} \\
+    \small (\textbf{c}) 2021
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.3cm]{Fig_11d.jpg} \\
+    \small (\textbf{d}) 2022 
+  \end{tabular}
+   \begin{tabular}[b]{c}
+    \includegraphics[width=6.3cm]{Fig_11e.jpg} \\
+    \small (\textbf{e}) 2023 
+  \end{tabular}
+  \begin{tabular}[b]{c}
+    \includegraphics[width=6.3cm]{Fig_11f.jpg} \\
+    \small (\textbf{f}) 2024
+  \end{tabular}
+  \caption{\hl{Accuracy} analysis of image classification using algorithm of reject threshold probability by chi square test. Background relief: GEBCO. Software: GRASS GIS. Mapping source: author.}
+  \label{fig11}
+\end{figure}
+
+Accordingly, the stability of points assigned to land cover classes were evaluated and reported as follows for each year: for 2019, 98.08\% points stable; for 2020, 98.23\%; for 2021, 98.19\%; for 2022, 98.25\%; for 2023, 98.37\%; and for 2024, 98.08\% points stable, respectively. Finally, class means and standard deviations computed for each band and each year, respectively, are presented in the Appendix~\ref{AppB} for the years 2019 to 2024. The maps of accuracy analysis assessment  of image classification has been performed using rejection-threshold probability techniques using chi square test, the results of  which are  presented in Figure~\ref{fig11}. 
+
+The final results of the computations included the convergence for iterations of pixels assigned to the land cover classes. The convergence was computed for each image and demonstrated the following results: for the year 2019, 98.1\%; for the year 2020, 98.2\%; for the year 2021, 98.2\%; \hl{for the year 2022, \%; } %MDPI: Please check if any date is missing.
+for the year 2023, 98.4\%; and for the year 2024, 98.1\%. This   shows high precision and accuracy of the calculations using GRASS GIS algorithms of image processing. The class separability matrices computed for 10 land cover types identified in the Chilika lagoon for the years 2019, 2020, 2021, 2022, 2023, and 2024 are reported in the tables placed in   Appendix~\ref{AppC}. The GitHub repository with GRASS GIS scripts and the results of the ANN and ML image processing is available online at \url{https://github.com/paulinelemenkova/India\_Chilika\_Lake\_GRASS\_GIS\_ANN\_ML\_Image\_Processing} (accessed on 4 April 2024) and contains the results of the image processing. 
+ 
+ Diverse types of lacustrine vegetation such as weeds and grasses distributed along the sheltered lagoon margins include dense algae meadows on the flats and shallow water areas, which are mostly occupied by brackish weeds and other marsh grasses. Such vegetation largely depends on the specific lacustrine environment and is naturally distributed along the inner margin of the Chilika coasts. Marine influences on the Chilika coastal lagoon are directed through the barrier spits and estuaries of the adjacent rivers. Among the environmental problems that affected the variations in the land cover types are the strong eutrophication, which was visible on the images due to the heavy nutrient upload. 
+
+Change-detection analysis in the land cover types from 2013 to 2023 demonstrated shifts in land cover types within the basin of the Chilika Lake coastal lagoon. The computed areas occupied by various land cover classes for each of the category are summarized in Table~\ref{tab01}. Such variability of landscape patches around the Chilika Lake proved the existence of  fluctuations in the processes of siltation and eutrophication in the coastal lagoon over the studied period (years 2019--2024). Major causes of such environmental changes are related to   sedimentation processes such as low river flow speed, which cause stagnation of water and eutrophication. Second, the increased sediment budgetary balance and flushing of sediments into the Bay of Bengal also contribute to the changes in the lake level. Since water fluctuations in various parts of the Chilika Lake are subject to   monsoon effects in dry and wet seasons, wetland types can be discriminated on the satellite images along the margin areas of the lagoon. These variations are also caused by the different hydrological effects (e.g., currents and water level) and geomorphic settings of the surrounding relief. 
+ 
+ Table~\ref{tab02} compares the hyper parameters of the GRASS GIS used for classification indices in for ANN and various models of ML.  Cohen's Kappa was computed to compare the results of raster image classification, such as landscapes viewed by RS Landsat sensors and identified using ANN and ML algorithms of GRASS GIS. In this way,   Cohen's Kappa presents a straightforward statistical approach that computes the confusion matrix by considering each pixel of the comparable raster images as a single rating made by two raters. In this regard, the results were computed and summarized below.
+ 
+ Table~\ref{tab02} summarizes and compares such parameters as accuracy, F1 score, Cohen's kappa coefficient, and related parameters. Based on the computed values of Cohen's Kappa coefficient and the F1 method for the evaluation of classified data, the results suggest that the 0.785 Cohen's Kappa coefficient and F1 score of 0.89 are rated as the good strength of agreement. Hence, the ANN technique can be interpreted as a reliable approach for satellite image classification in terms of accuracy, followed by the SVM and RF. The interpretation of the  F score is as follows. The highest possible value of 1.0  indicates the perfect precision and recall of variables, while the lowest theoretically possible value of 0 indicates the lowest precision or recall which are zero in this case. Hence,  higher values generally mean better results of satellite image classification. Likewise, as other correlation statistics, the kappa can range from {$-$}1 to +1. The interpretation of values is as follows. Values of the levels of 0.60 to 0.79 have  a moderate level of agreement, those in the interval of 0.8--0.9 (that is, over 80\% below 90\%) are acceptable as having strong level of agreement, and those above 0.9 are almost perfect~\highlighting{\cite{McHugh}.}%MDPI: Refs. [101] and [102] are not cited in main text. Please check and revise.
+
+
+\begin{table}[H] 
+\caption{Hyperparameters for machine learning (ML) models in GRASS GIS: (1) Random Forest Classifier, (2) Support Vector Machine (SVM) Classifier, and (3) Multilayer Perceptron Classifiers (MLPClassifier). Estimated classes of land cover types for 2019--2024 in the Chilika Lake coastal lagoon.\label{tab02}}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\begin{tabularx}{\textwidth}{CCCCCCC}
+\toprule
+\multirow{2}{*}{\textbf{Year}} &\multicolumn{3}{c}{\makecell{\textbf{Cohen's Kappa}\\ \textbf{Quantification of Agreement} }}&  \multicolumn{3}{c}{\textbf{F-1 Score of Predictive Performance}}\\
+      & \textbf{RF} & \textbf{SVM} & \textbf{MLPC} & \textbf{RF} & \textbf{SVM} & \textbf{MLPC} \\
+    \midrule
+    \hl{\textbf{2019}} %MDPI: Please confirm if the bold is unnecessary and can be removed. The following highlights are the same.
+ & 0.73 & 0.78 & 0.84  & 0.78 & 0.82 & 0.92\\
+   \hl{ \textbf{2020}}  
+ & 0.73 & 0.73 & 0.82  & 0.77 & 0.84 & 0.91 \\
+    \hl{\textbf{2021}}  
+ & 0.71 & 0.74 & 0.81 & 0.77 & 0.79 & 0.92 \\
+    \hl{\textbf{2022}}  
+ & 0.80 & 0.81 & 0.83  & 0.81 & 0.81 & 0.95\\
+     \hl{\textbf{2023}}  
+ & 0.78 & 0.79 & 0.85  & 0.84 & 0.83 & 0.96\\
+    \hl{\textbf{2024}} 
+ & 0.76 & 0.77 & 0.86 & 0.83 & 0.82 & 0.94 \\
+\bottomrule
+\end{tabularx}
+%\noindent{\footnotesize{\textsuperscript{1} Tables may have a footer.}}
+\end{table}
+
+ 
+
+The short-term evolution of the physiographic habitats and land cover types around the Chilika coastal lagoon is strongly affected by the humid monsoon climate of the Bay of Bengal and human activities. The analysis of satellite images performed using ML and ANN algorithms enabled us to recognize fluctuations over the areas of Chilika lagoon, which depend on the water level, tidal level, monsoon effects, and inflow of rivers of Daya and Bhargavi into the lagoon. In terms of technical capabilities, the ANN model performed the best in terms of learning capabilities of the  model in GRASS GIS and the effectiveness in capturing anomalies and outliers in classified pixels assigned to various land cover classes. Although the ANN model required high computational resources and was demonstrated to be a highly time-consuming model, its performance was excellent with regard to the other models. Furthermore, the lagoon depends on the inflow from the sea waters through the small stream inlets. Such variations in hydrology strongly affect the lacustrine environments, as demonstrated on the satellite images processed using GRASS GIS. 
+
+Wetlands, swamps, and mangroves situated along the coasts of the Chilika lagoon are modified by the increase in sediments, which is in turn caused by the effects from monsoon storms and repetitive local floods in the estuaries. Thus, spatial variations in the lake's surface revealed the topographic differences between various regions of the lagoon. For instance, its western part is more vulnerable to   geomorphic erosion due to   higher topographic elevations. This is exaggerated by the more intense fishing in this part of the lagoon, which is caused by the location of settlements and villages placed in this region. Finally, high rainfall triggered runoff, which affected the watershed of the Chilika Lake. 
+
+High biodiversity in the physiographic setting of the Chilika lagoon affected the structure and intensity of the habitat dynamics in its ecosystems. Thus, the complex mosaic of the vegetation types detected on the multispectral satellite images point at different geomorphic and landscape units of the lagoon system. Local variations in the vegetation distribution along the fringes of the Chilika lagoon are caused by the periodic monsoon effects on the hydrological system and interruptions in the sedimentation process, which depend on the riverine inflow as discussed above. These processes are intensified by local soil erosion, monsoon storms, and fishery activities, which have affected the distribution of vegetation on tidal flats and the surrounding landscapes. 
+
+Social and ecological implications of the presented findings include mapping lacustrine landscapes of Chilika Lake in East India for spatio-temporal analysis of changes in land cover types quality and extent. Specifically, the evaluated changes enable the detection of eutrophication and dynamics in the nearby landscapes, which is essential for the environmental monitoring of the coastal lagoons.
+
+%----------- section ----------->
+\section{Conclusions}
+
+Mapping coastal lagoons using RS data over time is important for distinguishing the effects of climate and anthropogenic impacts causing major natural disturbances in the surrounding landscapes. This study demonstrated the application of ML/ANN techniques for satellite image processing, aiming to map and visualize changes over the coastal landscape of Chilika Lake in the 2019--2024 time period. The mosaic of ten land cover types was identified around the Chilika Lake and recognized at a resolution of 30~m using GRASS GIS techniques of ML applied to satellite image processing, allowing an assessment of individual landscape patches. Technically, we analyzed the difference between the effects of diverse ML algorithms (Maximal Likelihood discriminant analysis, Random Forest, Support Vector Machine, and MLPClassifier of ANN) on Landsat image analysis and the effects of these approaches on image classification. 
+
+Owing to technological limitations of existing GIS tools (traditional methods of classification), some previous mapping efforts in the Chilika Lake relied on a relatively coarse discrimination of land/water coverage and the  detection variability of land cover types, including mangroves. These were referred to as potential aquatic habitatsto analyze all coastal areas where land cover changes would likely occur. In contrast, this study revealed the effectiveness of the ML/ANN algorithms for RS data classification, which present a powerful alternative to the traditional cartographic tasks through the  automation of image~classification. 
+
+The results of this research show the impact of climate variability on changes in land cover types during short-term time gap and landscape dynamics around the lagoon of   Chilika Lake. Recent boundaries of coastal land categories (2023) closely followed the contour of previous patches detected on earlier images (e.g., 2020, 2019), largely because the extent of the lake limits the existing land cover types, as well as distribution of aquatic vegetation  and restrict mangroves to shallow depths with brackish water. The implications of this study are useful for environmental decision-making  and can support in policy-making in the sustainable development of Ramsar marine sites of India. The paper also demonstrated the value of EO data for environmental analysis. Landsat 8-9 OLI/TIRS satellite images provide an added value to the conventional environmental analysis through land cover classification using ML methods. 
+
+Machine learning (ML) and ANN techniques were evaluated for satellite image processing and proved their effectiveness and usefulness for the environmental analysis performed using GRASS GIS. The use of such data and methods can improve cartographic results in coastal areas that observe some structural variability in landscape patches. A landsat sensor with moderate spectral and high temporal resolution has   proven useful in estimating the spatio-temporal variations in land cover types in the coastal lagoon of Chilika Lake in early spring period since 2019 to 2024. Specifically, Random Forest, Support Vector Machine, and MultiLayer Perceptron classifier algorithms were successful in capturing the trend of landscape dynamics in the lacustrine surroundings using ML methods of the automatic analysis of spectral reflectance of pixels. Similarly, the scripting algorithm of GRASS GIS enabled the cartographic workflow using different modules for raster data~processing. 
+
+Time series maps of land cover types derived from the classified Landsat images explained the overall relationship between climate effects, environmental patterns, and hydrological processes through sedimentation, algal bloom  detected in the lake during the spring period, and  variations in land cover types of the surrounding landscapes in eastern India, as evaluated during a short-term period of the past six years.
+
+
+
+\vspace{6pt} 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\funding{\hl{~~~}} 
+%MDPI: Please add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' and and ``The APC was funded by XXX''. Check carefully that the details given are accurate and use the standard spelling of funding agency names at \url{https://search.crossref.org/funding}, any errors may affect your future funding.
+
+\institutionalreview{Not applicable.}
+
+\informedconsent{Not applicable.}
+
+\dataavailability{The open GitHub repository with GRASS GIS scripts and the results of the ANN and ML modelling of the satellite images used for RS data processing are available online at \textls[-15]{\href{https://github.com/paulinelemenkova/India_Chilika_Lake_GRASS_GIS_ANN_ML_Image_Processing}{https://github.com/paulinelemenkova/India\_Chilika\_Lake\_GRASS\_GIS\_ANN\_ML\_Image\_Processing}} (accessed on 4 April 2024).} 
+
+\conflictsofinterest{The author declares no conflicts of interest.} 
+
+
+\abbreviations{Abbreviations}{
+The following abbreviations are used in this manuscript:\\
+
+\noindent 
+\begin{tabular}{@{}ll}
+ANN & Artificial Neural Networks \\
+CDOM & Coloured Dissolved Organic Matter \\
+DL & Deep Learning \\
+DN & Digital Number \\
+EO & Earth Observation \\
+GEBCO & General Bathymetric Chart of the Oceans \\
+GMT & Generic Mapping Tools \\
+GRASS & Geographic Resources Analysis Support System \\
+GIS & Geographic Information System \\
+Landsat OLI/TIRS & Landsat Operational Land Imager and Thermal Infrared Sensor \\
+ML & Machine Learning \\
+MLP & MultiLayer Perceptron \\
+RF & Random Forest \\
+RS & Remote Sensing \\
+SVM & Support Vector Machines \\
+USGS & United States Geological Survey \\
+UTM & Universal Transverse Mercator \\
+WGS84 & World Geodetic System 84\\
+WRS & Worldwide Reference System  
+\end{tabular}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Optional
+\appendixtitles{yes} % Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
+\appendixstart
+\appendix
+
+
+%------------------------ App 1 -------------->
+\section[\appendixname~\thesection]{Metadata for the Landsat 8-9 OLI/TIRS images obtained from the USGS}\label{AppA}
+\vspace{-9pt} 
+\begin{table}[H]
+\footnotesize
+\caption{Metadata for the Landsat 8-9 OLI/TIRS images obtained from the USGS} \label{tabL}
+\begin{adjustwidth}{-\extralength}{0cm}
+		\newcolumntype{C}{>{\centering\arraybackslash}X}
+		\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+    \begin{tabularx}{\fulllength}{Lm{4cm}<{\raggedright}m{4cm}<{\raggedright}m{4cm}<{\raggedright}}
+    \toprule
+        	\textbf{Data Set Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ \hline
+        Landsat Scene Identifier %MDPI: Please confirm if the bold is unnecessary and can be removed. The following highlights are the same. %Author: yes, bold can be removed (I removed it).
+& LC81400462019044LGN00 & LC81400462020063LGN00 & LC81400462021033LGN00 \\ \hline
+        Date Acquired & 2019/02/13 & 2020/03/03 & 2021/02/02 \\ \hline
+        Roll Angle & 0 & 0 & 0 \\ \hline
+        Start Time & 2019-02-13 04:43:38.496305 & 2020-03-03 04:43:50.54638 & 2021-02-02 04:44:01.299722 \\ \hline
+        Stop Time & 2019-02-13 04:44:10.266304 & 2020-03-03 04:44:22.316379 & 2021-02-02 04:44:33.069722 \\ \hline
+        Land Cloud Cover & 0.01 & 0.01 & 0.01 \\ \hline
+        Scene Cloud Cover L1 & 0.01 & 0.10 & 0.01 \\ \hline
+        Ground Control Points Model & 537 & 568 & 511 \\ \hline
+        Geometric RMSE Model & 6517 & 6132 & 6777 \\ \hline
+        Geometric RMSE Model X & 4631 & 4199 & 4899 \\ \hline
+        Geometric RMSE Model Y & 4586 & 4468 & 4683 \\ \hline
+        Processing Software Version & LPGS\_15.3.1c & LPGS\_15.3.1c & LPGS\_15.4.0 \\ \hline
+        Sun Elevation L0RA & 46.81303022 & 52.31490489 & 44.35249578 \\ \hline
+        Sun Azimuth L0RA & 139.03612161 & 132.76708087 & 142.18104190 \\ \hline
+        TIRS SSM Model & FINAL & FINAL & FINAL \\ \hline
+        Data Type L2 & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP \\ \hline
+        Satellite & 8 & 8 & 8 \\ \hline
+        Scene Center Lat DMS & "20°13'48.04""N" & "20°13'47.89""N" & "20°13'47.39""N" \\ \hline
+        Scene Center Long DMS & "85°06'11.16""E" & "85°05'14.89""E" & "85°05'49.38""E" \\ \hline
+        Corner Upper Left Lat DMS & "21°16'11.10""N" & "21°16'10.16""N" & "21°16'10.70""N" \\ \hline
+        Corner Upper Left Long DMS & "83°58'48.18""E" & "83°57'56.20""E" & "83°58'27.41""E" \\ \hline
+        Corner Upper Right Lat DMS & "21°17'41.71""N" & "21°17'41.46""N" & "21°17'41.60""N" \\ \hline
+        Corner Upper Right Long DMS & "86°11'48.91""E" & "86°10'56.86""E" & "86°11'28.10""E" \\ \hline
+        Corner Lower Left Lat DMS & "19°09'09.76""N" & "19°09'08.93""N" & "19°09'09.43""N" \\ \hline
+        Corner Lower Left Long DMS & "84°01'14.38""E" & "84°00'23.08""E" & "84°00'53.86""E" \\ \hline
+        Corner Lower Right Lat DMS & "19°10'30.65""N" & "19°10'30.43""N" & "19°10'30.54""N" \\ \hline
+        Corner Lower Right Long DMS & "86°12'27.86""E" & "86°11'36.49""E" & "86°12'07.31""E" \\ 
+        \midrule
+        \midrule
+        	\textbf{Data Set Attribute} & \textbf{Attribute Value} & \textbf{Attribute Value} & \textbf{Attribute Value} \\ \hline
+        \textbf{Landsat Scene Identifier} & LC91400462022044LGN01 & LC91400462023063LGN00 & LC81400462024042LGN00 \\ \hline
+        \textbf{Date Acquired} & 2022/02/13 & 2023/03/04 & 2024/02/11 \\ \hline
+        \textbf{Roll Angle} & 0 & 0 & -1 \\ \hline
+        \textbf{Start Time} & 2022-02-13 04:44:06 & 2023-03-04 04:44:07 & 2024-02-11 04:43:59 \\ \hline
+        \textbf{Stop Time} & 2022-02-13 04:44:38 & 2023-03-04 04:44:39 & 2024-02-11 04:44:31 \\ \hline
+        \textbf{Land Cloud Cover} & 0.01 & 0.01 & 1.35 \\ \hline
+        \textbf{Scene Cloud Cover L1} & 0.01 & 0.01 & 1.24 \\ \hline
+        \textbf{Ground Control Points Model} & 556 & 473 & 454 \\ \hline
+        \textbf{Geometric RMSE Model} & 6320 & 6977 & 6930 \\ \hline
+        \textbf{Geometric RMSE Model X} & 4628 & 4820 & 4746 \\ \hline
+        \textbf{Geometric RMSE Model Y} & 4304 & 5044 & 5049 \\ \hline
+        \textbf{Processing Software Version} & LPGS\_16.2.0 & LPGS\_16.2.0 & LPGS\_16.3.1 \\ \hline
+        \textbf{Sun Elevation L0RA} & 46.93750742 & 52.43682914 & 46.26502602 \\ \hline
+        \textbf{Sun Azimuth L0RA} & 139.05519463 & 132.73529917 & 139.75153012 \\ \hline
+        \textbf{TIRS SSM Model} & N/A & N/A & FINAL \\ \hline
+        \textbf{Data Type L2} & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP & OLI\_TIRS\_L2SP \\ \hline
+        \textbf{Satellite} & 9 & 9 & 8 \\ \hline
+        \textbf{Scene Center Lat DMS} & "20°13'47.24""N" & "20°13'48.14""N" & "20°13'46.99""N" \\ \hline
+        \textbf{Scene Center Long DMS} & "85°04'03.04""E" & "85°03'42.62""E" & "85°02'54.24""E" \\ \hline
+        \textbf{Corner Upper Left Lat DMS} & "21°16'08.83""N" & "21°16'08.47""N" & "21°16'07.54""N" \\ \hline
+        \textbf{Corner Upper Left Long DMS} & "83°56'43.44""E" & "83°56'22.63""E" & "83°55'30.65""E" \\ \hline
+        \textbf{Corner Upper Right Lat DMS} & "21°17'41.10""N" & "21°17'40.99""N" & "21°17'40.74""N" \\ \hline
+        \textbf{Corner Upper Right Long DMS} & "86°09'43.99""E" & "86°09'23.15""E" & "86°08'31.09""E" \\ \hline
+        \textbf{Corner Lower Left Lat DMS} & "19°09'07.78""N" & "19°09'07.42""N" & "19°09'06.59""N" \\ \hline
+        \textbf{Corner Lower Left Long DMS} & "83°59'11.29""E" & "83°58'50.77""E" & "83°57'59.51""E" \\ \hline
+        \textbf{Corner Lower Right Lat DMS} & "19°10'30.11""N" & "19°10'30""N" & "19°10'29.78""N" \\ \hline
+        \textbf{Corner Lower Right Long DMS} & "86°10'24.60""E" & "86°10'04.04""E" & "86°09'12.71""E" \\ \bottomrule
+    \end{tabularx}
+    \end{adjustwidth}
+\end{table}
+
+%------------------------ App 2 -------------->
+\section[\appendixname~\thesection]{Class-Separability Matrices for Land Cover Classes}\label{AppB}
+
+\subsection[\appendixname~\thesubsection]{Class-Separability Matrices: 2019  and 2020}
+
+\begin{adjustwidth}{-\extralength}{0cm}
+%\centering %% If there is a figure in wide page, please release command \centering
+\begin{equation}
+\footnotesize
+\begin{vmatrix}
+    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 1.6 & 0 &  &  &  &  &  &  &  &  \\
+3 & 3.1 & 1.4 & 0 &  &  &  &  &  &  &  \\
+4 & 5.8 & 2.4 & 0.7 & 0 &  &  &  &  &  &  \\
+5 & 6.5 & 2.8 & 1.2 & 0.8 & 0 &  &  &  &  &  \\          
+6 & 7.6 & 3.2 & 1.8 & 1.8 & 1.2 & 0 &  &  &  &  \\   
+7 & 6.0 & 2.6 & 1.3 & 1.4 & 1.2 & 0.6 & 0 &  &  &  \\  
+8 & 8.2 & 3.6 & 2.4 & 2.7 & 2.3 & 1.1 & 1.1 & 0 &  &  \\
+9 & 8.2 & 4.0 & 3.0 & 3.4 & 3.0 & 2.0 & 2.0 & 2.0 & 0 &  \\   
+10 & 8.5 & 5.0 & 4.5 & 5.1 & 4.8 & 4.0 & 3.9 & 3.2 & 2.3 & 0 \\      
+\end{vmatrix}
+ %
+\hspace{3pt}
+\begin{vmatrix}
+    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 1.4 & 0 &  &  &  &  &  &  &  &  \\
+3 & 3.5 & 1.6 & 0 &  &  &  &  &  &  &  \\
+4 & 5.9 & 2.4 & 0.7 & 0 &  &  &  &  &  &  \\
+5 & 5.1 & 2.4 & 1.0 & 0.6 & 0 &  &  &  &  &  \\    
+6 & 6.7 & 2.8 & 1.5 & 1.3 & 0.9 & 0 &  &  &  &  \\   
+7 & 5.6 & 2.4 & 1.5 & 1.4 & 1.3 & 0.6 & 0 &  &  &  \\  
+8 & 7.3 & 3.1 & 2.4 & 2.5 & 2.0 & 1.2 & 0.9 & 0 &  &  \\
+9 & 7.1 & 3.4 & 2.9 & 3.1 & 2.7 & 2.1 & 1.7 & 1.0 & 0 &  \\   
+10 & 6.5 & 4.2 & 4.0 & 4.1 & 3.8 & 3.5 & 3.3 & 2.9 & 2.1 & 0 \\      
+\end{vmatrix} 
+\end{equation}
+\end{adjustwidth}
+
+\subsection[\appendixname~\thesubsection]{Class-Separability Matrices: 2021 and 2022}
+
+\begin{adjustwidth}{-\extralength}{0cm}
+%\centering %% If there is a figure in wide page, please release command \centering
+\begin{equation}
+\footnotesize
+\begin{vmatrix}
+    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 1.5 & 0 &  &  &  &  &  &  &  &  \\
+3 & 3.1 & 1.6 & 0 &  &  &  &  &  &  &  \\
+4 & 5.3 & 2.5 & 0.7 & 0 &  &  &  &  &  &  \\
+5 & 5.6 & 2.8 & 1.4 & 1.0 & 0 &  &  &  &  &  \\
+6 & 6.7 & 2.9 & 1.5 & 1.3 & 0.8 & 0 &  &  &  &  \\  
+7 & 5.3 & 2.4 & 1.5 & 1.6 & 1.3 & 0.7 & 0 &  &  &  \\  
+8 & 7.5 & 3.4 & 2.5 & 2.6 & 1.6 & 1.2 & 0.9 & 0 &  &  \\
+9 & 7.8 & 3.9 & 3.2 & 3.4 & 2.4 & 2.2 & 1.8 & 1.1 & 0 &  \\   
+10 & 6.8 & 4.3 & 3.8 & 3.9 & 3.2 & 3.2 & 2.9 & 2.5 & 1.7 & 0 \\      
+\end{vmatrix}
+ %
+ \hspace{3pt}
+ \begin{vmatrix}
+    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 1.5 & 0 &  &  &  &  &  &  &  &  \\
+3 & 2.6 & 1.4 & 0 &  &  &  &  &  &  &  \\
+4 & 5.4 & 2.6 & 0.7 & 0 &  &  &  &  &  &  \\
+5 & 6.5 & 3.0 & 1.1 & 0.8 & 0 &  &  &  &  &  \\    
+6 & 5.9 & 3.1 & 1.5 & 1.4 & 0.7 & 0 &  &  &  &  \\   
+7 & 5.6 & 2.8 & 1.3 & 1.6 & 1.2 & 0.9 & 0 &  &  &  \\  
+8 & 7.3 & 3.7 & 2.1 & 2.7 & 2.2 & 1.4 & 1.0 & 0 &  &  \\
+9 & 7.6 & 4.1 & 2.7 & 3.4 & 3.0 & 2.2 & 1.8 & 1.0 & 0 &  \\  
+10 & 7.8 & 5.1 & 4.4 & 5.3 & 5.0 & 4.3 & 4.1 & 3.6 & 2.7 & 0 \\      
+ \end{vmatrix} 
+\end{equation}
+\end{adjustwidth}
+
+\subsection[\appendixname~\thesubsection]{Class-Separability Matrices: 2023 and 2024}
+
+\begin{adjustwidth}{-\extralength}{0cm}
+%\centering %% If there is a figure in wide page, please release command \centering
+\begin{equation}
+\footnotesize
+\begin{vmatrix}
+    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 1.7 & 0 &  &  &  &  &  &  &  &  \\
+3 & 4.1 & 1.6 & 0 &  &  &  &  &  &  &  \\
+4 & 4.6 & 1.9 & 0.5 & 0 &  &  &  &  &  &  \\
+5 & 7.2 & 2.5 & 0.9 & 0.9 & 0 &  &  &  &  &  \\       
+6 & 5.9 & 2.2 & 1.2 & 1.6 & 0.9 & 0 &  &  &  &  \\   
+7 & 8.3 & 3.0 & 1.8 & 1.9 & 1.2 & 0.7 & 0 &  &  &  \\  
+8 & 8.7 & 3.4 & 2.5 & 2.7 & 2.1 & 1.2 & 1.0 & 0 &  &  \\
+9 & 8.8 & 3.8 & 3.1 & 3.2 & 2.8 & 2.0 & 1.8 & 1.0 & 0 &  \\   
+10 & 6.3 & 3.7 & 3.4 & 3.4 & 3.2 & 2.7 & 2.6 & 2.1 & 1.5 & 0 \\      
+\end{vmatrix}\label{2023}
+ %
+ \hspace{3pt}
+ \begin{vmatrix}
+    & 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 & 9 & 10 \\
+1 & 0 &  &  &  &  &  &  &  &  &  \\
+2 & 1.5 & 0 &  &  &  &  &  &  &  &  \\
+3 & 3.3 & 1.8 & 0 &  &  &  &  &  &  &  \\
+4 & 5.7 & 2.8 & 0.6 & 0 &  &  &  &  &  &  \\
+5 & 5.2 & 2.8 & 1.2 & 1.0 & 0 &  &  &  &  &  \\          
+6 & 6.7 & 3.2 & 1.2 & 1.2 & 0.6 & 0 &  &  &  &  \\   
+7 & 5.7 & 2.8 & 1.3 & 1.6 & 1.1 & 0.7 & 0 &  &  &  \\  
+8 & 7.5 & 3.8 & 2.1 & 2.5 & 1.4 & 1.3 & 0.8 & 0 &  &  \\
+9 & 7.1 & 4.0 & 2.7 & 3.1 & 2.1 & 2.2 & 1.6 & 1.0 & 0 &  \\   
+10 & 7.2 & 5.0 & 4.2 & 4.7 & 3.8 & 4.0 & 3.5 & 3.2 & 2.3 & 0 \\      
+ \end{vmatrix} 
+\end{equation}
+
+\end{adjustwidth}
+%------------------------ App 3 -------------->
+\section[\appendixname~\thesection]{Computed Class Means for Land Cover Classes}\label{AppC}
+\vspace{-9pt} 
+
+\begin{table}[H]
+\caption{\hl{Class means} %MDPI: Table 1 and Table A2 have same labels {tab01}. Please check and revise.
+ of Digital Numbers (DNs) of pixels computed for pixels assigned to 10 land cover classes in the landscapes around Chilika Lake within each Landsat 8-9 OLI/TIRS band (1 to 7) for the years 2019 to 2024.\label{tab01}}
+	\begin{adjustwidth}{-\extralength}{0cm}
+		\newcolumntype{C}{>{\centering\arraybackslash}X}
+		\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+		\begin{tabularx}{\fulllength}{LCCCCCCC}
+			\toprule
+			\textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7} \\ \midrule 
+\bf{2019} &  &  &  &  &  &  & \\
+\midrule
+1 & 7384.59 & 7627.99 & 7895.94 & 7432.46 & 7311.54 & 7522.6 & 7534.26 \\
+2 & 8643.32 & 9065.21 & 10,097.8 & 9576.69 & 8982.72 & 8163.85 & 7900.08 \\
+3 & 7909.62 & 8189.18 & 9032.65 & 8872.02 & 13,230.6 & 11,239.2 & 9522.02 \\
+4 & 7855.42 & 8099.7 & 9003.44 & 8780.11 & 15,341.4 & 12,452.6 & 9902.94 \\
+5 & 7993.15 & 8247.89 & 9267.59 & 9042.79 & 16,989.7 & 13,587.9 & 10,478.3 \\
+6 & 8356.75 & 8702.28 & 9805.76 & 9943.78 & 16,308 & 15,025.3 & 11,968.9 \\
+7 & 8386.91 & 8760.24 & 9764.89 & 10,023.5 & 14,226.4 & 14,156.7 & 11,883.2 \\
+8 & 8770.28 & 9187.13 & 10,314.4 & 10,890.7 & 15,345.3 & 16,391.3 & 13,700.7 \\
+9 & 9215.28 & 9707.92 & 10,991.3 & 11,942.4 & 16,298 & 18,419.5 & 15,557.1 \\
+10 & 10,984.1 & 11,566.3 & 13,775 & 15,936.7 & 18,901.8 & 22,878.1 & 21,892.5 \\
+\midrule
+\bf{2020} &  &  &  & & & & \\
+\midrule
+1 & 7362.63 & 7605.24 & 8058.61 & 7428.78 & 7302.72 & 7611.18 & 7600.81 \\
+2 & 8799.63 & 9212.01 & 10,298.1 & 9846.45 & 9447.31 & 8374.1 & 8010.46 \\
+3 & 7943.86 & 8190.79 & 9124.49 & 8775.28 & 13,978.1 & 11,732.6 & 9604.04 \\
+4 & 7951.76 & 8182.82 & 9148.86 & 8762.19 & 15,483.8 & 12,974.3 & 10,132.6 \\
+5 & 8046.6 & 8290.53 & 9367.25 & 8877.5 & 17,339.2 & 13,624.9 & 10,362.4 \\
+6 & 8289.78 & 8579.24 & 9693.26 & 9484.22 & 16,220.4 & 14,673.9 & 11,489.4 \\
+7 & 8460.6 & 8784.33 & 9843.28 & 9877.32 & 14,561 & 14,590 & 12,004.6 \\
+8 & 8682.86 & 9047.62 & 10,243.8 & 10,406.1 & 15,846.7 & 16,209.3 & 13,175.8 \\
+9 & 9103.29 & 9524.9 & 10,833.7 & 11,361.1 & 16,366.5 & 18,052.3 & 15,014.9 \\
+10 & 11,001.5 & 11,588.6 & 13,781.4 & 15,754.9 & 19,292 & 23,392.5 & 21,832.9 \\
+\midrule
+
+\bf{2021} &  &  &  & & & & \\
+\midrule
+1 & 7313.11 & 7667.41 & 8116.02 & 7492.57 & 7333.71 & 7574.41 & 7569.82 \\
+2 & 8559.44 & 9073.05 & 10,170.7 & 9669.56 & 8743.74 & 8092.44 & 7874.43 \\
+3 & 7890.09 & 8128.26 & 8880.14 & 8688.48 & 13,228.5 & 11,313.2 & 9513.12 \\
+4 & 7937.49 & 8150.84 & 8974.22 & 8708.31 & 15,426.7 & 12,674.9 & 10,038.2 \\
+5 & 8177.43 & 8412.77 & 9402.44 & 9144.78 & 17,531.1 & 14,258 & 10,941.5 \\
+6 & 8323.64 & 8323.64 & 9565.02 & 9675.27 & 15,282.8 & 14,491.2 & 11,722 \\
+7 & 8517.84 & 8925.77 & 9920.3 & 10,269.8 & 13,560.5 & 14,131.2 & 12,233 \\
+8 & 8759.76 & 9162.3 & 10,257 & 10,789.3 & 15,470.1 & 16,325.2 & 13,607.4 \\
+9 & 9185.24 & 9675.96 & 10,914.1 & 11,894.1 & 16,279 & 18,494.3 & 15,564 \\
+10 & 10,665.1 & 11,305.1 & 13,359.4 & 15,356.5 & 18,762.9 & 22,569.6 & 21,150.5 \\
+\midrule
+\bf{2022} &  &  &  & & & & \\
+\midrule
+1 & 7287.88 & 7542.4 & 7718.15 & 7333.43 & 7328.27 & 7592.25 & 7602.72 \\
+2 & 8393.71 & 8875.65 & 10,056.4 & 9608.75 & 8587.92 & 7874.1 & 7714.56 \\
+3 & 7980.49 & 8174.29 & 8866.31 & 8668.13 & 12,794.7 & 10,899 & 9330.4 \\
+4 & 7894.2 & 8035.98 & 8749.86 & 8407.39 & 15,201.5 & 12,022.1 & 9583.49 \\
+5 & 8043.54 & 8188.44 & 8998.54 & 8642.16 & 16,500.8 & 13,086.8 & 10,175.2 \\
+6 & 8239.34 & 8394.65 & 9357.1 & 8940.95 & 18,166.3 & 14,180.8 & 10,795.1 \\
+7 & 8373.31 & 8653.25 & 9575.82 & 9666.31 & 14,750 & 14,098.9 & 11,638.9 \\
+8 & 8681.73 & 9012.21 & 10,079 & 10,388.4 & 15,793.3 & 15,933.3 & 13,111 \\
+9 & 9087.7 & 9499.76 & 10,744.1 & 11,422.2 & 16,621.3 & 17,967 & 14,981.3 \\
+10 & 11,402 & 12,007.2 & 14,459.4 & 16,913.6 & 20,170.8 & 24,147.3 & 23,184.8 \\
+
+	\bottomrule
+		\end{tabularx}
+	\end{adjustwidth}
+	%\noindent{\footnotesize{* Tables may have a footer.}}
+\end{table}
+\begin{table}[H]\ContinuedFloat
+\caption{\emph{Cont}.\label{tab01}}
+	\begin{adjustwidth}{-\extralength}{0cm}
+		\newcolumntype{C}{>{\centering\arraybackslash}X}
+		\newcolumntype{L}{>{\raggedright\arraybackslash}X}
+		\begin{tabularx}{\fulllength}{LCCCCCCC}
+			\toprule
+\textbf{Class} & \textbf{Band 1} & \textbf{Band 2} & \textbf{Band 3} & \textbf{Band 4} & \textbf{Band 5} & \textbf{Band 6} & \textbf{Band 7} \\ \midrule 
+
+
+\bf{2023} &  &  &  & & & & \\
+\midrule
+1 & 7304.03 & 7602.46 & 7970.98 & 7495.23 & 7370.22 & 7582.83 & 7594.02 \\
+2 & 8642.8 & 9116.27 & 10,225.1 & 9774.06 & 9373.03 & 8426.53 & 8095.8 \\
+3 & 8014.89 & 8370.33 & 9293.49 & 9184.49 & 13,666.4 & 12,570.5 & 10,418.6 \\
+4 & 7968.43 & 8317.51 & 9403.97 & 9059.22 & 16,418 & 13,040.4 & 10,214.3 \\
+5 & 8206.12 & 8585.66 & 9631.98 & 9656.67 & 15,258.8 & 14,373 & 11,402.8 \\
+6 & 8608.63 & 9043.92 & 9991.65 & 10,366.6 & 13,513.2 & 14,643.5 & 12,720 \\
+7 & 8548.43 & 8996.5 & 10,126.3 & 10,475.4 & 15,733.1 & 15,917.6 & 12,836.8 \\
+8 & 8930.24 & 9432.99 & 10,581.5 & 11,287.2 & 15,432.7 & 17,203 & 14,389.8 \\
+9 & 9276.42 & 9835.91 & 11,120.3 & 12,167.4 & 16,591.8 & 19,125.6 & 15,989.6 \\
+10 & 10,626.8 & 11,262.9 & 13,202.7 & 15,146.2 & 18,487.7 & 22,653.8 & 21,910.9 \\
+\midrule
+\bf{2024} &  &  &  & & & & \\
+\midrule 
+1 & 7381.12 & 7610.35 & 8182.73 & 7489.11 & 7376.46 & 7674.92 & 7641.93 \\
+2 & 8848.7 & 9278.52 & 10,342.7 & 9654.98 & 9050.44 & 8198.38 & 7879.74 \\
+3 & 7962.57 & 8225.6 & 9233.13 & 8808.4 & 13,449.8 & 11,533.5 & 9636.85 \\
+4 & 7885.21 & 8122.14 & 9193.83 & 8670.85 & 15,442.6 & 12,508.1 & 9847.4 \\
+5 & 8119.25 & 8419.77 & 9677.19 & 9141.91 & 17,614 & 14,001.8 & 10,667.5 \\
+6 & 8197.23 & 8499.11 & 9635.42 & 9360.85 & 15,391.6 & 14,031.7 & 11,128.3 \\
+7 & 8467.78 & 8852.79 & 10,008.4 & 10,005.2 & 13,939.7 & 14,177.3 & 11,928.9 \\
+8 & 8602.61 & 9007.3 & 10,280.5 & 10,373.2 & 15,568 & 15,923.8 & 12,996.3 \\
+9 & 9060 & 9554.25 & 10,903.5 & 11,426.4 & 16,024.9 & 17,919.3 & 14,963.6 \\
+10 & 11,029.6 & 11,776.7 & 14,159 & 16,012.6 & 19,470.8 & 23,328.6 & 21,960.9 \\
+			\bottomrule
+		\end{tabularx}
+	\end{adjustwidth}
+	%\noindent{\footnotesize{* Tables may have a footer.}}
+\end{table}
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{adjustwidth}{-\extralength}{0cm}
+%%\printendnotes[custom] % Un-comment to print a list of endnotes
+%\begin{thebibliography}{999}
+\reftitle{References}
+\begin{thebibliography}{999}
+
+\bibitem[Amaral \em{et~al.}(2023)Amaral, Santos-Echeandía, Ortega, Álvarez
+  Salgado, and Forja]{AMARAL2023165264}
+Amaral, V.; Santos-Echeandía, J.; Ortega, T.; Álvarez Salgado, X.; Forja, J.
+\newblock Dissolved organic matter distribution in the water column and
+  sediment pore water in a highly anthropized coastal lagoon (Mar Menor,
+  Spain): Characteristics, sources, and benthic fluxes.
+\newblock {\em Sci. Total Environ.} {\bf 2023}, {\em 896},~165264.
+\newblock {\url{https://doi.org/10.1016/j.scitotenv.2023.165264}}.
+
+\bibitem[Xue \em{et~al.}(2023)Xue, Wang, Wu, Lu, and Diao]{XUE2023103048}
+Xue, B.; Wang, Z.; Wu, P.; Lu, Y.; Diao, M.
+\newblock Effects of geomorphic-induced turbulence on horizontal mixing in the
+  coastal lagoon Xiaohai in China.
+\newblock {\em Reg. Stud. Mar. Sci.} {\bf 2023}, {\em
+  64},~103048.
+\newblock {\url{https://doi.org/10.1016/j.rsma.2023.103048}}.
+
+\bibitem[Mao and Xia(2023)]{MAO2023102276}
+Mao, M.; Xia, M.
+\newblock Seasonal dynamics of water circulation and exchange flows in a
+  shallow lagoon-inlet-coastal ocean system.
+\newblock {\em Ocean. Model.} {\bf 2023}, {\em 186},~102276.
+\newblock {\url{https://doi.org/10.1016/j.ocemod.2023.102276}}.
+
+\bibitem[Cebrian \em{et~al.}(2009)Cebrian, Corcoran, Stutes, Stutes, and
+  Pennock]{CEBRIAN20099}
+Cebrian, J.; Corcoran, A.A.; Stutes, A.L.; Stutes, J.P.; Pennock, J.R.
+\newblock Effects of ultraviolet-B radiation and nutrient enrichment on the
+  productivity of benthic microalgae in shallow coastal lagoons of the North
+  Central Gulf of Mexico.
+\newblock {\em J. Exp. Mar. Biol. Ecol.} {\bf 2009},
+  {\em 372},~9--21.
+\newblock {\url{https://doi.org/10.1016/j.jembe.2009.02.009}}.
+
+\bibitem[Mateos-Molina \em{et~al.}(2024)Mateos-Molina, Bejarano, Pittman,
+  Möller, Antonopoulou, and Jabado]{MATEOSMOLINA2024116117}
+Mateos-Molina, D.; Bejarano, I.; Pittman, S.J.; Möller, M.; Antonopoulou, M.;
+  Jabado, R.W.
+\newblock Coastal lagoons in the United Arab Emirates serve as critical
+  habitats for globally threatened marine megafauna.
+\newblock {\em Mar. Pollut. Bull.} {\bf 2024}, {\em 200},~116117.
+\newblock {\url{https://doi.org/10.1016/j.marpolbul.2024.116117}}.
+
+\bibitem[Zamora-López \em{et~al.}(2023)Zamora-López, Guerrero-Gómez,
+  Torralva, Zamora-Marín, Guillén-Beltrán, and
+  Oliva-Paterna]{ZAMORALOPEZ2023108447}
+Zamora-López, A.; Guerrero-Gómez, A.; Torralva, M.; Zamora-Marín, J.M.;
+  Guillén-Beltrán, A.; Oliva-Paterna, F.J.
+\newblock Shallow waters as critical habitats for fish assemblages under
+  eutrophication-mediated events in a coastal lagoon.
+\newblock {\em Estuar. Coast. Shelf Sci.} {\bf 2023}, {\em
+  291},~108447.
+\newblock {\url{https://doi.org/10.1016/j.ecss.2023.108447}}.
+
+\bibitem[Mignucci \em{et~al.}(2023)Mignucci, Forget, Villeneuve, Derridj,
+  McKindsey, McKenzie, and Bourjea]{MIGNUCCI2023108450}
+Mignucci, A.; Forget, F.; Villeneuve, R.; Derridj, O.; McKindsey, C.W.;
+  McKenzie, D.J.; Bourjea, J.
+\newblock Residency, home range and inter-annual fidelity of three coastal fish
+  species in a Mediterranean coastal lagoon.
+\newblock {\em Estuar. Coast. Shelf Sci.} {\bf 2023}, {\em
+  292},~108450.
+\newblock {\url{https://doi.org/10.1016/j.ecss.2023.108450}}.
+
+\bibitem[Pérez-Ruzafa \em{et~al.}(2019)Pérez-Ruzafa, Pérez-Ruzafa, Newton,
+  and Marcos]{PEREZRUZAFA2019253}
+Pérez-Ruzafa, A.; Pérez-Ruzafa, I.M.; Newton, A.; Marcos, C.
+\newblock Chapter 15---Coastal Lagoons: Environmental Variability, Ecosystem
+  Complexity, and Goods and Services Uniformity. In {\em Coasts and Estuaries};
+  Wolanski, E., Day, J.W., Elliott, M., Ramachandran, R., Eds.; Elsevier:  \hl{Amsterdam, The Netherlands,} 2019; pp. 253--276.
+  %MDPI: Newly added and/or altered information. Please confirm. The following highlights are the same.
+\newblock {\url{https://doi.org/10.1016/B978-0-12-814003-1.00015-0}}.
+
+\bibitem[Kjerfve(1986)]{KJERFVE198663}
+Kjerfve, B.
+\newblock Comparative Oceanography of Coastal Lagoons. In {\em Estuarine
+  Variability}; Wolfe, D.A., Ed.; Academic Press:  \hl{Cambridge, MA, USA,} 
+1986; pp. 63--81.
+\newblock
+  {\url{https://doi.org/10.1016/B978-0-12-761890-6.50009-5}}.
+
+\bibitem[Boyd \em{et~al.}(1992)Boyd, Dalrymple, and Zaitlin]{BOYD1992139}
+Boyd, R.; Dalrymple, R.; Zaitlin, B.
+\newblock Classification of clastic coastal depositional environments.
+\newblock {\em Sediment. Geol.} {\bf 1992}, {\em 80},~139--150.
+\url{https://doi.org/10.1016/0037-0738(92)90037-R}.
+
+\bibitem[Danish \em{et~al.}(2020)Danish, Tripathy, and
+  Rahaman]{DANISH2020103816}
+Danish, M.; Tripathy, G.R.; Rahaman, W.
+\newblock Submarine groundwater discharge to a tropical coastal lagoon (Chilika
+  lagoon, India): An estimation using Sr isotopes.
+\newblock {\em Mar. Chem.} {\bf 2020}, {\em 224},~103816.
+\newblock {\url{https://doi.org/10.1016/j.marchem.2020.103816}}.
+
+\bibitem[Kumar \em{et~al.}(2016)Kumar, Equeenuddin, Mishra, and
+  Acharya]{KUMAR2016155}
+Kumar, A.; Equeenuddin, S.M.; Mishra, D.R.; Acharya, B.C.
+\newblock Remote monitoring of sediment dynamics in a coastal lagoon: Long-term
+  spatio-temporal variability of suspended sediment in Chilika.
+\newblock {\em Estuar. Coast. Shelf Sci.} {\bf 2016}, {\em
+  170},~155--172.
+\newblock {\url{https://doi.org/10.1016/j.ecss.2016.01.018}}.
+
+\bibitem[Bortolin \em{et~al.}(2020)Bortolin, Weschenfelder, Fernandes,
+  Bitencourt, Möller, García-Rodríguez, and Toldo]{BORTOLIN2020105782}
+Bortolin, E.; Weschenfelder, J.; Fernandes, E.; Bitencourt, L.; Möller, O.;
+  García-Rodríguez, F.; Toldo, E.
+\newblock Reviewing sedimentological and hydrodynamic data of large shallow
+  coastal lagoons for defining mud depocenters as environmental monitoring
+  sites.
+\newblock {\em Sediment. Geol.} {\bf 2020}, {\em 410},~105782.
+\newblock {\url{https://doi.org/10.1016/j.sedgeo.2020.105782}}.
+
+\bibitem[Larson(2012)]{Larson2012}
+Larson, M. Coastal Lagoons.
+\newblock In {\em Encyclopedia of Lakes and Reservoirs}; Springer: Dordrecht, The Netherlands,
+ 2012; pp. 171--174.
+\newblock {\url{https://doi.org/10.1007/978-1-4020-4410-6_236}}.
+
+\bibitem[Pérez-Ruzafa \em{et~al.}(2024)Pérez-Ruzafa, Molina-Cuberos,
+  García-Oliva, Umgiesser, and Marcos]{PEREZRUZAFA2024171264}
+Pérez-Ruzafa, A.; Molina-Cuberos, G.J.; García-Oliva, M.; Umgiesser, G.;
+  Marcos, C.
+\newblock Why coastal lagoons are so productive? Physical bases of fishing
+  productivity in coastal lagoons. {\em Sci. Total Environ.} {\bf 2024}, {\em 922},~171264.
+\newblock
+  {\url{https://doi.org/10.1016/j.scitotenv.2024.171264}}.
+
+\bibitem[Kennish(2016)]{Kennish2016}
+Kennish, M.J., Coastal Lagoons. In {\em Encyclopedia of Estuaries}; Springer: Dordrecht, The Netherlands,
+  2016; pp. 140--143.
+\newblock {\url{https://doi.org/10.1007/978-94-017-8801-4_47}}.
+
+\bibitem[Bastos \em{et~al.}(2023)Bastos, Roebeling, Alves, Villasante, and
+  {Magalhães Filho}]{BASTOS2023102144}
+Bastos, M.; Roebeling, P.; Alves, F.; Villasante, S.; {Magalhães Filho}, L.
+\newblock High risk water pollution hazards affecting Aveiro coastal lagoon
+  (Portugal) – A habitat risk assessment using InVEST.
+\newblock {\em Ecol. Inform.} {\bf 2023}, {\em 76},~102144.
+\newblock {\url{https://doi.org/10.1016/j.ecoinf.2023.102144}}.
+
+\bibitem[Suwandhahannadi \em{et~al.}(2024)Suwandhahannadi, {Le De},
+  Wickramasinghe, and Dahanayaka]{SUWANDHAHANNADI2024107069}
+Suwandhahannadi, W.; {Le De}, L.; Wickramasinghe, D.; Dahanayaka, D.
+\newblock Community participation for assessing and managing ecosystem services
+  of coastal lagoons: A case of the Rekawa Lagoon in Sri Lanka.
+\newblock {\em Ocean. Coast. Manag.} {\bf 2024}, {\em 251},~107069.
+\newblock {\url{https://doi.org/10.1016/j.ocecoaman.2024.107069}}.
+
+\bibitem[Mohapatra \em{et~al.}(2023)Mohapatra, Manu, Kim, and
+  Rastogi]{MOHAPATRA2023163109}
+Mohapatra, M.; Manu, S.; Kim, J.Y.; Rastogi, G.
+\newblock Distinct community assembly processes and habitat specialization
+  driving the biogeographic patterns of abundant and rare bacterioplankton in a
+  brackish coastal lagoon.
+\newblock {\em Sci. Total Environ.} {\bf 2023}, {\em 879},~163109.
+\newblock {\url{https://doi.org/10.1016/j.scitotenv.2023.163109}}.
+
+\bibitem[Simantiris and Avlonitis(2023)]{SIMANTIRIS2023108231}
+Simantiris, N.; Avlonitis, M.
+\newblock Effects of future climate conditions on the zooplankton of a
+  Mediterranean coastal lagoon.
+\newblock {\em Estuar. Coast. Shelf Sci.} {\bf 2023}, {\em
+  282},~108231.
+\newblock {\url{https://doi.org/10.1016/j.ecss.2023.108231}}.
+
+\bibitem[Ghandourah \em{et~al.}(2023)Ghandourah, Orif, Al-Farawati, El-Shahawi,
+  and Abu-Zeid]{GHANDOURAH2023102982}
+Ghandourah, M.A.; Orif, M.I.; Al-Farawati, R.K.; El-Shahawi, M.S.; Abu-Zeid,
+  R.H.
+\newblock Illegal pollution loading accelerate the oxygen deficiency along the
+  coastal lagoons of eastern Red Sea.
+\newblock {\em Reg. Stud. Mar. Sci.} {\bf 2023}, {\em
+  63},~102982.
+\newblock {\url{https://doi.org/10.1016/j.rsma.2023.102982}}.
+
+\bibitem[Davis and FitzGerald(2019)]{Davis}
+Davis, R.A., Jr.; FitzGerald, D. Coastal Lagoons. In {\em Beaches and Coasts}; John Wiley \& Sons, Ltd.: \hl{Hoboken, NJ, USA,} %
+ 2019; Chapter~10; pp. 229--245.
+\newblock {\url{https://doi.org/10.1002/9781119334491.ch10}}.
+
+\bibitem[Kumari \em{et~al.}(2022)Kumari, Harshawardhan, Kushawaha, and
+  Nandi]{Kumari2022}
+Kumari, A.; Harshawardhan, R.; Kushawaha, J.; Nandi, I., Spatial Identification
+  of Vulnerable Coastal Ecosystems for Emerging Pollutants.
+\newblock In {\em Coastal Ecosystems: Environmental Importance, Current
+  Challenges and Conservation Measures}; Springer International Publishing:
+  Cham,  Switzerland, 2022; pp. 359--386.
+\newblock {\url{https://doi.org/10.1007/978-3-030-84255-0_15}}.
+
+\bibitem[Garcés-Ordóñez \em{et~al.}(2022)Garcés-Ordóñez,
+  Saldarriaga-Vélez, Espinosa-Díaz, Canals, Sánchez-Vidal, and
+  Thiel]{GARCESORDONEZ2022120366}
+Garcés-Ordóñez, O.; Saldarriaga-Vélez, J.F.; Espinosa-Díaz, L.F.; Canals,
+  M.; Sánchez-Vidal, A.; Thiel, M.
+\newblock A systematic review on microplastic pollution in water, sediments,
+  and organisms from 50 coastal lagoons across the globe.
+\newblock {\em Environ. Pollut.} {\bf 2022}, {\em 315},~120366.
+\newblock {\url{https://doi.org/10.1016/j.envpol.2022.120366}}.
+
+\bibitem[Bruschi \em{et~al.}(2023)Bruschi, Pastorino, Barceló, and
+  Renzi]{BRUSCHI2023110596}
+Bruschi, R.; Pastorino, P.; Barceló, D.; Renzi, M.
+\newblock Microplastic levels and sentinel species used to monitor the
+  environmental quality of lagoons: A state of the art in Italy.
+\newblock {\em Ecol. Indic.} {\bf 2023}, {\em 154},~110596.
+\newblock
+  {\url{https://doi.org/10.1016/j.ecolind.2023.110596}}.
+
+\bibitem[Tripathi \em{et~al.}(2022)Tripathi, Singhal, and Jha]{Tripathi2022}
+Tripathi, P.; Singhal, A.; Jha, P.K., Metal Transport and Its Impact on Coastal
+  Ecosystem.
+\newblock In {\em Coastal Ecosystems: Environmental Importance, Current
+  Challenges and Conservation Measures}; Springer International Publishing:
+  Cham, Switzerland,  
+ 2022; pp. 239--264.
+\newblock {\url{https://doi.org/10.1007/978-3-030-84255-0_10}}.
+
+\bibitem[Carrasco \em{et~al.}(2016)Carrasco, Ferreira, and
+  Roelvink]{CARRASCO2016356}
+Carrasco, A.; Ferreira, O.; Roelvink, D.
+\newblock Coastal lagoons and rising sea level: A review.
+\newblock {\em Earth Sci. Rev.} {\bf 2016}, {\em 154},~356--368.
+\newblock
+  {\url{https://doi.org/10.1016/j.earscirev.2015.11.007}}.
+
+\bibitem[Inácio \em{et~al.}(2023)Inácio, Barboza, and
+  Villoslada]{INACIO2023100491}
+Inácio, M.; Barboza, F.; Villoslada, M.
+\newblock The protection of coastal lagoons as a nature-based solution to
+  mitigate coastal floods.
+\newblock {\em Curr. Opin. Environ. Sci. Health} {\bf 2023},
+  {\em 34},~100491.
+\newblock {\url{https://doi.org/10.1016/j.coesh.2023.100491}}.
+
+\bibitem[Lunardini and {Di Cola}(2000)]{LUNARDINI2000135}
+Lunardini, F.; {Di Cola}, G.
+\newblock Oxygen dynamics in coastal and lagoon ecosystems.
+\newblock {\em Math. Comput. Model.} {\bf 2000}, {\em
+  31},~135--141.
+ {\url{https://doi.org/10.1016/S0895-7177(00)00031-5}}.
+
+\bibitem[Lugliè \em{et~al.}(2015)Lugliè, Pulina, Bruno, Mario~Padedda,
+  Teodora~Satta, and Sechi]{Luglie}
+Lugliè, A.; Pulina, S.; Bruno, M.; Mario~Padedda, B.; Teodora~Satta, C.;
+  Sechi, N. Marine toxins and climate change: the case of PSP from
+  cyanobacteria in coastal lagoons.
+\newblock In {\em Phycotoxins}; John Wiley \& Sons, Ltd.:  \hl{Hoboken, NJ, USA,} %
+ 2015; Chapter~11; pp.~239--253.
+\newblock {\url{https://doi.org/10.1002/9781118500354.ch11}}.
+
+\bibitem[Pauly and Yáñez-Arancibia(1994)]{PAULY1994377}
+Pauly, D.; Yáñez-Arancibia, A.
+\newblock Chapter 13 Fisheries In Coastal Lagoons. In {\em Coastal Lagoon
+  Processes}; Kjerfve, B., Ed.; Elsevier
+  Oceanography Series; Elsevier:  \hl{Amsterdam, The Netherlands,} %
+ 1994; Volume~60, pp. 377--399.
+\newblock
+  {\url{https://doi.org/10.1016/S0422-9894(08)70018-7}}.
+
+\bibitem[Pedregosa \em{et~al.}(2011)Pedregosa, Varoquaux, Gramfort, Michel,
+  Thirion, Grisel, Blondel, Prettenhofer, Weiss, Dubourg, Vanderplas, Passos,
+  Cournapeau, Brucher, Perrot, and Duchesnay]{scikitlearn}
+Pedregosa, F.; Varoquaux, G.; Gramfort, A.; Michel, V.; Thirion, B.; Grisel,
+  O.; Blondel, M.; Prettenhofer, P.; Weiss, R.; Dubourg, V.;  et~al.
+\newblock {Scikit-learn: Machine Learning in {P}ython}.
+\newblock {\em J. Mach. Learn. Res.} {\bf 2011}, {\em
+  12},~2825--2830.
+
+\bibitem[{GRASS Development Team}(2022)]{GRASS_GIS_software}
+{GRASS Development Team}.
+\newblock {\em {Geographic Resources Analysis Support System (GRASS GIS)
+  Software}}, Version 8.2; Open Source Geospatial Foundation: \hl{Beaverton, OR, USA} 
+,  2022.
+
+\bibitem[Sinha \em{et~al.}(2020)Sinha, Chandrasekaran, and Awasthi]{Sinha2020}
+Sinha, R.; Chandrasekaran, R.; Awasthi, N., Geomorphology, Land Use/Land Cover
+  and Sedimentary Environments of the Chilika Basin.
+\newblock In {\em Ecology, Conservation, and Restoration of Chilika Lagoon,
+  India}; Springer International Publishing: Cham, Switzerland 
+, 2020; pp. 231--250.
+\newblock {\url{https://doi.org/10.1007/978-3-030-33424-6_10}}.
+
+\bibitem[Barik \em{et~al.}(2019)Barik, Bramha, Behera, Bastia, Cooper, and
+  Rath]{BARIK2019352}
+Barik, S.K.; Bramha, S.; Behera, D.; Bastia, T.K.; Cooper, G.; Rath, P.
+\newblock Ecological health assessment of a coastal ecosystem: Case study of
+  the largest brackish water lagoon of Asia.
+\newblock {\em Mar. Pollut. Bull.} {\bf 2019}, {\em 138},~352--363.
+\newblock {\url{https://doi.org/10.1016/j.marpolbul.2018.11.056}}.
+
+\bibitem[Mishra \em{et~al.}(2022)Mishra, Acharyya, Chand, Santos, da~Silva, dos
+  Santos, Pradhan, and Kar]{MISHRA2022150769}
+Mishra, M.; Acharyya, T.; Chand, P.; Santos, C.A.G.; da~Silva, R.M.; dos
+  Santos, C.A.C.; Pradhan, S.; Kar, D.
+\newblock Response of long- to short-term tidal inlet morphodynamics on the
+  ecological ramification of Chilika lake, the tropical Ramsar wetland in
+  India.
+\newblock {\em Sci. Total Environ.} {\bf 2022}, {\em 807},~150769.
+\newblock {\url{https://doi.org/10.1016/j.scitotenv.2021.150769}}.
+
+\bibitem[Baral \em{et~al.}(2023)Baral, Mohanty, Pradhan, Rajawat, Samal, and
+  Das]{BARAL2023103248}
+Baral, R.; Mohanty, P.K.; Pradhan, S.; Rajawat, A.S.; Samal, R.N.; Das, U.
+\newblock Natural opening of a new inlet in Chilika Lagoon: A cause and impact
+  analysis.
+\newblock {\em Reg. Stud. Mar. Sci.} {\bf 2023}, {\em
+  68},~103248.
+\newblock {\url{https://doi.org/10.1016/j.rsma.2023.103248}}.
+
+\bibitem[Cuartero \em{et~al.}(2022)Cuartero, Paoletti, García-Rodríguez, and
+  Haut]{9884758}
+Cuartero, A.; Paoletti, M.E.; García-Rodríguez, P.; Haut, J.M.
+\newblock {PyCircularStats: A Python-Based Tool for Remote Sensing Circular
+  Statistics and Graphical Analysis}.
+\newblock In Proceedings of the IGARSS 2022---2022 IEEE International
+  Geoscience and Remote Sensing Symposium, \hl{Kuala Lumpur, Malaysia, 17--22 July}  
+ 2022; pp. 2876--2879.
+\newblock {\url{https://doi.org/10.1109/IGARSS46834.2022.9884758}}.
+
+\bibitem[Lemenkova and Debeir(2022)]{Lemenkova202229}
+Lemenkova, P.; Debeir, O.
+\newblock {R Libraries for Remote Sensing Data Classification by k-means
+  Clustering and NDVI Computation in Congo River Basin, DRC}.
+\newblock {\em Appl. Sci.} {\bf 2022}, {\em 12},~12554.
+\newblock {\url{https://doi.org/10.3390/app122412554}}.
+
+\bibitem[Zhang \em{et~al.}(2014)Zhang, Yue, and Guo]{6910592}
+Zhang, M.; Yue, P.; Guo, X.
+\newblock {GIScript: Towards an interoperable geospatial scripting language for
+  GIS programming}.
+\newblock In Proceedings of the 2014 The Third International Conference on
+  Agro-Geoinformatics, \hl{Beijing, China, 11--14 August}  
+ 2014; pp. 1--5.
+\newblock {\url{https://doi.org/10.1109/Agro-Geoinformatics.2014.6910592}}.
+
+\bibitem[Işik \em{et~al.}(2021)Işik, Özbey, Erol, and Tari]{9553880}
+Işik, M.S.; Özbey, V.; Erol, S.; Tari, E.
+\newblock {GNSSpy: Python Toolkit for GNSS Data}.
+\newblock In Proceedings of the 2021 IEEE International Geoscience and Remote
+  Sensing Symposium IGARSS, \hl{Brussels, Belgium, 11--16 July}  
+ 2021; pp. 8550--8553.
+\newblock {\url{https://doi.org/10.1109/IGARSS47720.2021.9553880}}.
+
+\bibitem[Lemenkova and Debeir(2022)]{Lemenkova202227}
+Lemenkova, P.; Debeir, O.
+\newblock {Satellite Image Processing by Python and R Using Landsat 9 OLI/TIRS
+  and SRTM DEM Data on Côte d’Ivoire, West Africa}.
+\newblock {\em J. Imaging} {\bf 2022}, {\em 8},~317.
+\newblock {\url{https://doi.org/10.3390/jimaging8120317}}.
+
+\bibitem[Erdem \em{et~al.}(2021)Erdem, Bayram, Bakirman, Bayrak, and
+  Akpinar]{ERDEM2021964}
+Erdem, F.; Bayram, B.; Bakirman, T.; Bayrak, O.C.; Akpinar, B.
+\newblock {An ensemble deep learning based shoreline segmentation approach
+  (WaterNet) from Landsat 8 OLI images}.
+\newblock {\em Adv. Space Res.} {\bf 2021}, {\em 67},~964--974.
+\newblock {\url{https://doi.org/10.1016/j.asr.2020.10.043}}.
+
+\bibitem[Lemenkova and Debeir(2023)]{Lemenkova202307}
+Lemenkova, P.; Debeir, O.
+\newblock {Computing Vegetation Indices from the Satellite Images Using GRASS
+  GIS Scripts for Monitoring Mangrove Forests in the Coastal Landscapes of
+  Niger Delta, Nigeria}.
+\newblock {\em J. Mar. Sci. Eng.} {\bf 2023}, {\em
+  11},~871.
+\newblock {\url{https://doi.org/10.3390/jmse11040871}}.
+
+\bibitem[Han \em{et~al.}(2023)Han, Zhang, Wang, Wang, Huang, Li, Wang, Chen,
+  Li, Feng, Fan, Zhang, and Wang]{HAN202387}
+Han, W.; Zhang, X.; Wang, Y.; Wang, L.; Huang, X.; Li, J.; Wang, S.; Chen, W.;
+  Li, X.; Feng, R.;  et~al.
+\newblock {A survey of machine learning and deep learning in remote sensing of
+  geological environment: Challenges, advances, and opportunities}.
+\newblock {\em Isprs J. Photogramm. Remote Sens.} {\bf 2023},
+  {\em 202},~87--113.
+\newblock {\url{https://doi.org/10.1016/j.isprsjprs.2023.05.032}}.
+
+\bibitem[Tarek \em{et~al.}(2023)Tarek, Sadek, and Hayet]{10292983}
+Tarek, M.; Sadek, T.; Hayet, G.
+\newblock {Flood-Prone Urban Area Mapping Using Machine Learning, a Case Study
+  of M'sila City (Algeria)}.
+\newblock In Proceedings of the 2023 International Conference on Earth
+  Observation and Geo-Spatial Information (ICEOGI), \hl{Algiers, Algeria, 22--24 May} 
+ 2023; pp. 1--4.
+\newblock {\url{https://doi.org/10.1109/ICEOGI57454.2023.10292983}}.
+
+\bibitem[Ho and Basu(2002)]{990132}
+Ho, T.K.; Basu, M.
+\newblock {Complexity measures of supervised classification problems}.
+\newblock {\em IEEE Trans. Pattern Anal. Mach. Intell.}
+  {\bf 2002}, {\em 24},~289--300.
+\newblock {\url{https://doi.org/10.1109/34.990132}}.
+
+\bibitem[Wu \em{et~al.}(2024)Wu, Liu, Ju, Zhang, Gou, He, and
+  Lei]{WU2024103612}
+Wu, L.; Liu, R.; Ju, N.; Zhang, A.; Gou, J.; He, G.; Lei, Y.
+\newblock {Landslide mapping based on a hybrid CNN-transformer network and deep
+  transfer learning using remote sensing images with topographic and spectral
+  features}.
+\newblock {\em Int. J. Appl. Earth Obs. Geoinf.} {\bf 2024}, {\em 126},~103612.
+\newblock {\url{https://doi.org/10.1016/j.jag.2023.103612}}.
+
+\bibitem[G \em{et~al.}(2019)G, Goswami, Samal, and Choudhury]{G2019595}
+G, V.; Goswami, S.; Samal, R.; Choudhury, S.
+\newblock Monitoring of Chilika Lake mouth dynamics and quantifying rate of
+  shoreline change using 30 m multi-temporal Landsat data.
+\newblock {\em Data Brief} {\bf 2019}, {\em 22},~595--600.
+\newblock {\url{https://doi.org/10.1016/j.dib.2018.12.082}}.
+
+\bibitem[Mishra \em{et~al.}(2023)Mishra, Chand, Beja, Santos, da~Silva, Ahmed,
+  and Kamal]{MISHRA2023162488}
+Mishra, M.; Chand, P.; Beja, S.K.; Santos, C.A.G.; da~Silva, R.M.; Ahmed, I.;
+  Kamal, A.H.M.
+\newblock Quantitative assessment of present and the future potential threat of
+  coastal erosion along the Odisha coast using geospatial tools and statistical
+  techniques.
+\newblock {\em Sci. Total Environ.} {\bf 2023}, {\em 875},~162488.
+\newblock {\url{https://doi.org/10.1016/j.scitotenv.2023.162488}}.
+
+\bibitem[Reddy \em{et~al.}(2014)Reddy, Khuroo, Krishna, Saranya, Jha, and
+  Dadhwal]{REDDY2014287}
+Reddy, C.S.; Khuroo, A.A.; Krishna, P.H.; Saranya, K.; Jha, C.; Dadhwal, V.
+\newblock Threat evaluation for biodiversity conservation of forest ecosystems
+  using geospatial techniques: A case study of Odisha, India.
+\newblock {\em Ecol. Eng.} {\bf 2014}, {\em 69},~287--303.
+\newblock {\url{https://doi.org/10.1016/j.ecoleng.2014.05.006}}.
+
+\bibitem[Hazra \em{et~al.}(2022)Hazra, Ghosh, Ghosh, Pal, and
+  Ghosh]{HAZRA2022100223}
+Hazra, S.; Ghosh, A.; Ghosh, S.; Pal, I.; Ghosh, T.
+\newblock Assessing coastal vulnerability and governance in Mahanadi Delta,
+  Odisha, India.
+\newblock {\em Prog. Disaster Sci.} {\bf 2022}, {\em 14},~100223.
+\newblock {\url{https://doi.org/10.1016/j.pdisas.2022.100223}}.
+
+\bibitem[Zhao \em{et~al.}(2011)Zhao, Wang, and Zhang]{6049966}
+Zhao, J.; Wang, Y.; Zhang, H.
+\newblock {Automated batch processing of mass remote sensing and geospatial
+  data to meet the needs of end users}.
+\newblock In Proceedings of the 2011 IEEE International Geoscience and Remote
+  Sensing Symposium, \hl{Vancouver, BC, Canada, 24--29 July} 
+ 2011; pp. 3464--3467.
+\newblock {\url{https://doi.org/10.1109/IGARSS.2011.6049966}}.
+
+\bibitem[Barma \em{et~al.}(2020)Barma, Damarla, and Tiwari]{9297369}
+Barma, S.; Damarla, S.; Tiwari, S.K.
+\newblock {Semi-Automated Technique for Vegetation Analysis in Sentinel-2
+  Multi-Spectral remote sensing images using Python}.
+\newblock In Proceedings of the 2020 4th International Conference on
+  Electronics, Communication and Aerospace Technology (ICECA), \hl{Coimbatore, India, 5--7 November } 2020; pp.~946--953.
+\newblock {\url{https://doi.org/10.1109/ICECA49313.2020.9297369}}.
+
+\bibitem[Abdali \em{et~al.}(2024)Abdali, Valadan~Zoej, Taheri~Dehkordi, and
+  Ghaderpour]{rs16010127}
+Abdali, E.; Valadan~Zoej, M.J.; Taheri~Dehkordi, A.; Ghaderpour, E.
+\newblock {A Parallel-Cascaded Ensemble of Machine Learning Models for Crop
+  Type Classification in Google Earth Engine Using Multi-Temporal Sentinel-1/2
+  and Landsat-8/9 Remote Sensing Data}.
+\newblock {\em Remote Sens.} {\bf 2024}, {\em 16}, \hl{127.}  
+\newblock {\url{https://doi.org/10.3390/rs16010127}}.
+
+\bibitem[Lukas \em{et~al.}(2023)Lukas, Melesse, and Kenea]{rs15041148}
+Lukas, P.; Melesse, A.M.; Kenea, T.T.
+\newblock {Prediction of Future Land Use/Land Cover Changes Using a Coupled
+  CA-ANN Model in the Upper Omo-Gibe River Basin, Ethiopia}.
+\newblock {\em Remote Sens.} {\bf 2023}, {\em 15}, \hl{1148}. 
+\newblock {\url{https://doi.org/10.3390/rs15041148}}.
+
+\bibitem[Amani and Shafizadeh-Moghadam(2023)]{AMANI2023108324}
+Amani, S.; Shafizadeh-Moghadam, H.
+\newblock {A review of machine learning models and influential factors for
+  estimating evapotranspiration using remote sensing and ground-based data}.
+\newblock {\em Agric. Water Manag.} {\bf 2023}, {\em 284},~108324.
+\newblock {\url{https://doi.org/10.1016/j.agwat.2023.108324}}.
+
+\bibitem[Li \em{et~al.}(2023)Li, Yigitcanlar, Nepal, Nguyen, and
+  Dur]{LI2023104653}
+Li, F.; Yigitcanlar, T.; Nepal, M.; Nguyen, K.; Dur, F.
+\newblock {Machine learning and remote sensing integration for leveraging urban
+  sustainability: A review and framework}.
+\newblock {\em Sustain. Cities Soc.} {\bf 2023}, {\em 96},~104653.
+\newblock {\url{https://doi.org/10.1016/j.scs.2023.104653}}.
+
+\bibitem[Lemenkova(2020)]{Lemenkova202021}
+Lemenkova, P.
+\newblock {Sentinel-2 for High Resolution Mapping of Slope-Based Vegetation
+  Indices Using Machine Learning by SAGA GIS}.
+\newblock {\em Transylv. Rev. Syst. Ecol. Res.}
+  {\bf 2020}, {\em 22},~17--34.
+\newblock {\url{https://doi.org/10.2478/trser-2020-0015}}.
+
+\bibitem[Tselka \em{et~al.}(2023)Tselka, Detsikas, Petropoulos, and
+  Demertzi]{TSELKA2023131}
+Tselka, I.; Detsikas, S.E.; Petropoulos, G.P.; Demertzi, I.I.
+\newblock {Chapter 7 - Google Earth Engine and machine learning classifiers for
+  obtaining burnt area cartography: a case study from a Mediterranean setting}.
+  In {\em Geoinformatics for Geosciences}; Stathopoulos, N., Tsatsaris, A.,
+  Kalogeropoulos, K., Eds.; Earth Observation, Elsevier:  \hl{Amsterdam, The Netherlands,} %
+ 2023; pp. 131--148.
+\newblock {\url{https://doi.org/10.1016/B978-0-323-98983-1.00008-9}}.
+
+\bibitem[Latif \em{et~al.}(2023)Latif, {Alyaa Binti Hazrin}, {Hoon Koo}, {Lin
+  Ng}, Chaplot, {Feng Huang}, El-Shafie, and {Najah Ahmed}]{LATIF202316}
+Latif, S.D.; {Alyaa Binti Hazrin}, N.; {Hoon Koo}, C.; {Lin Ng}, J.; Chaplot,
+  B.; {Feng Huang}, Y.; El-Shafie, A.; {Najah Ahmed}, A.
+\newblock {Assessing rainfall prediction models: Exploring the advantages of
+  machine learning and remote sensing approaches}.
+\newblock {\em Alex. Eng. J.} {\bf 2023}, {\em 82},~16--25.
+\newblock {\url{https://doi.org/10.1016/j.aej.2023.09.060}}.
+
+\bibitem[Huang \em{et~al.}(2006)Huang, Zhu, and Siew]{HUANG2006489}
+Huang, G.B.; Zhu, Q.Y.; Siew, C.K.
+\newblock {Extreme learning machine: Theory and applications}.
+\newblock {\em Neurocomputing} {\bf 2006}, {\em 70},~489--501.
+\newblock Neural Networks,
+  {\url{https://doi.org/10.1016/j.neucom.2005.12.126}}.
+
+\bibitem[Rosenblatt(1958)]{Rosenblatt}
+Rosenblatt, F.
+\newblock {The perceptron: A probabilistic model for information storage and
+  organization in the brain}.
+\newblock {\em Psychol. Rev.} {\bf 1958}, {\em 65},~386--408.
+\newblock {\url{https://doi.org/10.1037/h0042519}}.
+
+\bibitem[Ho(1995)]{598994}
+Ho, T.K.
+\newblock {Random decision forests}.
+\newblock In Proceedings of the 3rd International Conference on
+  Document Analysis and Recognition, \hl{Montreal, QC, Canada, 14--16 August} 1995; Volume~1, pp. 278--282.
+\newblock {\url{https://doi.org/10.1109/ICDAR.1995.598994}}.
+
+\bibitem[Cortes and Vapnik(1995)]{Cortes}
+Cortes, C.; Vapnik, V.
+\newblock {Support-vector networks}.
+\newblock {\em Mach. Learn.} {\bf 1995}, {\em 20},~273--297.
+\newblock {\url{https://doi.org/10.1007/BF00994018}}.
+
+\bibitem[Zhang(2004)]{Zhang2004TheOO}
+Zhang, H.
+\newblock {The Optimality of Naive Bayes}.
+\newblock In \emph{Proceedings of the Seventeenth International Florida Artificial Intelligence Research Society Conference (FLAIRS 2004)};  \hl{AAAI Press: Menlo Park, CA, USA}, 2004; pp.~1--6.
+
+\bibitem[Panda \em{et~al.}(2013)Panda, Mohanty, and Samal]{PANDA201329}
+Panda, U.; Mohanty, P.; Samal, R.
+\newblock Impact of tidal inlet and its geomorphological changes on lagoon
+  environment: A numerical model study.
+\newblock {\em Estuar. Coast. Shelf Sci.} {\bf 2013}, {\em
+  116},~29--40.
+  {\url{https://doi.org/10.1016/j.ecss.2012.06.011}}.
+
+\bibitem[Behera \em{et~al.}(2020)Behera, Parida, Karna, Raman, Suresh, Behera,
+  and Das]{BEHERA2020101328}
+Behera, P.R.; Parida, P.K.; Karna, S.K.; Raman, R.K.; Suresh, V.; Behera, B.K.;
+  Das, B.K.
+\newblock Trophic fingerprinting of Chilika, a Ramsar site and the largest
+  lagoon of Asia using Ecopath.
+\newblock {\em Reg. Stud. Mar. Sci.} {\bf 2020}, {\em
+  37},~101328.
+\newblock {\url{https://doi.org/10.1016/j.rsma.2020.101328}}.
+
+\bibitem[Barik \em{et~al.}(2017)Barik, Muduli, Mohanty, Behera, Mallick, Das,
+  Samal, Rastogi, and Pattnaik]{BARIK201739}
+Barik, S.K.; Muduli, P.R.; Mohanty, B.; Behera, A.T.; Mallick, S.; Das, A.;
+  Samal, R.; Rastogi, G.; Pattnaik, A.K.
+\newblock Spatio-temporal variability and the impact of Phailin on water
+  quality of Chilika lagoon.
+\newblock {\em Cont. Shelf Res.} {\bf 2017}, {\em 136},~39--56.
+\newblock {\url{https://doi.org/10.1016/j.csr.2017.01.019}}.
+
+\bibitem[Behera \em{et~al.}(2023)Behera, Jamal, Ahmad, Taqi, and
+  Kumar]{Behera2023}
+Behera, D.K.; Jamal, S.; Ahmad, W.S.; Taqi, M.; Kumar, R.
+\newblock Estimation of Soil Erosion Using RUSLE Model and GIS Tools: A Study
+  of Chilika Lake, Odisha.
+\newblock {\em J. Geol. Soc. India} {\bf 2023}, {\em
+  99},~406--414.
+\newblock {\url{https://doi.org/10.1007/s12594-023-2324-y}}.
+
+\bibitem[Nazneen \em{et~al.}(2021)Nazneen, Mahmood, Jafar, and Madhav]{Nazneen}
+Nazneen, S.; Mahmood, G.; Jafar, Z.; Madhav, S., Ecosystem Services of Lagoon
+  Wetlands System in India.
+\newblock In {\em Wetlands Conservation}; John Wiley \& Sons, Ltd.:  \hl{Hoboken, NJ, USA,} 
+  2021; Chapter~6, pp. 111--128.
+\newblock {\url{https://doi.org/10.1002/9781119692621.ch6}}.
+
+\bibitem[Borole(1993)]{BOROLE1993761}
+Borole, D.
+\newblock Late pleistocene sedimentation: a case study of the central Indian
+  Ocean Basin.
+\newblock {\em Deep. Sea Res. Part I Oceanogr. Res. Pap.} {\bf
+  1993}, {\em 40},~761--775.
+\newblock {\url{https://doi.org/10.1016/0967-0637(93)90070-J}}.
+
+\bibitem[Mishra and Sethi(2022)]{MISHRA2022457}
+Mishra, S.P.; Sethi, K.C.
+\newblock 19 - The imprints of Holocene climate and environmental changes in
+  the South Mahanadi Delta and the Chilika lagoon, Odisha, India—An overview.
+  In {\em Holocene Climate Change and Environment}; Kumaran, N., Damodara, P.,
+  Eds.; Elsevier:  \hl{Amsterdam, The Netherlands,} 
+  2022; pp. 457–483
+\newblock {\url{https://doi.org/10.1016/B978-0-323-90085-0.00015-2}}.
+
+\bibitem[Amir \em{et~al.}(2021)Amir, Paul, and Malik]{AMIR2021148}
+Amir, M.; Paul, D.; Malik, J.N.
+\newblock Geochemistry of Holocene sediments from Chilika Lagoon, India:
+  inferences on the sources of organic matter and variability of the Indian
+  summer monsoon.
+\newblock {\em Quat. Int.} {\bf 2021}, {\em 599-600},~148--157.
+ {\url{https://doi.org/10.1016/j.quaint.2020.08.050}}.
+
+\bibitem[Dash \em{et~al.}(2023)Dash, {Prakash Dhal}, Pati, Agnihotri, Farooqui,
+  and {Bae Seong}]{DASH2023106754}
+Dash, C.; {Prakash Dhal}, S.; Pati, P.; Agnihotri, R.; Farooqui, A.; {Bae
+  Seong}, Y.
+\newblock Climate-induced denudation of the Eastern Ghat during the Holocene: A
+  multi-proxy study from Chilika Lagoon (India).
+\newblock {\em CATENA} {\bf 2023}, {\em 221},~106754.
+\newblock {\url{https://doi.org/10.1016/j.catena.2022.106754}}.
+
+\bibitem[Mohapatra \em{et~al.}(2015)Mohapatra, Mohanty, and
+  Mishra]{MOHAPATRA2015195}
+Mohapatra, A.; Mohanty, S.; Mishra, S.
+\newblock Chapter 13 - Fish and Shellfish Fauna of Chilika Lagoon: An Updated
+  Checklist. In {\em Marine Faunal Diversity in India}; Venkataraman, K.,
+  Sivaperuman, C., Eds.; Academic Press: San Diego, CA, USA, 2015; pp. 195--224.
+\newblock
+  {\url{https://doi.org/10.1016/B978-0-12-801948-1.00013-6}}.
+
+\bibitem[Sarkar \em{et~al.}(2012)Sarkar, Bhattacharya, Bhattacharya, Satpathy,
+  Mohanty, and Panigrahi]{Sarkar2012}
+Sarkar, S.K.; Bhattacharya, A.; Bhattacharya, A.K.; Satpathy, K.K.; Mohanty,
+  A.K.; Panigrahi, S., Chilika Lake.
+\newblock In {\em Encyclopedia of Lakes and Reservoirs}; Springer: Dordrecht, The Netherlands, 2012; pp. 148--156.
+\newblock {\url{https://doi.org/10.1007/978-1-4020-4410-6_57}}.
+
+\bibitem[Balachandran \em{et~al.}(2020)Balachandran, Pattnaik, Gangaiamaran,
+  and Katti]{Balachandran2020}
+Balachandran, S.; Pattnaik, A.K.; Gangaiamaran, P.; Katti, T., Avifauna of
+  Chilika, Odisha: Assessment of Spatial and Temporal Changes.
+\newblock In {\em Ecology, Conservation, and Restoration of Chilika Lagoon,
+  India}; Springer International Publishing: Cham,~Switzerland, 2020; pp. 335--363.
+\newblock {\url{https://doi.org/10.1007/978-3-030-33424-6_13}}.
+
+\bibitem[Dash \em{et~al.}(2022)Dash, Shankar, Pati, Jose, Seong, Dhal,
+  Manjunatha, and Sandeep]{DASH2022105190}
+Dash, C.; Shankar, R.; Pati, P.; Jose, J.; Seong, Y.B.; Dhal, S.P.; Manjunatha,
+  B.R.; Sandeep, K.
+\newblock An environmental magnetic record of Holocene climatic variability
+  from the Chilika Lagoon, Southern Mahanadi Delta, east coast of India.
+\newblock {\em J. Asian Earth Sci.} {\bf 2022}, {\em 230},~105190.
+\newblock {\url{https://doi.org/10.1016/j.jseaes.2022.105190}}.
+
+\bibitem[Sethy and Senapati(2023)]{SETHY2023497}
+Sethy, M.K.; Senapati, A.K.
+\newblock Perceptions towards ecotourism practice and the willingness to pay:
+  Evidence from Chilika coastal wetland ecosystem, Odisha.
+\newblock {\em Int. J. Geoheritage Park.} {\bf 2023}, {\em
+  11},~497--513.
+\newblock {\url{https://doi.org/10.1016/j.ijgeop.2023.08.001}}.
+
+\bibitem[Bhuvanagiri \em{et~al.}(2018)Bhuvanagiri, Pichika, Akkur, Chaganti,
+  Madhusoodhanan, and Pusapati]{BHUVANAGIRI2018343}
+Bhuvanagiri, S.P.; Pichika, S.; Akkur, R.; Chaganti, K.; Madhusoodhanan, R.;
+  Pusapati, S.V.
+\newblock Chapter 9---Integrated Approach for Modeling Coastal Lagoons: A Case
+  for Chilka Lake, India. In {\em Integrated Population Biology and Modeling,
+  Part A}; Handbook of Statistics; {Srinivasa Rao}, A.S., Rao, C., Eds.; Elsevier:  \hl{Amsterdam, The Netherlands,} %
+  2018; Volume~39, pp. 343--402.
+\newblock {\url{https://doi.org/10.1016/bs.host.2018.06.005}}.
+
+\bibitem[Lemenkova and Debeir(2023)]{Lemenkova202324}
+Lemenkova, P.; Debeir, O.
+\newblock {Time Series Analysis of Landsat Images for Monitoring Flooded Areas
+  in the Inner Niger Delta, Mali}.
+\newblock {\em Artif. Satell.} {\bf 2023}, {\em 58},~278--313.
+\newblock {\url{https://doi.org/10.2478/arsa-2023-0011}}.
+
+\bibitem[Wessel \em{et~al.}(2019)Wessel, Luis, Uieda, Scharroo, Wobbe, Smith,
+  and Tian]{Wessel}
+Wessel, P.; Luis, J.F.; Uieda, L.; Scharroo, R.; Wobbe, F.; Smith, W.H.F.;
+  Tian, D.
+\newblock {The Generic Mapping Tools Version 6}.
+\newblock {\em Geochem. Geophys. Geosystems} {\bf 2019}, {\em
+  20},~5556--5564.
+\newblock {\url{https://doi.org/10.1029/2019GC008515}}.
+
+\bibitem[Lemenkova(2022{\natexlab{a}})]{Lemenkova202217}
+Lemenkova, P.
+\newblock {Mapping Climate Parameters over the Territory of Botswana Using GMT
+  and Gridded Surface Data from TerraClimate}.
+\newblock {\em Isprs Int. J. -Geo-Inf.} {\bf 2022}, {\em
+  11},~473.
+\newblock {\url{https://doi.org/10.3390/ijgi11090473}}.
+
+\bibitem[Lemenkova(2022{\natexlab{b}})]{Lemenkova202212}
+Lemenkova, P.
+\newblock {Handling Dataset with Geophysical and Geological Variables on the
+  Bolivian Andes by the GMT Scripts}.
+\newblock {\em Data} {\bf 2022}, {\em 7},~74.
+\newblock {\url{https://doi.org/10.3390/data7060074}}.
+
+\bibitem[Lemenkova(2022{\natexlab{c}})]{Lemenkova202203}
+Lemenkova, P.
+\newblock {Console-Based Mapping of Mongolia Using GMT Cartographic Scripting
+  Toolset for Processing TerraClimate Data}.
+\newblock {\em Geosciences} {\bf 2022}, {\em 12},~1--36.
+\newblock {\url{https://doi.org/10.3390/geosciences12030140}}.
+
+\bibitem[Ho(1998)]{709601}
+Ho, T.K.
+\newblock The random subspace method for constructing decision forests.
+\newblock {\em IEEE Trans. Pattern Anal. Mach. Intell.}
+  {\bf 1998}, {\em 20},~832--844.
+\newblock {\url{https://doi.org/10.1109/34.709601}}.
+
+\bibitem[Cohen(1960)]{Cohen}
+Cohen, J.
+\newblock A Coefficient of Agreement for Nominal Scales.
+\newblock {\em Educ. Psychol. Meas.} {\bf 1960}, {\em
+  20},~37--46.
+\newblock {\url{https://doi.org/10.1177/001316446002000104}}.
+
+\bibitem[Yu \em{et~al.}(2024)Yu, Ren, and Li]{YU2024131896}
+Yu, T.; Ren, B.; Li, M.
+\newblock Regard to assessing agreement between two raters with kappa
+  statistics.
+\newblock {\em Int. J. Cardiol.} {\bf 2024}, {\em
+  403},~131896.
+\newblock {\url{https://doi.org/10.1016/j.ijcard.2024.131896}}.
+
+\bibitem[Li \em{et~al.}(2023)Li, Gao, and Yu]{LI2023138565}
+Li, M.; Gao, Q.; Yu, T.
+\newblock Using appropriate Kappa statistic in evaluating inter-rater
+  reliability. Short communication on “Groundwater vulnerability and
+  contamination risk mapping of semi-arid Totko river basin, India using
+  GIS-based DRASTIC model and AHP techniques”.
+\newblock {\em Chemosphere} {\bf 2023}, {\em 328},~138565.
+\newblock
+  {\url{https://doi.org//10.1016/j.chemosphere.2023.138565}}.
+
+\bibitem[Bonhomme \em{et~al.}(2015)Bonhomme, Castets, Morel, and
+  Gaucherel]{BONHOMME201596}
+Bonhomme, V.; Castets, M.; Morel, J.; Gaucherel, C.
+\newblock Introducing the vectorial Kappa: An index to quantify congruence
+  between vectorial mosaics.
+\newblock {\em Ecol. Indic.} {\bf 2015}, {\em 57},~96--99.
+\newblock
+  {\url{https://doi.org/10.1016/j.ecolind.2015.04.007}}.
+
+\bibitem[Sim and Wright(2005)]{Sim}
+Sim, J.; Wright, C.C.
+\newblock {The Kappa Statistic in Reliability Studies: Use, Interpretation, and
+  Sample Size Requirements}.
+\newblock {\em Phys. Ther.} {\bf 2005}, {\em 85},~257--268.
+\newblock {\url{https://doi.org/10.1093/ptj/85.3.257}}.
+
+\bibitem[Hand and Christen(2018)]{Hand}
+Hand, D.; Christen, P.
+\newblock A note on using the F-measure for evaluating record linkage
+  algorithms.
+\newblock {\em Stat. Comput.} {\bf 2018}, {\em 28},~539--547.
+\newblock {\url{https://doi.org/10.1007/s11222-017-9746-6}}.
+
+\bibitem[Sitarz(2022)]{sitarz2022extending}
+Sitarz, M.
+\newblock Extending F1 Metric, Probabilistic Approach. \emph{arXiv} \textbf{2022}, arXiv:2210.11997.
+  \href{http://xxx.lanl.gov/abs/2210.11997}{{\normalfont
+  [arXiv:cs.LG/2210.11997]}}.
+
+\bibitem[Taha and Hanbury(2015)]{Taha}
+Taha, A.A.; Hanbury, A.
+\newblock Metrics for evaluating 3D medical image segmentation: analysis,
+  selection, and tool.
+\newblock {\em BMC Med. Imaging} {\bf 2015}, {\em 15},~29.
+\newblock {\url{https://doi.org/10.1186/s12880-015-0068-x}}.
+
+\bibitem[Huang \em{et~al.}(2018)Huang, Yan, Liu, Zhu, Zhang, and
+  Chen]{HUANG2018202}
+Huang, W.; Yan, H.; Liu, R.; Zhu, L.; Zhang, H.; Chen, H.
+\newblock F-score feature selection based Bayesian reconstruction of visual
+  image from human brain activity.
+\newblock {\em Neurocomputing} {\bf 2018}, {\em 316},~202--209.
+\newblock {\url{https://doi.org/10.1016/j.neucom.2018.07.068}}.
+
+\bibitem[Song \em{et~al.}(2020)Song, Cui, and Liu]{Song}
+Song, Q.; Cui, Z.; Liu, P.
+\newblock An Efficient Solution for Semantic Segmentation of Three Ground-based
+  Cloud Datasets.
+\newblock {\em Earth Space Sci.} {\bf 2020}, {\em 7},~e2019EA001040.
+\newblock {\url{https://doi.org/10.1029/2019EA001040}}.
+
+\bibitem[Li \em{et~al.}(2023)Li, Zhang, Zhao, He, and Chen]{Lietal2023}
+Li, H.; Zhang, S.; Zhao, Y.; He, J.; Chen, X.
+\newblock Identification of raffinose family oligosaccharides in processed
+  \emph{Rehmannia glutinosa} Libosch using matrix-assisted laser desorption/ionization
+  mass spectrometry image combined with machine learning.
+\newblock {\em Rapid Commun. Mass Spectrom.} {\bf 2023}, {\em
+  37},~e9635.
+\newblock {\url{https://doi.org/10.1002/rcm.9635}}.
+
+\bibitem[Mangla(1989)]{Mangla}
+Mangla, B.
+\newblock {Chilika Lake: Desilting Asia’s Largest Brackish Water Lagoon}.
+\newblock {\em Ambio} {\bf 1989}, {\em 18},~298--299.
+
+\bibitem[McHugh(2012)]{McHugh}
+McHugh, M.L.
+\newblock {Interrater reliability: the kappa statistic}.
+\newblock {\em Biochem. Medica} {\bf 2012}, {\em 22},~276--282.
+
+\bibitem[Herbert \em{et~al.}(2020)Herbert, Ross, Whetter, and
+  Bone]{HERBERT2020631}
+Herbert, R.J.; Ross, K.; Whetter, T.; Bone, J.
+\newblock Chapter 32---Maintaining ecological resilience on a regional scale:
+  Coastal saline lagoons in a northern European marine protected area. In {\em
+  Marine Protected Areas}; Humphreys, J., Clark, R.W., Eds.; Elsevier:  \hl{Amsterdam, The Netherlands,} 
+  2020; pp. 631--647.
+\newblock {\url{https://doi.org/10.1016/B978-0-08-102698-4.00032-0}}.
+
+\bibitem[Nazneen \em{et~al.}(2022)Nazneen, Madhav, Priya, and
+  Singh]{Nazneen2022}
+Nazneen, S.; Madhav, S.; Priya, A.; Singh, P., Coastal Ecosystems of India and
+  Their Conservation and Management Policies: A Review.
+\newblock In {\em Coastal Ecosystems: Environmental Importance, Current
+  Challenges and Conservation Measures}; Springer International Publishing:
+  Cham, Switzerland, 2022; pp. 1--21.
+\newblock {\url{https://doi.org/10.1007/978-3-030-84255-0_1}}.
+
+\end{thebibliography}
+\PublishersNote{}
+
+%%\nocite{*}
+%
+%%=====================================
+%% References, variant A: external bibliography
+%%=====================================
+%\bibliography{Chilika.bib}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{adjustwidth}
+%\end{thebibliography}
+\end{document}
