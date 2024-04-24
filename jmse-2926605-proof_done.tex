@@ -227,8 +227,8 @@ Water turbidity is relatively low during the late winter to early spring period 
 
 
 
-The satellite data were obtained from the   Landsat 8-9 OLI/TIRS mission and downloaded from the NASA EarthExplorer \hl{website} %MDPI: Please add the access date for all URL (Format: Date Month Year). e.g., (accessed on 1 January 2020). It should be before the accepted date.
- (\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}). The original images are shown in Figure~\ref{fig04}. Image frames acquired from EarthExplorer were imported to the GRASS GIS individually using extent and resolution corresponding to the multispectral bands, then pre-processed for top-of-atmosphere reflectance using the ``i.landsat.toar'' module. The major technical characteristics of the satellite images common for all the scenes are as follows. The images were obtained during the daytime in the nadir from sensor OLI/TIRS of Landsat Collection Category T1, Nr. 2. The Worldwide Reference System (WRS) Path/Row is 140/46. The images were projected into the Universal Transverse Mercator (UTM) projection Zone 45, Datum and Ellipsoid is World Geodetic System 84 (WGS84), Ground Control Points Version 5; Station Identifier LGN. The remaining technical characteristics of the EO data are summarized in   Appendix~\ref{AppA}. Other geospatial data include the cartographic datasets: the raster topographic grid of the General Bathymetric Chart of the Oceans (GEBCO) and vector layers of the administrative division of India. These data were used to visualize the location of the region within the country at the state level, as well as the terrain of the study area. 
+The satellite data were obtained from the   Landsat 8-9 OLI/TIRS mission and downloaded from the NASA EarthExplorer {website} %MDPI: Please add the access date for all URL (Format: Date Month Year). e.g., (accessed on 1 January 2020). It should be before the accepted date. %Author: information is added and checked throughout.
+ (\href{https://earthexplorer.usgs.gov/}{https://earthexplorer.usgs.gov/}, access date: 3 March 2024). The original images are shown in Figure~\ref{fig04}. Image frames acquired from EarthExplorer were imported to the GRASS GIS individually using extent and resolution corresponding to the multispectral bands, then pre-processed for top-of-atmosphere reflectance using the ``i.landsat.toar'' module. The major technical characteristics of the satellite images common for all the scenes are as follows. The images were obtained during the daytime in the nadir from sensor OLI/TIRS of Landsat Collection Category T1, Nr. 2. The Worldwide Reference System (WRS) Path/Row is 140/46. The images were projected into the Universal Transverse Mercator (UTM) projection Zone 45, Datum and Ellipsoid is World Geodetic System 84 (WGS84), Ground Control Points Version 5; Station Identifier LGN. The remaining technical characteristics of the EO data are summarized in   Appendix~\ref{AppA}. Other geospatial data include the cartographic datasets: the raster topographic grid of the General Bathymetric Chart of the Oceans (GEBCO) and vector layers of the administrative division of India. These data were used to visualize the location of the region within the country at the state level, as well as the terrain of the study area. 
  
  \begin{figure}[H]
 % \centering
@@ -259,8 +259,8 @@ These data were processed using the GRASS GIS software version 8.3.1, Generic Ma
 %    \setlength{\unitlength}{0.5cm}
 	\includegraphics[width=9.5cm]{Fig_05.jpg}
   %  \end{center}
-    \caption{Flowchart showing the methodological scheme used in this research. Software: \hl{RStudio.} Diagram source: author.}
-    %MDPI: Please state the version number of the software. If it is not applicable, the related website or proof should be provided.
+    \caption{Flowchart showing the methodological scheme used in this research. Software: {RStudio Desktop version 4.3.2.} Diagram source: author.}
+    %MDPI: Please state the version number of the software. If it is not applicable, the related website or proof should be provided. %Author: information is added.
     \label{fig05}
 \end{figure}
 
@@ -270,7 +270,7 @@ As such, combining RS data and machine learning (ML) techniques presents the int
 \subsection{Image Processing}
 The images were processed using the GRASS GIS (v. 8.3) image processing software using methods explained in the following subsections. First, the images were imported and preprocessed. Then, the images were classified using the unsupervised clustering of the maximum-likelihood discriminant analysis classifier (MaxLik). During the clustering steps, the signature file was generated and reported using the k-means algorithm. The aim of this step is to perform cluster maps and to obtain a training dataset. The classification was performed by the 'i.maxlik' module of GRASS GIS. The code for these steps is presented in Listing~\ref{lst01} using GRASS GIS syntax:
 
-\begin{lstlisting}[captionpos=t,language=bash,caption=\hl{GRASS} %MDPI: We formatted the all listings to  standard format. Please confirm. 
+\begin{lstlisting}[captionpos=t,language=bash,caption={GRASS} %MDPI: We formatted the all listings to  standard format. Please confirm. %Author: yes, I agree and confirm.
  GIS code for clustering method using k-means algorithm.,label={lst01}]
 g.region raster=L_2019_01 -p
 i.group group=L_2019 subgroup=res_30m \
@@ -317,7 +317,7 @@ The criteria for the RF model include the number of pixels forming the class (th
 
 Here, the  training pixels were first generated to train from an earlier land cover classification. Then, they were used as training datasets to perform a classification on recent Landsat images (in the example of code below, for the image of 2023). Afterwards, the model was trained using the  ``RandomForestClassifier'' embedded algorithm using ``r.learn.train'' module. The prediction of the model's performance was carried out  using the ``r.learn.predict'' module. The shaded relief was added as a background to the image, and the isolines were derived using the ``r.contour'' module. The code is presented in Listing~\ref{lst03}.
 
-\begin{lstlisting}[captionpos=t,language=bash,caption=\hl{GRASS}  
+\begin{lstlisting}[captionpos=t,language=bash,caption={GRASS}  %Author: yes, I agree and confirm.
  GIS code for RF method for supervised image classification.,label={lst03}]
 r.random input=L_2019_clusters seed=100 npoints=1000 raster=training_pixels --overwrite
 r.learn.train group=L_2023 training_map=training_pixels \
@@ -355,14 +355,14 @@ where $y_{i}(n)$ is the result of the previous step of classification, and $\eta
 %    \setlength{\unitlength}{0.5cm}
 	\includegraphics[width=10.4cm]{Fig_06.jpg}
    % \end{center}
-    \caption{General methodological scheme for the Artificial Neural Network (ANN) used for image classification. Software:\hl{ R, library ``grViz''.} Diagram source: author.}
-    %MDPI: Please state the version number of the software. If it is not applicable, the related website or proof should be provided.
+    \caption{General methodological scheme for the Artificial Neural Network (ANN) used for image classification. Software:{ R version 4.3.3, DiagrammeR library version 1.0.11.} Diagram source: author.}
+    %MDPI: Please state the version number of the software. If it is not applicable, the related website or proof should be provided. %Author: information is added.
     \label{fig06}
 \end{figure}
 
-Using ML modules of GRASS GIS, the image classification using the MLPC algorithm was implemented using the combination of the modules ``r.learn.train'' used for extracting training data, supervised machine learning, and cross-validation using the Python package Scikit-Learn, and the module ``r.learn.predict'' for estimating prediction of pixels' classification. The technical implementation was performed using    the following code: 
+Using ML modules of GRASS GIS, the image classification using the MLPC algorithm was implemented using the combination of the modules ``r.learn.train'' used for extracting training data, supervised machine learning, and cross-validation using the Python package Scikit-Learn, and the module ``r.learn.predict'' for estimating prediction of pixels' classification. The technical implementation was performed using the code in Listing \ref{lst04}: 
 
-\begin{lstlisting}[captionpos=t,language=bash,caption=\hl{GRASS} %MDPI: Listing 4 and 5 have same labels {lst04}. Please check and revise. Please mention Listing 4 before and close to where it is first presented in the text, and make sure all lstlistings are mentioned in numerical order.
+\begin{lstlisting}[captionpos=t,language=bash,caption={GRASS} %MDPI: Listing 4 and 5 have same labels {lst04}. Please check and revise. Please mention Listing 4 before and close to where it is first presented in the text, and make sure all lstlistings are mentioned in numerical order. %Author: label of Listing 5 is corrected. Mention of Listing 4 is corrected.
  GIS code for RF method for supervised image classification.,label={lst04}]
 r.learn.train group=L_2019 training_map=training_pixels \
     model_name=MLPClassifier n_estimators=500 save_model=mlpc_model.gz --overwrite
@@ -396,9 +396,9 @@ which depends on the definitions of $y_{i}(\omega^{T}\varphi (x_i) + b)\geq 1-\z
 \label{eq5}
 \end{equation}
 
-The result of the classification assigns the predicted classes and the support vectors, which are summarized using attributes of the classification. The effectiveness of the SVM method is that it is a memory-efficient approach that optimizes the use of the computational capacities of the machine. The flexibility of this algorithm is ensured by different Kernel functions defined, which include both common and custom kernels. The practical implementation of this approach in GRASS GIS is presented in Listing~\ref{lst04} below. First, the SVC model is trained using the ``r.learn.train'' module. Then, the prediction of pixel assignments is carried out using the ``r.learn.predict'' module. Afterward, the raster categories thatare automatically applied to the classification output are checked using ``r.category'' module. The visualization is performed using the modules ``r.colors'', ``d.rast'', and ``d.legend''. An example of the code used for classification of the image for 2019 is presented below. 
+The result of the classification assigns the predicted classes and the support vectors, which are summarized using attributes of the classification. The effectiveness of the SVM method is that it is a memory-efficient approach that optimizes the use of the computational capacities of the machine. The flexibility of this algorithm is ensured by different Kernel functions defined, which include both common and custom kernels. The practical implementation of this approach in GRASS GIS is presented in Listing~\ref{lst05} below. First, the SVC model is trained using the ``r.learn.train'' module. Then, the prediction of pixel assignments is carried out using the ``r.learn.predict'' module. Afterward, the raster categories thatare automatically applied to the classification output are checked using ``r.category'' module. The visualization is performed using the modules ``r.colors'', ``d.rast'', and ``d.legend''. An example of the code used for classification of the image for 2019 is presented below. 
 \newpage
-\begin{lstlisting}[captionpos=t,language=bash,caption=\hl{GRASS} GIS code for SVC method for supervised image classification.,label={lst04}]
+\begin{lstlisting}[captionpos=t,language=bash,caption={GRASS} GIS code for SVC method for supervised image classification.,label={lst05}] %Author: caption of Listing 5 is corrected.
 r.learn.train group=L_2019 training_map=training_pixels \
     model_name=SVC n_estimators=500 save_model=svc_model.gz --overwrite
 r.learn.predict group=L_2019 load_model=svc_model.gz output=svc_classification
